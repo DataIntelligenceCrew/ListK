@@ -1,0 +1,24 @@
+{
+  "name": "No Embedding Pivot Selection",
+  "description": "LMPQSelect results without embedding-based pivot selection heuristic.",
+  "method": "LMPQSelect with random/sequential pivot selection (no embedding heuristic)",
+  "file_schema": {
+    "bier_result_unsorted_{p}_{x}_{num_queries}.csv": {
+      "description": "Results without embedding pivot heuristic",
+      "columns": {
+        "q": "Query index (0-based)",
+        "qid": "Query ID from dataset",
+        "did": "Stringified list of top-K document IDs",
+        "time": "Execution time in seconds"
+      }
+    }
+  },
+  "parameters": {
+    "p": 16,
+    "x": 2,
+    "k": 10,
+    "num_queries": 25
+  },
+  "dataset": "SciFact (BEIR)",
+  "note": "Compare with 5000e/ to see the effect of embedding-based pivot selection on latency"
+}

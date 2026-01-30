@@ -1,0 +1,20 @@
+{
+  "phase": 3,
+  "phase_name": "reranking",
+  "dataset": "scifact",
+  "top_k1": 500,
+  "agg_method": "rrf",
+  "num_documents": 5183,
+  "num_queries": 1109,
+  "rerankers": {
+    "bge_reranker": {
+      "status": "completed",
+      "num_rankings": 554500,
+      "num_queries": 1109,
+      "elapsed_seconds": 9695.684935,
+      "output_file": "bge_reranker.parquet",
+      "model_name": "BAAI/bge-reranker-large"
+    }
+  },
+  "timestamp": "2025-12-28T20:45:18.980926+00:00"
+}

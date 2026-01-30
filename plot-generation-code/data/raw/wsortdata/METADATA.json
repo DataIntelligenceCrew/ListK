@@ -1,0 +1,40 @@
+{
+  "name": "Sort Window Size Experiments",
+  "description": "Experiments varying the sort window size (W) parameter with fixed L=20.",
+  "method": "LMPQSelect + Semantic Sort with varying window sizes",
+  "file_schemas": {
+    "bier_sorted_10_{p}_{x}_{L}_{W}.csv": {
+      "description": "Sorted top-10 results for given W",
+      "columns": {
+        "q": "Query index (0-based)",
+        "qid": "Query ID from dataset",
+        "did": "Stringified list of top-K document IDs in sorted order",
+        "time": "Execution time in seconds"
+      }
+    },
+    "bier_metrics_sorted_{p}_{x}_{L}_{W}_{k}_{num_queries}.csv": {
+      "description": "Pre-computed HGT metrics for given W",
+      "columns": {
+        "Recall@K": "Recall at K",
+        "NDCG@K": "NDCG at K",
+        "time": "Mean execution time"
+      }
+    },
+    "bier_formatted_sorted_{p}_{x}_{L}_{W}_{num_queries}.json": {
+      "description": "Formatted results as JSON",
+      "format": "JSON object mapping qid -> {doc_id: rank}"
+    }
+  },
+  "parameters": {
+    "W_values": [2, 4, 8, 9, 10, 16],
+    "p": 16,
+    "x": 2,
+    "L": 20,
+    "k": 10,
+    "num_queries": 25
+  },
+  "parameters_legend": {
+    "W": "Sort window size - number of documents considered in each sort comparison window"
+  },
+  "dataset": "SciFact (BEIR)"
+}

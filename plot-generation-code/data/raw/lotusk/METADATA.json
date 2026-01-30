@@ -1,0 +1,41 @@
+{
+  "name": "LOTUS Semantic Top-K Results",
+  "description": "Results from LOTUS (LLM-based semantic top-K) baseline experiments using different LLM backends.",
+  "method": "LOTUS semantic top-K retrieval using pairwise LLM comparisons",
+  "subdirectories": {
+    "combined_z7b": {
+      "description": "LOTUS results using Zephyr-7B as the LLM backend",
+      "llm_model": "Zephyr-7B"
+    },
+    "qwen_data": {
+      "description": "LOTUS results using QWEN3-8B as the LLM backend",
+      "llm_model": "QWEN3-8B"
+    }
+  },
+  "file_schemas": {
+    "bier_lotus_semtopk_result.csv": {
+      "description": "Raw LOTUS semantic top-K results",
+      "columns": {
+        "q": "Query index (0-based)",
+        "qid": "Query ID from dataset",
+        "time": "Execution time in seconds",
+        "did": "Stringified list of top-K document IDs in ranked order",
+        "stats": "Execution statistics (total_tokens, total_llm_calls, explanations)"
+      }
+    },
+    "bier_formatted_lotus_10_25.json": {
+      "description": "Formatted results as JSON mapping qid -> {doc_id: rank}",
+      "format": "JSON object where keys are query IDs, values are objects mapping doc_id to rank (10=best, 1=worst)"
+    },
+    "bier_metrics_lotus_10_25.csv": {
+      "description": "Pre-computed HGT metrics for K=10, 25 queries",
+      "columns": {
+        "Recall@10": "Recall at K=10 (HGT ground truth)",
+        "NDCG@10": "NDCG at K=10 (HGT ground truth)",
+        "time": "Mean execution time in seconds"
+      }
+    }
+  },
+  "dataset": "SciFact (BEIR)",
+  "num_queries": 25
+}

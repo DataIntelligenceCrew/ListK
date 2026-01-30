@@ -1,0 +1,24 @@
+{
+  "name": "Pairwise Comparison Baseline",
+  "description": "Baseline pairwise comparison results (p=1, x=1 configuration).",
+  "method": "Pairwise quickselect - sequential pairwise comparisons",
+  "file_schema": {
+    "bier_result_unsorted_1_1_{num_queries}.csv": {
+      "description": "Pairwise baseline results",
+      "columns": {
+        "q": "Query index (0-based)",
+        "qid": "Query ID from dataset",
+        "did": "Stringified list of top-K document IDs",
+        "time": "Execution time in seconds"
+      }
+    }
+  },
+  "parameters": {
+    "p": 1,
+    "x": 1,
+    "k": 10,
+    "num_queries": 25
+  },
+  "dataset": "SciFact (BEIR)",
+  "note": "This is the slowest but most accurate baseline - equivalent to LOTUS pairwise approach"
+}

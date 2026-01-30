@@ -1,0 +1,135 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-topk-gt"
+version = "0.1.0"
+description = "LLM-as-a-judge ground truth rankings for BEIR benchmark datasets"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "LLM Top-K GT Team"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    # Data handling
+    "pydantic>=2.0",
+    "pandas>=2.0",
+    "pyarrow>=14.0",
+    "numpy>=1.24",
+    # BEIR benchmark - explicitly upgrade datasets to fix pyarrow compatibility
+    # beir pins datasets to old version, but we need >=3.0 for pyarrow 18+ support
+    "beir>=2.0.0",
+    "datasets>=3.1",
+    # Config & utilities
+    "pyyaml>=6.0",
+    "tqdm>=4.65",
+    "vllm>=0.13.0",
+]
+
+[project.optional-dependencies]
+# Phase 1: IR retrieval models
+retrieval = [
+    "sentence-transformers>=2.2.0",
+    "rank-bm25>=0.2.2",
+    "torch>=2.0",
+    "transformers>=4.35",
+    "scipy>=1.10",  # Required for sparse matrix operations in SPLADE
+]
+
+# ColBERT via RAGatouille (separate due to heavy dependencies)
+colbert = [
+    "ragatouille>=0.0.8",
+]
+
+# Phase 3 & 4: LLM backends
+llm = [
+    "openai>=1.0",
+    "vllm>=0.3.0",
+]
+
+# Development dependencies
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "pytest-asyncio>=0.21",
+    "mypy>=1.0",
+    "ruff>=0.1.0",
+    "black>=23.0",
+    "isort>=5.12",
+]
+
+# Full installation for all phases
+full = [
+    "llm-topk-gt[retrieval,colbert,llm,dev]",
+]
+
+[project.scripts]
+llm-topk-download = "scripts.download_datasets:main"
+
+[project.urls]
+Repository = "https://github.com/your-org/llm-topk-gt"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "scripts*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long (handled by black)
+    "B008",  # do not perform function calls in argument defaults
+]
+
+[tool.ruff.isort]
+known-first-party = ["src"]
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_first_party = ["src"]

@@ -1,0 +1,56 @@
+{
+  "phase": 5,
+  "phase_name": "llm_comparisons_two_stage",
+  "dataset": "scifact",
+  "model": "ollama-qwen2.5-14b",
+  "top_k2": 500,
+  "top_k3": 100,
+  "sort_algorithm": "quick_batched",
+  "agg_method": "rrf",
+  "doc_mode": "summary",
+  "max_snippet_chars": 1500,
+  "randomize_order": true,
+  "seed": 42,
+  "total_queries": 4,
+  "estimated_comparisons_per_query": 9432,
+  "queries": {
+    "115": {
+      "status": "completed",
+      "num_docs": 500,
+      "stage1_comparisons": 3742,
+      "stage2_comparisons": 4388,
+      "total_comparisons": 8130,
+      "elapsed_seconds": 9227.793853
+    },
+    "118": {
+      "status": "completed",
+      "num_docs": 500,
+      "stage1_comparisons": 3899,
+      "stage2_comparisons": 4391,
+      "total_comparisons": 8290,
+      "elapsed_seconds": 9707.238445
+    },
+    "124": {
+      "status": "completed",
+      "num_docs": 500,
+      "stage1_comparisons": 3818,
+      "stage2_comparisons": 4428,
+      "total_comparisons": 8246,
+      "elapsed_seconds": 9865.241802
+    },
+    "127": {
+      "status": "completed",
+      "num_docs": 500,
+      "stage1_comparisons": 3884,
+      "stage2_comparisons": 4421,
+      "total_comparisons": 8305,
+      "elapsed_seconds": 9576.887728
+    }
+  },
+  "timestamp": "2026-01-08T00:22:16.428222+00:00",
+  "summaries_generated": 1643,
+  "summary_model": "ollama-qwen2.5-14b",
+  "completed_queries": 4,
+  "total_comparisons": 32971,
+  "end_timestamp": "2026-01-08T11:33:48.615312+00:00"
+}

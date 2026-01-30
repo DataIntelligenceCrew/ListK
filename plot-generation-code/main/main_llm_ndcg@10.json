@@ -1,0 +1,28 @@
+{
+  "title": "Method Comparison: NDCG@10 vs Latency",
+  "xlabel": "Latency (s)",
+  "ylabel": "NDCG@10",
+  "description": "Compares different algorithm configurations on NDCG@10 computed against LLM-as-a-judge ground truth rankings.",
+  "data_sources": [
+    "tourk5000/bier_result_unsorted_tour_10_25.csv",
+    "data/derived/hgt_data/16_2_data/bier_sorted_10_16_2_20_2.csv",
+    "data/derived/hgt_data/l1data/bier_sorted_10_16_2_1_2.csv",
+    "data/derived/hgt_data/l2data/bier_sorted_10_16_2_2_2.csv",
+    "data/derived/hgt_data/l5data/bier_sorted_10_16_2_5_2.csv",
+    "data/derived/hgt_data/l10data/bier_sorted_10_16_2_10_2.csv",
+    "data/derived/hgt_data/l15data/bier_sorted_10_16_2_15_2.csv",
+    "data/derived/hgt_data/pairwise_data/bier_sorted_10_1_1_2_2.csv",
+    "data/raw/dllmdata/zephyr/bier_sorted_10_16_2_20_2.csv",
+    "data/raw/dllmdata/qwen/bier_sorted_10_16_2_20_2.csv",
+    "lotusk/qwen_data/bier_lotus_semtopk_result.csv",
+    "lotusk/combined_z7b/bier_lotus_semtopk_result.csv",
+    "bier_pointwise/qwen/bier_lotus_map_result_q.csv",
+    "bier_pointwise/zephyr/bier_lotus_map_result.csv"
+  ],
+  "algorithm": "Multi-pivot Quickselect variants",
+  "parameters": {
+    "k": 10,
+    "ground_truth": "llm-topk-gt/phase7_combined_rankings",
+    "num_queries": 25
+  }
+}

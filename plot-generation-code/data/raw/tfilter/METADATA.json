@@ -1,0 +1,31 @@
+{
+  "name": "Tournament Filter Results",
+  "description": "Results from tournament-style filtering stage (LTFilter) with different L values.",
+  "method": "Tournament filter - reduces candidate set before full ranking",
+  "file_schema": {
+    "bier_tfilter_result_{doc_num}_{num_queries}.csv": {
+      "description": "Tournament filter results for given document count",
+      "columns": {
+        "q": "Query index (0-based)",
+        "qid": "Query ID from dataset",
+        "did": "Stringified list of filtered document IDs",
+        "time": "Execution time in seconds"
+      }
+    }
+  },
+  "parameters": {
+    "L_to_doc_num_mapping": {
+      "1": 260,
+      "5": 1295,
+      "10": 2591,
+      "15": 3887
+    },
+    "num_queries": 25
+  },
+  "parameters_legend": {
+    "L": "Tournament filter parameter - controls aggressiveness of filtering",
+    "doc_num": "Number of documents retained after filtering"
+  },
+  "dataset": "SciFact (BEIR)",
+  "note": "doc_num = L * 259 + 1 approximately (based on tournament bracket structure)"
+}

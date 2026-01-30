@@ -1,0 +1,1584 @@
+================================================================================
+PHASE 2 DIAGNOSTICS
+Dataset: scifact
+================================================================================
+
+Loading Phase 1 (retriever) rankings...
+  Loaded bge: 1,109,000 rows
+  Loaded bm25: 1,109,000 rows
+  Loaded colbert: 1,109,000 rows
+  Loaded e5: 1,109,000 rows
+  Loaded splade: 1,109,000 rows
+
+Loading Phase 2 (aggregated) rankings...
+  Loaded borda: 2,552,393 rows
+  Loaded rrf: 2,552,393 rows
+
+Loading corpus and queries...
+  Loaded 5,183 documents and 1,109 queries
+
+================================================================================
+PART 1: RANK CORRELATION ANALYSIS
+================================================================================
+
+--- Aggregation vs Individual Retrievers (Mean Spearman ρ) ---
+  Computing correlations over 100 queries...
+          bge    bm25  colbert      e5  splade
+borda  0.6592  0.6629   0.7407  0.6714  0.7144
+rrf    0.7006  0.7348   0.7555  0.7076  0.7291
+
+--- Inter-Aggregation Correlation (Mean Spearman ρ) ---
+        borda     rrf
+borda  1.0000  0.9816
+rrf    0.9816  1.0000
+
+--- Summary Statistics ---
+
+BORDA correlations with retrievers:
+  bge       : 0.6592
+  bm25      : 0.6629
+  colbert   : 0.7407
+  e5        : 0.6714
+  splade    : 0.7144
+
+RRF correlations with retrievers:
+  bge       : 0.7006
+  bm25      : 0.7348
+  colbert   : 0.7555
+  e5        : 0.7076
+  splade    : 0.7291
+
+================================================================================
+PART 2: DOCUMENT SAMPLES FOR IMPORTANT QUERIES
+================================================================================
+
+Displaying 25 queries (of 25 requested)
+
+====================================================================================================
+QUERY ID: 1
+----------------------------------------------------------------------------------------------------
+Query: 0-dimensional biomaterials show inductive properties.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2679
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+37437064     |      1 |      1 |       33 |       28 |       16 |        3 |       20
+4346436      |      5 |      2 |        1 |      275 |        8 |        1 |       16
+17388232     |      9 |      3 |        2 |        6 |       58 |        2 |      447
+1065627      |     15 |      4 |       10 |      N/A |       23 |       16 |       11
+10931595     |      2 |      5 |       56 |        2 |       15 |      110 |       38
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 37437064 | Score: 0.063647
+  Title: On the origin and impact of mesenchymal stem cell heterogeneity: new insights and emerging tools for single cell analysis.
+  Text: Mesenchymal stem cells (MSCs) display substantial cell-to-cell variation. This heterogeneity manifests among donors, among tissue sources, and within cell populations. Such pervasive variability complicates the use of MSCs in regenerative applications and may limit their therapeutic efficacy. Most conventional assays measure MSC properties in bulk and, as a consequence, mask this cell-to-cell variation. Recent studies have identified extensive variability amongst and within clonal MSC population...
+
+[Rank 2] Doc ID: 4346436 | Score: 0.063636
+  Title: Nonlinear Elasticity in Biological Gels
+  Text: Unlike most synthetic materials, biological materials often stiffen as they are deformed. This nonlinear elastic response, critical for the physiological function of some tissues, has been documented since at least the 19th century, but the molecular structure and the design principles responsible for it are unknown. Current models for this response require geometrically complex ordered structures unique to each material. In this Article we show that a much simpler molecular theory accounts for ...
+
+[Rank 3] Doc ID: 17388232 | Score: 0.057857
+  Title: Mechanical regulation of cell function with geometrically modulated elastomeric substrates
+  Text: We report the establishment of a library of micromolded elastomeric micropost arrays to modulate substrate rigidity independently of effects on adhesive and other material surface properties. We demonstrated that micropost rigidity impacts cell morphology, focal adhesions, cytoskeletal contractility and stem cell differentiation. Furthermore, early changes in cytoskeletal contractility predicted later stem cell fate decisions in single cells.
+
+[Rank 4] Doc ID: 1065627 | Score: 0.054519
+  Title: Microenvironment rigidity modulates responses to the HER2 receptor tyrosine kinase inhibitor lapatinib via YAP and TAZ transcription factors.
+  Text: Stiffness is a biophysical property of the extracellular matrix that modulates cellular functions, including proliferation, invasion, and differentiation, and it also may affect therapeutic responses. Therapeutic durability in cancer treatments remains a problem for both chemotherapies and pathway-targeted drugs, but the reasons for this are not well understood. Tumor progression is accompanied by changes in the biophysical properties of the tissue, and we asked whether matrix rigidity modulated...
+
+[Rank 5] Doc ID: 10931595 | Score: 0.054169
+  Title: Geometry, epistasis, and developmental patterning.
+  Text: Developmental signaling networks are composed of dozens of components whose interactions are very difficult to quantify in an embryo. Geometric reasoning enumerates a discrete hierarchy of phenotypic models with a few composite variables whose parameters may be defined by in vivo data. Vulval development in the nematode Caenorhabditis elegans is a classic model for the integration of two signaling pathways; induction by EGF and lateral signaling through Notch. Existing data for the relative prob...
+
+--- Uniform Samples (ranks: [447, 894, 1340, 1786, 2233]) ---
+
+[Rank 447] Doc ID: 29564505 | Score: 0.010683
+  Title: Inflammatory biomarkers and exacerbations in chronic obstructive pulmonary disease.
+  Text: IMPORTANCE Exacerbations of respiratory symptoms in chronic obstructive pulmonary disease (COPD) have profound and long-lasting adverse effects on patients. OBJECTIVE To test the hypothesis that elevated levels of inflammatory biomarkers in individuals with stable COPD are associated with an increased risk of having exacerbations. DESIGN, SETTING, AND PARTICIPANTS Prospective cohort study examining 61,650 participants with spirometry measurements from the Copenhagen City Heart Study (2001-2003) ...
+
+[Rank 894] Doc ID: 26993601 | Score: 0.007492
+  Title: Molecular layers underlying cytoskeletal remodelling during cortical development
+  Text: During neural development, the cytoskeleton of newborn neurons undergoes extensive and dynamic remodelling to facilitate the sequential steps of neurogenesis, cell migration and terminal differentiation. It is clear from studying the mechanisms that precipitate these functions that different configurations of the cytoskeleton prefigure the correct execution of each step and define cohorts of proteins the functions of which are indispensable for the control of neuronal migration but not terminal ...
+
+[Rank 1340] Doc ID: 14386505 | Score: 0.006151
+  Title: Regulation of myeloid cell function through the CD200 receptor.
+  Text: Myeloid cells play pivotal roles in chronic inflammatory diseases through their broad proinflammatory, destructive, and remodeling capacities. CD200 is widely expressed on a variety of cell types, while the recently identified CD200R is expressed on myeloid cells and T cells. CD200 deletion in vivo results in myeloid cell dysregulation and enhanced susceptibility to autoimmune inflammation, suggesting that the CD200-CD200R interaction is involved in immune suppression. We demonstrate in this stu...
+
+[Rank 1786] Doc ID: 829646 | Score: 0.005442
+  Title: A cohort study of the risk of cervical intraepithelial neoplasia grade 2 or 3 in relation to papillomavirus infection.
+  Text: BACKGROUND Human papillomavirus (HPV) has been associated with cervical intraepithelial neoplasia, but the temporal relation between the infection and the neoplasia remains unclear, as does the relative importance of the specific type of HPV, other sexually transmitted diseases, and other risk factors. METHODS We studied prospectively a cohort of 241 women who presented for evaluation of sexually transmitted disease and had negative cervical cytologic tests. The women were followed every four mo...
+
+[Rank 2233] Doc ID: 28928964 | Score: 0.004994
+  Title: Tissue-specific expression and regulation of sexually dimorphic genes in mice.
+  Text: We report a comprehensive analysis of gene expression differences between sexes in multiple somatic tissues of 334 mice derived from an intercross between inbred mouse strains C57BL/6J and C3H/HeJ. The analysis of a large number of individuals provided the power to detect relatively small differences in expression between sexes, and the use of an intercross allowed analysis of the genetic control of sexually dimorphic gene expression. Microarray analysis of 23,574 transcripts revealed that the e...
+
+====================================================================================================
+QUERY ID: 3
+----------------------------------------------------------------------------------------------------
+Query: 1,000 genomes project enables mapping of genetic sequence variation consisting of rare variants with larger penetrance effects than common variants.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2181
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+14717500     |      1 |      1 |        4 |        2 |        1 |        2 |        1
+2739854      |      3 |      2 |        1 |        3 |        2 |       21 |        2
+19058822     |      2 |      3 |        2 |       18 |        4 |        1 |        3
+23389795     |      4 |      4 |        3 |        6 |        8 |       12 |        5
+4414547      |      5 |      5 |       22 |        4 |        5 |       16 |        7
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 14717500 | Score: 0.080670
+  Title: Rare Variants Create Synthetic Genome-Wide Associations
+  Text: Genome-wide association studies (GWAS) have now identified at least 2,000 common variants that appear associated with common diseases or related traits (http://www.genome.gov/gwastudies), hundreds of which have been convincingly replicated. It is generally thought that the associated markers reflect the effect of a nearby common (minor allele frequency >0.05) causal site, which is associated with the marker, leading to extensive resequencing efforts to find causal sites. We propose as an alterna...
+
+[Rank 2] Doc ID: 2739854 | Score: 0.076870
+  Title: Rare and common variants: twenty arguments
+  Text: Genome-wide association studies have greatly improved our understanding of the genetic basis of disease risk. The fact that they tend not to identify more than a fraction of the specific causal loci has led to divergence of opinion over whether most of the variance is hidden as numerous rare variants of large effect or as common variants of very small effect. Here I review 20 arguments for and against each of these models of the genetic basis of complex traits and conclude that both classes of e...
+
+[Rank 3] Doc ID: 19058822 | Score: 0.076841
+  Title: A fine-scale map of recombination rates and hotspots across the human genome.
+  Text: Genetic maps, which document the way in which recombination rates vary over a genome, are an essential tool for many genetic analyses. We present a high-resolution genetic map of the human genome, based on statistical analyses of genetic variation data, and identify more than 25,000 recombination hotspots, together with motifs and sequence contexts that play a role in hotspot activity. Differences between the behavior of recombination rates over large (megabase) and small (kilobase) scales lead ...
+
+[Rank 4] Doc ID: 23389795 | Score: 0.075004
+  Title: Common and rare variants in multifactorial susceptibility to common diseases
+  Text: Here, we give a historical overview of the search for genetic variants that influence the susceptibility of an individual to a chronic disease, from RA Fisher's seminal work to the current excitement of whole-genome association studies (WGAS). We then discuss the concepts behind the identification of common variants as disease causal factors and contrast them to the basic ideas that underlie the rare variant hypothesis. The identification of rare variants involves the careful selection of candid...
+
+[Rank 5] Doc ID: 4414547 | Score: 0.071288
+  Title: Mosaic PPM1D mutations are associated with predisposition to breast and ovarian cancer
+  Text: Improved sequencing technologies offer unprecedented opportunities for investigating the role of rare genetic variation in common disease. However, there are considerable challenges with respect to study design, data analysis and replication. Using pooled next-generation sequencing of 507 genes implicated in the repair of DNA in 1,150 samples, an analytical strategy focused on protein-truncating variants (PTVs) and a large-scale sequencing case–control replication experiment in 13,642 individual...
+
+--- Uniform Samples (ranks: [364, 728, 1091, 1454, 1818]) ---
+
+[Rank 364] Doc ID: 6319826 | Score: 0.011573
+  Title: Quantifying heterogeneity in a meta-analysis.
+  Text: The extent of heterogeneity in a meta-analysis partly determines the difficulty in drawing overall conclusions. This extent may be measured by estimating a between-study variance, but interpretation is then specific to a particular treatment effect metric. A test for the existence of heterogeneity exists, but depends on the number of studies in the meta-analysis. We develop measures of the impact of heterogeneity on a meta-analysis, from mathematical criteria, that are independent of the number ...
+
+[Rank 728] Doc ID: 21271817 | Score: 0.007248
+  Title: Directly reprogrammed fibroblasts show global epigenetic remodeling and widespread tissue contribution.
+  Text: Ectopic expression of the four transcription factors Oct4, Sox2, c-Myc, and Klf4 is sufficient to confer a pluripotent state upon the fibroblast genome, generating induced pluripotent stem (iPS) cells. It remains unknown if nuclear reprogramming induced by these four factors globally resets epigenetic differences between differentiated and pluripotent cells. Here, using novel selection approaches, we have generated iPS cells from fibroblasts to characterize their epigenetic state. Female iPS cel...
+
+[Rank 1091] Doc ID: 16217855 | Score: 0.005909
+  Title: The Bloom's syndrome helicase promotes the annealing of complementary single-stranded DNA
+  Text: The product of the gene mutated in Bloom's syndrome, BLM, is a 3′–5′ DNA helicase belonging to the highly conserved RecQ family. In addition to a conventional DNA strand separation activity, BLM catalyzes both the disruption of non-B-form DNA, such as G-quadruplexes, and the branch migration of Holliday junctions. Here, we have characterized a new activity for BLM: the promotion of single-stranded DNA (ssDNA) annealing. This activity does not require Mg2+, is inhibited by ssDNA binding proteins ...
+
+[Rank 1454] Doc ID: 4469125 | Score: 0.005249
+  Title: G-protein-independent coupling of MC4R to Kir7.1 in hypothalamic neurons
+  Text: The regulated release of anorexigenic α-melanocyte stimulating hormone (α-MSH) and orexigenic Agouti-related protein (AgRP) from discrete hypothalamic arcuate neurons onto common target sites in the central nervous system has a fundamental role in the regulation of energy homeostasis. Both peptides bind with high affinity to the melanocortin-4 receptor (MC4R); existing data show that α-MSH is an agonist that couples the receptor to the Gαs signalling pathway, while AgRP binds competitively to bl...
+
+[Rank 1818] Doc ID: 11721286 | Score: 0.004909
+  Title: Streptococcus pneumoniae early response genes to human lung epithelial cells
+  Text: BACKGROUND Streptococcus pneumoniae infection starts from colonization of the host respiratory tract where interaction with host respiratory tract epithelial cells occurs. To investigate pneumococcal genes that are involved in the early stage of interaction with host epithelial cells, transcriptional responses of an encapsulated pathogenic pneumococcal strain TIGR4 upon exposure to human lung epithelial cells A549 for 0.5 h and 1 h time periods were investigated by using TIGR (JCVI) microarray t...
+
+====================================================================================================
+QUERY ID: 5
+----------------------------------------------------------------------------------------------------
+Query: 1/2000 in UK have abnormal PrP positivity.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2606
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+13734012     |      1 |      1 |        1 |        1 |        1 |        1 |        1
+18617259     |     12 |      2 |        4 |      497 |        2 |        3 |        3
+5850219      |      2 |      3 |        6 |      107 |       18 |        2 |       12
+23124332     |      3 |      4 |       76 |       26 |        3 |       56 |        4
+27063470     |     24 |      5 |        3 |      N/A |       33 |        6 |        9
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 13734012 | Score: 0.081967
+  Title: Prevalent abnormal prion protein in human appendixes after bovine spongiform encephalopathy epizootic: large scale survey
+  Text: OBJECTIVES To carry out a further survey of archived appendix samples to understand better the differences between existing estimates of the prevalence of subclinical infection with prions after the bovine spongiform encephalopathy epizootic and to see whether a broader birth cohort was affected, and to understand better the implications for the management of blood and blood products and for the handling of surgical instruments. DESIGN Irreversibly unlinked and anonymised large scale survey of a...
+
+[Rank 2] Doc ID: 18617259 | Score: 0.065295
+  Title: Research Letters
+  Text: We report a case of preclinical variant Creutzfeldt-Jakob disease (vCJD) in a patient who died from a non-neurological disorder 5 years after receiving a blood transfusion from a donor who subsequently developed vCJD. Protease-resistant prion protein (PrP(res)) was detected by western blot, paraffin-embedded tissue blot, and immunohistochemistry in the spleen, but not in the brain. Immunohistochemistry for prion protein was also positive in a cervical lymph node. The patient was a heterozygote a...
+
+[Rank 3] Doc ID: 5850219 | Score: 0.063978
+  Title: Prevalence, risk factors, and uptake of interventions for sexually transmitted infections in Britain: findings from the National Surveys of Sexual Attitudes and Lifestyles (Natsal)
+  Text: BACKGROUND Population-based estimates of prevalence, risk distribution, and intervention uptake inform delivery of control programmes for sexually transmitted infections (STIs). We undertook the third National Survey of Sexual Attitudes and Lifestyles (Natsal-3) after implementation of national sexual health strategies, and describe the epidemiology of four STIs in Britain (England, Scotland, and Wales) and the uptake of interventions. METHODS Between Sept 6, 2010 and Aug 31, 2012 , we did a pro...
+
+[Rank 4] Doc ID: 23124332 | Score: 0.059100
+  Title: Prion-induced amyloid heart disease with high blood infectivity in transgenic mice.
+  Text: We investigated extraneural manifestations in scrapie-infected transgenic mice expressing prion protein lacking the glycophosphatydylinositol membrane anchor. In the brain, blood, and heart, both abnormal protease-resistant prion protein (PrPres) and prion infectivity were readily detected by immunoblot and by inoculation into nontransgenic recipients. The titer of infectious scrapie in blood plasma exceeded 10(7) 50% infectious doses per milliliter. The hearts of these transgenic mice contained...
+
+[Rank 5] Doc ID: 27063470 | Score: 0.057212
+  Title: Sporadic Creutzfeldt-Jakob disease in the United Kingdom: analysis of epidemiological surveillance data for 1970-96.
+  Text: OBJECTIVE To identify changes in the occurrence of Creutzfeldt-Jakob disease that might be related to the epidemic of bovine spongiform encephalopathy. DESIGN Epidemiological surveillance of the United Kingdom population for Creutzfeldt-Jakob disease based on (a) referral of suspected cases by neurologists, neuropathologists, and neurophysiologists and (b) death certificates. SETTING England and Wales during 1970-84, and whole of the United Kingdom during 1985-96. SUBJECTS All 662 patients ident...
+
+--- Uniform Samples (ranks: [435, 869, 1304, 1738, 2172]) ---
+
+[Rank 435] Doc ID: 12205576 | Score: 0.010659
+  Title: Physical activity at 36 years: patterns and childhood predictors in a longitudinal study.
+  Text: OBJECTIVE The aim was to describe the sex and socioeconomic differences in patterns of physical activity at work and in leisure time of men and women aged 36 years, and to investigate factors in childhood and adolescence which predict high rates of participation in sports and recreational activities in later life. DESIGN Data collected in childhood, adolescence, and at 36 years on members of a national prospective birth cohort study were used. SETTING The population sample was resident in Englan...
+
+[Rank 869] Doc ID: 17450673 | Score: 0.007367
+  Title: Intrauterine environments and breast cancer risk: meta-analysis and systematic review
+  Text: INTRODUCTION Various perinatal factors, including birth weight, birth order, maternal age, gestational age, twin status, and parental smoking, have been postulated to affect breast cancer risk in daughters by altering the hormonal environment of the developing fetal mammary glands. Despite ample biologic plausibility, epidemiologic studies to date have yielded conflicting results. We investigated the associations between perinatal factors and subsequent breast cancer risk through meta-analyses. ...
+
+[Rank 1304] Doc ID: 24724242 | Score: 0.006023
+  Title: Evaluation of cortical bone by peripheral quantitative computed tomography in renal transplant recipients.
+  Text: BACKGROUND The absolute risk of fractures in renal transplant patients is 3 times that of matched controls. Most of the symptomatic fractures are peripheral, suggesting a greater compromise of cortical bone. Peripheral quantitative computed tomography (pQCT) is a new imaging technique that allows separate noninvasive evaluations of cortical and trabecular bones. We investigated cortical bone by pQCT in 12 renal transplant patients (seven men and five women) for comparison with 27 normal controls...
+
+[Rank 1738] Doc ID: 3545805 | Score: 0.005341
+  Title: Tumor-specific Th17-polarized cells eradicate large established melanoma.
+  Text: CD4+ T cells can differentiate into multiple effector subsets, but the potential roles of these subsets in anti-tumor immunity have not been fully explored. Seeking to study the impact of CD4+ T cell polarization on tumor rejection in a model mimicking human disease, we generated a new MHC class II-restricted, T-cell receptor (TCR) transgenic mouse model in which CD4+ T cells recognize a novel epitope in tyrosinase-related protein 1 (TRP-1), an antigen expressed by normal melanocytes and B16 mur...
+
+[Rank 2172] Doc ID: 32372280 | Score: 0.004951
+  Title: Expression of optineurin, a glaucoma-linked gene, is influenced by elevated intraocular pressure.
+  Text: Optineurin (optic neuropathy inducing protein; OPTN) was recently linked to 16.7% of families with primary open-angle glaucoma. The function of OPTN in the eye is not known, but is present in the trabecular meshwork, which is responsible for maintenance of intraocular pressure (IOP). To gain insight into the role of OPTN in the development of glaucoma we studied its expression in response to factors known to be associated with the disease: elevated IOP, tumor necrosis factor-alpha (TNFalpha), an...
+
+====================================================================================================
+QUERY ID: 13
+----------------------------------------------------------------------------------------------------
+Query: 5% of perinatal mortality is due to low birth weight.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2284
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+1263446      |      1 |      1 |        1 |        2 |       10 |        2 |        3
+17450673     |      2 |      2 |        4 |        5 |        1 |       10 |        4
+7662395      |      3 |      3 |        5 |        3 |        2 |       17 |        1
+26611834     |      4 |      4 |        3 |       25 |        6 |        4 |        5
+5487448      |      5 |      5 |       10 |       10 |        8 |       22 |        9
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 1263446 | Score: 0.078810
+  Title: Determinants of neonatal mortality in Indonesia
+  Text: BACKGROUND Neonatal mortality accounts for almost 40 per cent of under-five child mortality, globally. An understanding of the factors related to neonatal mortality is important to guide the development of focused and evidence-based health interventions to prevent neonatal deaths. This study aimed to identify the determinants of neonatal mortality in Indonesia, for a nationally representative sample of births from 1997 to 2002. METHODS The data source for the analysis was the 2002-2003 Indonesia...
+
+[Rank 2] Doc ID: 17450673 | Score: 0.077314
+  Title: Intrauterine environments and breast cancer risk: meta-analysis and systematic review
+  Text: INTRODUCTION Various perinatal factors, including birth weight, birth order, maternal age, gestational age, twin status, and parental smoking, have been postulated to affect breast cancer risk in daughters by altering the hormonal environment of the developing fetal mammary glands. Despite ample biologic plausibility, epidemiologic studies to date have yielded conflicting results. We investigated the associations between perinatal factors and subsequent breast cancer risk through meta-analyses. ...
+
+[Rank 3] Doc ID: 7662395 | Score: 0.076767
+  Title: Perinatal mortality in rural China: retrospective cohort study.
+  Text: OBJECTIVES To explore the use of local civil registration data to assess the perinatal mortality in a typical rural county in a less developed province in China, 1999-2000. DESIGN Retrospective cohort study. Pregnancies in a cohort of women followed from registration of pregnancy to outcome of infant seven days after birth. SETTING Routine family planning records in 20 rural townships in eastern China. SUBJECTS 3697 pregnancies registered by the local family planning system during 1999. MAIN OUT...
+
+[Rank 4] Doc ID: 26611834 | Score: 0.073799
+  Title: A meta-analysis of depression during pregnancy and the risk of preterm birth, low birth weight, and intrauterine growth restriction.
+  Text: CONTEXT Maternal depressive symptoms during pregnancy have been reported in some, but not all, studies to be associated with an increased risk of preterm birth (PTB), low birth weight (LBW), and intrauterine growth restriction (IUGR). OBJECTIVE To estimate the risk of PTB, LBW, and IUGR associated with antenatal depression. DATA SOURCES AND STUDY SELECTION We searched for English-language and non-English-language articles via the MEDLINE, PsycINFO, CINAHL, Social Work Abstracts, Social Services ...
+
+[Rank 5] Doc ID: 5487448 | Score: 0.069965
+  Title: Birth weight and mammographic density among postmenopausal women in Sweden.
+  Text: Birth weight is a significant predictor of breast cancer risk in adult life and mammary gland mass could be an intermediate stage in this long process. We have studied the association of birth size measurements with mammographic density, a marker of mammary gland mass. For a population-based sample of 893 postmenopausal women without previous cancer in Sweden, we retrieved information on birth size from birth records and their most recent mammography. Film mammograms of the medio-lateral oblique...
+
+--- Uniform Samples (ranks: [382, 762, 1142, 1523, 1904]) ---
+
+[Rank 382] Doc ID: 70439309 | Score: 0.011090
+  Title: Cost-effectiveness in health and medicine
+  Text: 1. Cost-Effectiveness Analysis as a Guide to Resource Allocation in Health: Roles and Limitations 2. Theoretical Foundations of Cost-Effectiveness Analysis 3. Framing and Designing the Cost-Effectiveness Analysis 4. Identifying and Valuing Outcomes 5. Assessing the Effectiveness of Health Interventions 6. Estimating Costs in Cost-Effectiveness Analysis 7. Time Preference 8. Reflecting Uncertainty in Cost-Effectiveness Analysis 9. Reporting Cost-Effectiveness Studies and Results Appendix A: Summa...
+
+[Rank 762] Doc ID: 22478394 | Score: 0.007208
+  Title: Up-regulation of PPAR-gamma mRNA expression in the liver of obese patients: an additional reinforcing lipogenic mechanism to SREBP-1c induction.
+  Text: INTRODUCTION Triglyceride accumulation in the liver is an early feature in the development of nonalcoholic fatty liver disease (NAFLD) associated with human obesity, which is a multifactorial syndrome and whose underlying mechanisms are beginning to be understood. OBJECTIVES Liver peroxisome proliferator-activated receptor-γ (PPAR-γ) mRNA expression was measured as a signaling mechanism related to steatosis in obese patients with NAFLD. METHODS Liver PPAR-γ and sterol receptor element-binding pr...
+
+[Rank 1142] Doc ID: 4856149 | Score: 0.005866
+  Title: Clonal competition in BcrAbl-driven leukemia: how transplantations can accelerate clonal conversion
+  Text: BACKGROUND Clonal competition in cancer describes the process in which the progeny of a cell clone supersedes or succumbs to other competing clones due to differences in their functional characteristics, mostly based on subsequently acquired mutations. Even though the patterns of those mutations are well explored in many tumors, the dynamical process of clonal selection is underexposed. METHODS We studied the dynamics of clonal competition in a BcrAbl-induced leukemia using a γ-retroviral vector...
+
+[Rank 1523] Doc ID: 45341480 | Score: 0.005240
+  Title: Reduction in skin grafting after the introduction of hydrofiber dressings in partial thickness burns: a comparison between a hydrofiber and silver sulphadiazine.
+  Text: AIM/PURPOSE The aim of this study was to compare clinical outcome of children with scald burns treated with a hydrofiber dressing (Aquacel(®), Convatec Inc.) with the former standard of care with silver sulfadiazine (Flammazine(®); Solvay Pharmaceuticals), considering surgical intervention and length of stay (LOS). METHODS A retrospective study of all consecutive children from zero to four years with primary scald burns up to 10% admitted to the Burn Centre of the Maasstad Hospital Rotterdam bet...
+
+[Rank 1904] Doc ID: 22767022 | Score: 0.004904
+  Title: Abi1 is essential for the formation and activation of a WAVE2 signalling complex
+  Text: WAVE2 belongs to a family of proteins that mediates actin reorganization by relaying signals from Rac to the Arp2/3 complex, resulting in lamellipodia protrusion. WAVE2 displays Arp2/3-dependent actin nucleation activity in vitro, and does not bind directly to Rac. Instead, it forms macromolecular complexes that have been reported to exert both positive and negative modes of regulation. How these complexes are assembled, localized and activated in vivo remains to be established. Here we use tand...
+
+====================================================================================================
+QUERY ID: 36
+----------------------------------------------------------------------------------------------------
+Query: A deficiency of vitamin B12 increases blood levels of homocysteine.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2435
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+18557974     |      1 |      1 |        1 |        1 |        6 |        1 |        6
+42441846     |      3 |      2 |       14 |        2 |        1 |        5 |        2
+16252863     |      2 |      3 |        6 |        7 |        5 |        2 |        4
+37424881     |      4 |      4 |        4 |       18 |        2 |        7 |        1
+33409100     |      5 |      5 |        2 |       15 |        3 |        9 |        3
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 18557974 | Score: 0.079483
+  Title: British Journal of Nutrition (2003), 89, 295–301 q The Authors 2003 DOI: 10.1079/BJN2002776 Plasma homocysteine concentration is decreased by dietary intervention*
+  Text: High plasma total homocysteine (tHcy) concentration is reported to be a risk factor for vascular diseases. We investigated the extent to which serum folate and plasma tHcy respond to a high intake of natural folate from food. Thirty-seven healthy females volunteered t o participate in a crossover dietary intervention. The study included a baseline period and two 5-week diet periods (low- and high-folate diets) with a 3-week washout in between. The low-folate diet contained one serving of both ve...
+
+[Rank 2] Doc ID: 42441846 | Score: 0.077550
+  Title: Gene--nutrition interactions in coronary artery disease: correlation between the MTHFR C677T polymorphism and folate and homocysteine status in a Korean population.
+  Text: INTRODUCTION Elevated plasma total homocysteine is a major risk for coronary artery disease (CAD). Methyltetrahydrofolate reductase (MTHFR) is a main regulatory enzyme in homocysteine metabolism; a common C677T mutation in the MTHFR gene results in decreased enzyme activity, and contributes to increased homocysteine levels and decreased folate levels. We investigated the frequency of MTHFR C677T alleles in a Korean population, determined the genotype-specific threshold levels of folate or vitami...
+
+[Rank 3] Doc ID: 16252863 | Score: 0.077216
+  Title: Preventing coronary heart disease: B vitamins and homocysteine.
+  Text: The list of preventable and reversible risk factors for atherosclerotic cardiovascular disease continues to grow. Cigarette smoking, high blood pressure, physical inactivity, elevated cholesterol, underlying lipoprotein abnormalities, lipoprotein(a), diabetes, overweight, male gender, and age are well-established risk factors. During the 1990s, there have been many reports associating elevated plasma homocysteine levels with arteriosclerotic cardiovascular disease and consistent evidence that di...
+
+[Rank 4] Doc ID: 37424881 | Score: 0.075893
+  Title: The effect of folate fortification on folic acid-based homocysteine-lowering intervention and stroke risk: a meta-analysis.
+  Text: OBJECTIVE Folate and vitamin B12 are two vital regulators in the metabolic process of homocysteine, which is a risk factor of atherothrombotic events. Low folate intake or low plasma folate concentration is associated with increased stroke risk. Previous randomized controlled trials presented discordant findings in the effect of folic acid supplementation-based homocysteine lowering on stroke risk. The aim of the present review was to perform a meta-analysis of relevant randomized controlled tri...
+
+[Rank 5] Doc ID: 33409100 | Score: 0.075701
+  Title: Effect of homocysteine lowering on mortality and vascular disease in advanced chronic kidney disease and end-stage renal disease: a randomized controlled trial.
+  Text: CONTEXT High plasma homocysteine levels are a risk factor for mortality and vascular disease in observational studies of patients with chronic kidney disease. Folic acid and B vitamins decrease homocysteine levels in this population but whether they lower mortality is unknown. OBJECTIVE To determine whether high doses of folic acid and B vitamins administered daily reduce mortality in patients with chronic kidney disease. DESIGN, SETTING, AND PARTICIPANTS Double-blind randomized controlled trial...
+
+--- Uniform Samples (ranks: [407, 812, 1218, 1624, 2029]) ---
+
+[Rank 407] Doc ID: 26045237 | Score: 0.010568
+  Title: Safety and efficacy of RNAi therapy for transthyretin amyloidosis.
+  Text: BACKGROUND Transthyretin amyloidosis is caused by the deposition of hepatocyte-derived transthyretin amyloid in peripheral nerves and the heart. A therapeutic approach mediated by RNA interference (RNAi) could reduce the production of transthyretin. METHODS We identified a potent antitransthyretin small interfering RNA, which was encapsulated in two distinct first- and second-generation formulations of lipid nanoparticles, generating ALN-TTR01 and ALN-TTR02, respectively. Each formulation was st...
+
+[Rank 812] Doc ID: 15685921 | Score: 0.007468
+  Title: Differential effects of charybdotoxin on the activity of retinal ganglion cells in the dark- and light-adapted mouse retina
+  Text: Patch-clamp recordings were made from retinal ganglion cells in the mouse retina. Under dark adaptation, blockage of BK(Ca) channels increases the spontaneous excitatory postsynaptic currents (EPSCs) and light-evoked On-EPSCs, while it decreases the light-evoked Off inhibitory postsynaptic currents (IPSCs). However, under light adaptation it decreases the light-evoked On-EPSCs, the spontaneous IPSCs and the light-evoked On- and Off-IPSCs. Blockage of BK(Ca) channels significantly altered the out...
+
+[Rank 1218] Doc ID: 19675911 | Score: 0.006043
+  Title: Trends in heart failure incidence and survival in a community-based population.
+  Text: CONTEXT The epidemic of heart failure has yet to be fully investigated, and data on incidence, survival, and sex-specific temporal trends in community-based populations are limited. OBJECTIVE To test the hypothesis that the incidence of heart failure has declined and survival after heart failure diagnosis has improved over time but that secular trends have diverged by sex. DESIGN, SETTING, AND PARTICIPANTS Population-based cohort study using the resources of the Rochester Epidemiology Project co...
+
+[Rank 1624] Doc ID: 42865134 | Score: 0.005347
+  Title: Essential role for the SANT domain in the functioning of multiple chromatin remodeling enzymes.
+  Text: The SANT domain is a novel motif found in a number of eukaryotic transcriptional regulatory proteins that was identified based on its homology to the DNA binding domain of c-myb. Here we show that the SANT domain is essential for the in vivo functions of yeast Swi3p, Ada2p, and Rsc8p, subunits of three distinct chromatin remodeling complexes. We also find that the Ada2p SANT domain is essential for histone acetyltransferase activity of native, Gcn5p-containing HAT complexes. Furthermore, kinetic...
+
+[Rank 2029] Doc ID: 23420807 | Score: 0.004951
+  Title: Anti-Angiogenic Activity of Selected Receptor Tyrosine Kinase Inhibitors, PD166285 and PD173074: Implications for Combination Treatment with Photodynamic Therapy
+  Text: Angiogenesis, the formation of new blood vessels from an existing vasculature, is requisite for tumor growth. It entails intercellular coordination of endothelial and tumor cells through angiogenic growth factor signaling. Interruption of these events has implications in the suppression of tumor growth. PD166285, a broad-spectrum receptor tyrosine kinase (RTK) inhibitor, and PD173074, a selective FGFR1TK inhibitor, were evaluated for their anti-angiogenic activity and anti-tumor efficacy in comb...
+
+====================================================================================================
+QUERY ID: 42
+----------------------------------------------------------------------------------------------------
+Query: A high microerythrocyte count raises vulnerability to severe anemia in homozygous alpha (+)- thalassemia trait subjects.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2584
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+18174210     |      1 |      1 |        1 |        1 |        1 |        1 |        1
+40913091     |      2 |      2 |        5 |        2 |        3 |        2 |        2
+27889071     |      3 |      3 |        2 |        7 |        2 |        3 |        3
+6315132      |      4 |      4 |       12 |        3 |        4 |       13 |       10
+45218443     |      5 |      5 |        7 |       61 |       35 |        8 |        5
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 18174210 | Score: 0.081967
+  Title: Increased Microerythrocyte Count in Homozygous α+-Thalassaemia Contributes to Protection against Severe Malarial Anaemia
+  Text: BACKGROUND The heritable haemoglobinopathy alpha(+)-thalassaemia is caused by the reduced synthesis of alpha-globin chains that form part of normal adult haemoglobin (Hb). Individuals homozygous for alpha(+)-thalassaemia have microcytosis and an increased erythrocyte count. Alpha(+)-thalassaemia homozygosity confers considerable protection against severe malaria, including severe malarial anaemia (SMA) (Hb concentration < 50 g/l), but does not influence parasite count. We tested the hypothesis t...
+
+[Rank 2] Doc ID: 40913091 | Score: 0.079645
+  Title: GENOTYPING OF THALASSEMIA IN MICROCYTIC HYPOCHROMIC ANEMIA PATIENTS FROM SOUTHWEST REGION OF IRAN
+  Text: Objective: To evaluate the frequency of α -gene, s-gene, and hemoglobin variant numbers in subjects with Microcytic hypochromic anemia. Methodology: In total out of 850, 340 subjects with microcytic hypochromic anemia [MCV<80fl; MCH<27pg] from Southwest part of Iran, were studied in Research Center of Thalassemia and Hemoglobinopathies (RCTH) which is the only center working on hematology and oncology in Southwest (Khuzestan) region of Iran. These include 325 individuals: 171 with Beta-thalassem...
+
+[Rank 3] Doc ID: 27889071 | Score: 0.078929
+  Title: Microcytosis, iron deficiency and thalassaemia in a multi-ethnic community: a pilot study.
+  Text: The high prevalence of microcytosis (defined here as mean cell haemoglobin<27 pg) with no other abnormality is a principal cause of confusion in screening for haemoglobin disorders. Here we report the results of a small pilot study aiming to resolve this confusion by routinely proceeding to plasma ferritin and HPLC assay, using the original sequestrene blood sample, when microcytosis is detected. Participants comprised a random sample of 1,302 people referred for a full blood count by their Gene...
+
+[Rank 4] Doc ID: 6315132 | Score: 0.073371
+  Title: KLF1-null neonates display hydrops fetalis and a deranged erythroid transcriptome.
+  Text: We describe a case of severe neonatal anemia with kernicterus caused by compound heterozygosity for null mutations in KLF1, each inherited from asymptomatic parents. One of the mutations is novel. This is the first described case of a KLF1-null human. The phenotype of severe nonspherocytic hemolytic anemia, jaundice, hepatosplenomegaly, and marked erythroblastosis is more severe than that present in congenital dyserythropoietic anemia type IV as a result of dominant mutations in the second zinc-...
+
+[Rank 5] Doc ID: 45218443 | Score: 0.063807
+  Title: Thalassemia and malaria: new insights into an old problem.
+  Text: The hemoglobinopathies are probably the world's most common genetic diseases: The World Health Organization has estimated that at least 5% of the population are carriers for one or other of the most serious forms, the alpha- and beta-thalassemias and the structural variant hemoglobins S, C, and E, which are found at polymorphic frequencies in many countries. All these hemoglobinopathies are believed to provide protection against malaria, and it is thought that, in malarial regions of the world, ...
+
+--- Uniform Samples (ranks: [432, 862, 1292, 1723, 2154]) ---
+
+[Rank 432] Doc ID: 15981174 | Score: 0.010837
+  Title: Pf4-Cre transgenic mice allow the generation of lineage-restricted gene knockouts for studying megakaryocyte and platelet function in vivo.
+  Text: To generate transgenic mice that express Cre-recombinase exclusively in the megakaryocytic lineage, we modified a mouse bacterial artificial chromosome (BAC) clone by homologous recombination and replaced the first exon of the platelet factor 4 (Pf4), also called CXCL4, with a codon-improved Cre cDNA. Several strains expressing the transgene were obtained and one strain, Q3, was studied in detail. Crossing Q3 mice with the ROSA26-lacZ reporter strain showed that Cre-recombinase activity was conf...
+
+[Rank 862] Doc ID: 22067786 | Score: 0.007365
+  Title: Monte Carlo tests for associations between disease and alleles at highly polymorphic loci.
+  Text: In an association analysis comparing cases and controls with respect to allele frequencies at a highly polymorphic locus, a potential problem is that the conventional chi-squared test may not be valid for a large, sparse contingency table. However, reliance on statistics with known asymptotic distribution is now unnecessary, as Monte Carlo simulations can be performed to estimate the significance level of any test statistic. We have implemented a Monte Carlo method for four 'chi-squared' test st...
+
+[Rank 1292] Doc ID: 39164524 | Score: 0.006062
+  Title: Fibrosis and adipogenesis originate from a common mesenchymal progenitor in skeletal muscle.
+  Text: Accumulation of adipocytes and collagen type-I-producing cells (fibrosis) is observed in muscular dystrophies. The origin of these cells had been largely unknown, but recently we identified mesenchymal progenitors positive for platelet-derived growth factor receptor alpha (PDGFRα) as the origin of adipocytes in skeletal muscle. However, the origin of muscle fibrosis remains largely unknown. In this study, clonal analyses show that PDGFRα(+) cells also differentiate into collagen type-I-producing...
+
+[Rank 1723] Doc ID: 4447785 | Score: 0.005358
+  Title: A gp130–Src–YAP module links inflammation to epithelial regeneration
+  Text: Inflammation promotes regeneration of injured tissues through poorly understood mechanisms, some of which involve interleukin (IL)-6 family members, the expression of which is elevated in many diseases including inflammatory bowel diseases and colorectal cancer. Here we show in mice and human cells that gp130, a co-receptor for IL-6 cytokines, triggers activation of YAP and Notch, transcriptional regulators that control tissue growth and regeneration, independently of the gp130 effector STAT3. T...
+
+[Rank 2154] Doc ID: 13963620 | Score: 0.004958
+  Title: Dynamic analysis of filopodial interactions during the zippering phase of Drosophila dorsal closure.
+  Text: Dorsal closure is a paradigm epithelial fusion episode that occurs late in Drosophila embryogenesis and leads to sealing of a midline hole by bonding of two opposing epithelial sheets. The leading edge epithelial cells express filopodia and fusion is dependent on interdigitation of these filopodia to prime formation of adhesions. Since the opposing epithelia are molecularly patterned there must exist some mechanism for accurately aligning the two sheets across this fusion seam. To address this, ...
+
+====================================================================================================
+QUERY ID: 48
+----------------------------------------------------------------------------------------------------
+Query: A total of 1,000 people in the UK are asymptomatic carriers of vCJD infection.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2416
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+11349166     |      1 |      1 |        3 |       13 |        1 |        3 |        1
+18617259     |      2 |      2 |        5 |        8 |        2 |        5 |        2
+13734012     |      3 |      3 |        2 |        3 |        4 |        1 |       60
+27063470     |      6 |      4 |        1 |      161 |       17 |        2 |        7
+5850219      |      4 |      5 |       14 |      130 |        5 |        7 |        5
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 11349166 | Score: 0.078232
+  Title: Lack of evidence of transfusion transmission of Creutzfeldt-Jakob disease in a US surveillance study.
+  Text: BACKGROUND Since 2004, several reported transfusion transmissions of variant Creutzfeldt-Jakob disease (vCJD) in the United Kingdom have reawakened concerns about the possible risk of similar transmissions of nonvariant or classic forms of CJD. STUDY DESIGN AND METHODS Patients with a CJD diagnosis and a history of donating blood were reported to the study coordinator. Through review of blood distribution and hospital records, the recipients of blood components from these donors were identified....
+
+[Rank 2] Doc ID: 18617259 | Score: 0.077733
+  Title: Research Letters
+  Text: We report a case of preclinical variant Creutzfeldt-Jakob disease (vCJD) in a patient who died from a non-neurological disorder 5 years after receiving a blood transfusion from a donor who subsequently developed vCJD. Protease-resistant prion protein (PrP(res)) was detected by western blot, paraffin-embedded tissue blot, and immunohistochemistry in the spleen, but not in the brain. Immunohistochemistry for prion protein was also positive in a cervical lymph node. The patient was a heterozygote a...
+
+[Rank 3] Doc ID: 13734012 | Score: 0.072354
+  Title: Prevalent abnormal prion protein in human appendixes after bovine spongiform encephalopathy epizootic: large scale survey
+  Text: OBJECTIVES To carry out a further survey of archived appendix samples to understand better the differences between existing estimates of the prevalence of subclinical infection with prions after the bovine spongiform encephalopathy epizootic and to see whether a broader birth cohort was affected, and to understand better the implications for the management of blood and blood products and for the handling of surgical instruments. DESIGN Irreversibly unlinked and anonymised large scale survey of a...
+
+[Rank 4] Doc ID: 27063470 | Score: 0.064960
+  Title: Sporadic Creutzfeldt-Jakob disease in the United Kingdom: analysis of epidemiological surveillance data for 1970-96.
+  Text: OBJECTIVE To identify changes in the occurrence of Creutzfeldt-Jakob disease that might be related to the epidemic of bovine spongiform encephalopathy. DESIGN Epidemiological surveillance of the United Kingdom population for Creutzfeldt-Jakob disease based on (a) referral of suspected cases by neurologists, neuropathologists, and neurophysiologists and (b) death certificates. SETTING England and Wales during 1970-84, and whole of the United Kingdom during 1985-96. SUBJECTS All 662 patients ident...
+
+[Rank 5] Doc ID: 5850219 | Score: 0.064471
+  Title: Prevalence, risk factors, and uptake of interventions for sexually transmitted infections in Britain: findings from the National Surveys of Sexual Attitudes and Lifestyles (Natsal)
+  Text: BACKGROUND Population-based estimates of prevalence, risk distribution, and intervention uptake inform delivery of control programmes for sexually transmitted infections (STIs). We undertook the third National Survey of Sexual Attitudes and Lifestyles (Natsal-3) after implementation of national sexual health strategies, and describe the epidemiology of four STIs in Britain (England, Scotland, and Wales) and the uptake of interventions. METHODS Between Sept 6, 2010 and Aug 31, 2012 , we did a pro...
+
+--- Uniform Samples (ranks: [404, 806, 1208, 1611, 2014]) ---
+
+[Rank 404] Doc ID: 24555878 | Score: 0.011495
+  Title: Development of a questionnaire to measure heart disease risk knowledge in people with diabetes: the Heart Disease Fact Questionnaire.
+  Text: This paper describes a paper and pencil questionnaire that measures heart disease risk knowledge in people with diabetes. The Heart Disease Fact Questionnaire (HDFQ) is a 25-item questionnaire that was developed to tap into respondents' knowledge of major risk factors for the development of CHD. Approximately half of these items specifically address diabetes-related CHD risk factors. Based on extensive pilot data, the current study analyzed responses from 524 people with diabetes to assess the p...
+
+[Rank 806] Doc ID: 1974176 | Score: 0.007484
+  Title: Fruit consumption and risk of type 2 diabetes: results from three prospective longitudinal cohort studies
+  Text: OBJECTIVE To determine whether individual fruits are differentially associated with risk of type 2 diabetes. DESIGN Prospective longitudinal cohort study. SETTING Health professionals in the United States. PARTICIPANTS 66,105 women from the Nurses' Health Study (1984-2008), 85,104 women from the Nurses' Health Study II (1991-2009), and 36,173 men from the Health Professionals Follow-up Study (1986-2008) who were free of major chronic diseases at baseline in these studies. MAIN OUTCOME MEASURE In...
+
+[Rank 1208] Doc ID: 25628793 | Score: 0.006024
+  Title: Increased expression of CYP1A1 and CYP1B1 in ovarian/peritoneal endometriotic lesions.
+  Text: Endometriosis is an estrogen-dependent disease affecting up to 10% of all premenopausal women. There is evidence that different endometriosis sites show distinct local estrogen concentration, which, in turn, might be due to a unique local estrogen metabolism. We aimed to investigate whether there was a site-specific regulation of selected enzymes responsible for the oxidative metabolism of estrogens in biopsy samples and endometrial and endometriotic stromal cells. Cytochrome P450 (CYP) 1A1 and ...
+
+[Rank 1611] Doc ID: 704526 | Score: 0.005311
+  Title: The behaviour change wheel: A new method for characterising and designing behaviour change interventions
+  Text: BACKGROUND Improving the design and implementation of evidence-based practice depends on successful behaviour change interventions. This requires an appropriate method for characterising interventions and linking them to an analysis of the targeted behaviour. There exists a plethora of frameworks of behaviour change interventions, but it is not clear how well they serve this purpose. This paper evaluates these frameworks, and develops and evaluates a new framework aimed at overcoming their limit...
+
+[Rank 2014] Doc ID: 30543439 | Score: 0.004926
+  Title: Crystal structure, biochemical and cellular activities demonstrate separate functions of MTH1 and MTH2
+  Text: Deregulated redox metabolism in cancer leads to oxidative damage to cellular components including deoxyribonucleoside triphosphates (dNTPs). Targeting dNTP pool sanitizing enzymes, such as MTH1, is a highly promising anticancer strategy. The MTH2 protein, known as NUDT15, is described as the second human homologue of bacterial MutT with 8-oxo-dGTPase activity. We present the first NUDT15 crystal structure and demonstrate that NUDT15 prefers other nucleotide substrates over 8-oxo-dGTP. Key struct...
+
+====================================================================================================
+QUERY ID: 49
+----------------------------------------------------------------------------------------------------
+Query: ADAR1 binds to Dicer to cleave pre-miRNA.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2495
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+5953485      |      1 |      1 |        1 |        1 |        1 |        1 |        1
+5702790      |      2 |      2 |        2 |        2 |        2 |        2 |        2
+7029990      |      3 |      3 |        4 |        3 |       19 |        5 |       18
+5409325      |      4 |      4 |       15 |        4 |        5 |       14 |       29
+1333643      |      5 |      5 |        9 |        9 |       67 |       13 |        5
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 5953485 | Score: 0.081967
+  Title: ADAR1 Forms a Complex with Dicer to Promote MicroRNA Processing and RNA-Induced Gene Silencing
+  Text: Adenosine deaminases acting on RNA (ADARs) are involved in RNA editing that converts adenosine residues to inosine specifically in double-stranded RNAs. In this study, we investigated the interaction of the RNA editing mechanism with the RNA interference (RNAi) machinery and found that ADAR1 forms a complex with Dicer through direct protein-protein interaction. Most importantly, ADAR1 increases the maximum rate (Vmax) of pre-microRNA (miRNA) cleavage by Dicer and facilitates loading of miRNA ont...
+
+[Rank 2] Doc ID: 5702790 | Score: 0.080645
+  Title: Phosphate and R2D2 restrict the substrate specificity of Dicer-2, an ATP-driven ribonuclease.
+  Text: Drosophila Dicer-2 generates small interfering RNAs (siRNAs) from long double-stranded RNA (dsRNA), whereas Dicer-1 produces microRNAs (miRNAs) from pre-miRNA. What makes the two Dicers specific for their biological substrates? We find that purified Dicer-2 can efficiently cleave pre-miRNA, but that inorganic phosphate and the Dicer-2 partner protein R2D2 inhibit pre-miRNA cleavage. Dicer-2 contains C-terminal RNase III domains that mediate RNA cleavage and an N-terminal helicase motif, whose fu...
+
+[Rank 3] Doc ID: 7029990 | Score: 0.072361
+  Title: Stress-induced apoptosis associated with null mutation of ADAR1 RNA editing deaminase gene.
+  Text: One type of RNA editing involves the conversion of adenosine residues into inosine in double-stranded RNA through the action of adenosine deaminases acting on RNA (ADAR). A-to-I RNA editing of the coding sequence could result in synthesis of proteins not directly encoded in the genome. ADAR edits also non-coding sequences of target RNAs, such as introns and 3'-untranslated regions, which may affect splicing, translation, and mRNA stability. Three mammalian ADAR gene family members (ADAR1-3) have...
+
+[Rank 4] Doc ID: 5409325 | Score: 0.069092
+  Title: Gonadotrope-specific deletion of Dicer results in severely suppressed gonadotropins and fertility defects.
+  Text: Pituitary gonadotropins follicle-stimulating hormone and luteinizing hormone are heterodimeric glycoproteins expressed in gonadotropes. They act on gonads and promote their development and functions including steroidogenesis and gametogenesis. Although transcriptional regulation of gonadotropin subunits has been well studied, the post-transcriptional regulation of gonadotropin subunits is not well understood. To test if microRNAs regulate the hormone-specific gonadotropin β subunits in vivo, we ...
+
+[Rank 5] Doc ID: 1333643 | Score: 0.065943
+  Title: Genetic and Functional Diversification of Small RNA Pathways in Plants
+  Text: Multicellular eukaryotes produce small RNA molecules (approximately 21–24 nucleotides) of two general types, microRNA (miRNA) and short interfering RNA (siRNA). They collectively function as sequence-specific guides to silence or regulate genes, transposons, and viruses and to modify chromatin and genome structure. Formation or activity of small RNAs requires factors belonging to gene families that encode DICER (or DICER-LIKE [DCL]) and ARGONAUTE proteins and, in the case of some siRNAs, RNA-dep...
+
+--- Uniform Samples (ranks: [417, 832, 1248, 1664, 2079]) ---
+
+[Rank 417] Doc ID: 30034334 | Score: 0.011073
+  Title: A dual function of the CRISPR-Cas system in bacterial antivirus immunity and DNA repair.
+  Text: Clustered Regularly Interspaced Short Palindromic Repeats (CRISPRs) and the associated proteins (Cas) comprise a system of adaptive immunity against viruses and plasmids in prokaryotes. Cas1 is a CRISPR-associated protein that is common to all CRISPR-containing prokaryotes but its function remains obscure. Here we show that the purified Cas1 protein of Escherichia coli (YgbT) exhibits nuclease activity against single-stranded and branched DNAs including Holliday junctions, replication forks and ...
+
+[Rank 832] Doc ID: 13235609 | Score: 0.007308
+  Title: VEGF inhibits tumor cell invasion and mesenchymal transition through a MET/VEGFR2 complex.
+  Text: Inhibition of VEGF signaling leads to a proinvasive phenotype in mouse models of glioblastoma multiforme (GBM) and in a subset of GBM patients treated with bevacizumab. Here, we demonstrate that vascular endothelial growth factor (VEGF) directly and negatively regulates tumor cell invasion through enhanced recruitment of the protein tyrosine phosphatase 1B (PTP1B) to a MET/VEGFR2 heterocomplex, thereby suppressing HGF-dependent MET phosphorylation and tumor cell migration. Consequently, VEGF blo...
+
+[Rank 1248] Doc ID: 16929739 | Score: 0.005959
+  Title: Corresponding Author:
+  Text: In higher eukaryotes, introns are spliced out of protein-coding mRNAs by the spliceosome, a massive complex comprising five non-coding RNAs (ncRNAs) and about 200 proteins. By comparing the differences between spliceosomal proteins from many basal eukaryotic lineages, it is possible to infer properties of the splicing system in the last common ancestor of extant eukaryotes, the eukaryotic ancestor. We begin with the hypothesis that, similar to intron length (that appears to have increased in mul...
+
+[Rank 1664] Doc ID: 7622767 | Score: 0.005311
+  Title: Human Cyclin a Is Required for Mitosis until Mid Prophase
+  Text: We have used microinjection and time-lapse video microscopy to study the role of cyclin A in mitosis. We have injected purified, active cyclin A/cyclin-dependent kinase 2 (CDK2) into synchronized cells at specific points in the cell cycle and assayed its effect on cell division. We find that cyclin A/CDK2 will drive G2 phase cells into mitosis within 30 min of microinjection, up to 4 h before control cells enter mitosis. Often this premature mitosis is abnormal; the chromosomes do not completely...
+
+[Rank 2079] Doc ID: 26735905 | Score: 0.004946
+  Title: Metabolic reprogramming of stromal fibroblasts through p62-mTORC1 signaling promotes inflammation and tumorigenesis.
+  Text: The tumor microenvironment plays a critical role in cancer progression, but the precise mechanisms by which stromal cells influence the epithelium are poorly understood. Here we show that p62 levels were reduced in the stroma of several tumors and that its loss in the tumor microenvironment or stromal fibroblasts resulted in increased tumorigenesis of epithelial prostate cancer cells. The mechanism involves the regulation of cellular redox through an mTORC1/c-Myc pathway of stromal glucose and a...
+
+====================================================================================================
+QUERY ID: 50
+----------------------------------------------------------------------------------------------------
+Query: AIRE is expressed in some skin tumors.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2255
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+12580014     |      1 |      1 |        1 |        1 |        1 |        1 |        1
+25738896     |      2 |      2 |        2 |        5 |        2 |        2 |        4
+18488986     |      3 |      3 |        4 |        3 |        3 |        3 |        3
+39559521     |      4 |      4 |        5 |        2 |        4 |        6 |        2
+4561402      |      5 |      5 |        7 |        4 |        9 |        5 |        9
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 12580014 | Score: 0.081967
+  Title: Keratin-dependent regulation of Aire and gene expression in skin tumor keratinocytes
+  Text: Expression of the intermediate filament protein keratin 17 (K17) is robustly upregulated in inflammatory skin diseases and in many tumors originating in stratified and pseudostratified epithelia. We report that autoimmune regulator (Aire), a transcriptional regulator, is inducibly expressed in human and mouse tumor keratinocytes in a K17-dependent manner and is required for timely onset of Gli2-induced skin tumorigenesis in mice. The induction of Aire mRNA in keratinocytes depends on a functiona...
+
+[Rank 2] Doc ID: 25738896 | Score: 0.079397
+  Title: Aire deficiency promotes TRP-1-specific immune rejection of melanoma.
+  Text: The thymic transcription factor autoimmune regulator (Aire) prevents autoimmunity in part by promoting expression of tissue-specific self-antigens, which include many cancer antigens. For example, AIRE-deficient patients are predisposed to vitiligo, an autoimmune disease of melanocytes that is often triggered by efficacious immunotherapies against melanoma. Therefore, we hypothesized that Aire deficiency in mice may elevate immune responses to cancer and provide insights into how such responses ...
+
+[Rank 3] Doc ID: 18488986 | Score: 0.079117
+  Title: The Immune Response to Melanoma Is Limited by Thymic Selection of Self-Antigens
+  Text: The expression of melanoma-associated antigens (MAA) being limited to normal melanocytes and melanomas, MAAs are ideal targets for immunotherapy and melanoma vaccines. As MAAs are derived from self, immune responses to these may be limited by thymic tolerance. The extent to which self-tolerance prevents efficient immune responses to MAAs remains unknown. The autoimmune regulator (AIRE) controls the expression of tissue-specific self-antigens in thymic epithelial cells (TECs). The level of antige...
+
+[Rank 4] Doc ID: 39559521 | Score: 0.078419
+  Title: Control of central and peripheral tolerance by Aire.
+  Text: The negative selection of self-reactive thymocytes depends on the expression of tissue-specific antigens by medullary thymic epithelial cells. The autoimmune regulator (Aire) protein plays an important role in turning on these antigens, and the absence of even one Aire-induced tissue-specific antigen in the thymus can lead to autoimmunity in the antigen-expressing target organ. Recently, Aire protein has been detected in peripheral lymphoid organs, suggesting that peripheral Aire plays a complem...
+
+[Rank 5] Doc ID: 4561402 | Score: 0.074920
+  Title: Aire regulates negative selection of organ-specific T cells
+  Text: Autoimmune polyendocrinopathy syndrome type 1 is a recessive Mendelian disorder resulting from mutations in a novel gene, AIRE, and is characterized by a spectrum of organ-specific autoimmune diseases. It is not known what tolerance mechanisms are defective as a result of AIRE mutation. By tracing the fate of autoreactive CD4+ T cells with high affinity for a pancreatic antigen in transgenic mice with an Aire mutation, we show here that Aire deficiency causes almost complete failure to delete th...
+
+--- Uniform Samples (ranks: [377, 752, 1128, 1504, 1879]) ---
+
+[Rank 377] Doc ID: 1780819 | Score: 0.012003
+  Title: Role of DNA Methylation and Epigenetic Silencing of HAND2 in Endometrial Cancer Development
+  Text: BACKGROUND Endometrial cancer incidence is continuing to rise in the wake of the current ageing and obesity epidemics. Much of the risk for endometrial cancer development is influenced by the environment and lifestyle. Accumulating evidence suggests that the epigenome serves as the interface between the genome and the environment and that hypermethylation of stem cell polycomb group target genes is an epigenetic hallmark of cancer. The objective of this study was to determine the functional role...
+
+[Rank 752] Doc ID: 1389264 | Score: 0.007663
+  Title: Combination inhibition of PI3K and mTORC1 yields durable remissions in orthotopic patient-derived xenografts of HER2-positive breast cancer brain metastases
+  Text: Brain metastases represent the greatest clinical challenge in treating HER2-positive breast cancer. We report the development of orthotopic patient-derived xenografts (PDXs) of HER2-expressing breast cancer brain metastases (BCBM), and their use for the identification of targeted combination therapies. Combined inhibition of PI3K and mTOR resulted in durable tumor regressions in three of five PDXs, and therapeutic response was correlated with a reduction in the phosphorylation of 4EBP1, an mTORC...
+
+[Rank 1128] Doc ID: 20220731 | Score: 0.006081
+  Title: Origin and T cell receptor diversity of Foxp3+CD4+CD25+ T cells.
+  Text: Foxp3(+)CD4(+)CD25(+) regulatory T cells can differentiate from Foxp3(-)CD4(+) medullary thymocytes and Foxp3(-)CD4(+) naive T cells. However, the impact of these two processes on size and composition of the peripheral repertoire of regulatory T cells is unclear. Here we followed the fate of individual Foxp3(+)CD4(+)CD25(+) thymocytes and T cells in vivo in T cell receptor (TCR) transgenic mice that express a restricted but polyclonal repertoire of TCRs. By utilizing high-throughput single-cell ...
+
+[Rank 1504] Doc ID: 14434123 | Score: 0.005330
+  Title: Aberrant Expression of RCAN1 in Alzheimer’s Pathogenesis: A New Molecular Mechanism and a Novel Drug Target
+  Text: AD, a devastating neurodegenerative disorder, is the most common cause of dementia in the elderly. Patients with AD are characterized by three hallmarks of neuropathology including neuritic plaque deposition, neurofibrillary tangle formation, and neuronal loss. Growing evidences indicate that dysregulation of regulator of calcineurin 1 (RCAN1) plays an important role in the pathogenesis of AD. Aberrant RCAN1 expression facilitates neuronal apoptosis and Tau hyperphosphorylation, leading to neuro...
+
+[Rank 1879] Doc ID: 2015126 | Score: 0.004926
+  Title: Management of women who have a genetic predisposition for breast cancer.
+  Text: The management of women who have a genetic predisposition for breast cancer requires careful planning. Women who have BRCA 1 and BRCA 2 mutations are at increased risk for breast cancer and for other cancers as well, particularly ovarian cancer. Screening, prophlyactic surgery, and chemoprevention are commonly utilized strategies in the management of these patients, and women may choose more than one of these strategies. No randomized prospective trials have assessed the impact of these strategi...
+
+====================================================================================================
+QUERY ID: 51
+----------------------------------------------------------------------------------------------------
+Query: ALDH1 expression is associated with better breast cancer outcomes.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2197
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+45638119     |      1 |      1 |        1 |        1 |        1 |        1 |        1
+16734530     |      2 |      2 |       15 |        7 |        4 |        6 |        8
+24341590     |      3 |      3 |        4 |        3 |       34 |        4 |       10
+21439640     |      4 |      4 |       28 |        6 |        9 |       17 |        4
+8963413      |      7 |      5 |       73 |        2 |        2 |       36 |        2
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 45638119 | Score: 0.081967
+  Title: ALDH1 is a marker of normal and malignant human mammary stem cells and a predictor of poor clinical outcome.
+  Text: Application of stem cell biology to breast cancer research has been limited by the lack of simple methods for identification and isolation of normal and malignant stem cells. Utilizing in vitro and in vivo experimental systems, we show that normal and cancer human mammary epithelial cells with increased aldehyde dehydrogenase activity (ALDH) have stem/progenitor properties. These cells contain the subpopulation of normal breast epithelium with the broadest lineage differentiation potential and g...
+
+[Rank 2] Doc ID: 16734530 | Score: 0.073741
+  Title: The Association between Single-Nucleotide Polymorphisms of ORAI1 Gene and Breast Cancer in a Taiwanese Population
+  Text: BACKGROUND Breast cancer is the most common malignancy in women. There is increasing evidence suggesting that ORAI1, components of store-operated calcium channel, play a pivotal role in breast cancer progression and metastasis. METHODS A total of 384 female patients with breast cancer were included in this study. We selected five representative tagging ORAI1 SNPs from HapMap database with minimum allele frequency (MAF) >10%. Genotyping was performed using TaqMan allelic discrimination assay. Chi...
+
+[Rank 3] Doc ID: 24341590 | Score: 0.072047
+  Title: Association between CYP2D6 polymorphisms and outcomes among women with early stage breast cancer treated with tamoxifen.
+  Text: CONTEXT The growth inhibitory effect of tamoxifen, which is used for the treatment of hormone receptor-positive breast cancer, is mediated by its metabolites, 4-hydroxytamoxifen and endoxifen. The formation of active metabolites is catalyzed by the polymorphic cytochrome P450 2D6 (CYP2D6) enzyme. OBJECTIVE To determine whether CYP2D6 variation is associated with clinical outcomes in women receiving adjuvant tamoxifen. DESIGN, SETTING, AND PATIENTS Retrospective analysis of German and US cohorts ...
+
+[Rank 4] Doc ID: 21439640 | Score: 0.069620
+  Title: Macrophages induce COX-2 expression in breast cancer cells: role of IL-1β autoamplification.
+  Text: Tumor-associated macrophages and high levels of cyclooxygenase-2 (COX-2) are associated with poor prognosis in breast cancer patients, but their potential interdependence has not been evaluated. The objective of this study was to determine whether macrophages regulate COX-2 expression in breast cancer cells. For this purpose, THP-1 cells were cocultured with HCC1954 breast cancer cells. Coculture led to increased COX-2 expression in the HCC1954 cells and elevated prostaglandin E(2) levels in con...
+
+[Rank 5] Doc ID: 8963413 | Score: 0.066323
+  Title: PD-L1 expression in human cancers and its association with clinical outcomes
+  Text: PD-L1 is an immunoinhibitory molecule that suppresses the activation of T cells, leading to the progression of tumors. Overexpression of PD-L1 in cancers such as gastric cancer, hepatocellular carcinoma, renal cell carcinoma, esophageal cancer, pancreatic cancer, ovarian cancer, and bladder cancer is associated with poor clinical outcomes. In contrast, PD-L1 expression correlates with better clinical outcomes in breast cancer and merkel cell carcinoma. The prognostic value of PD-L1 expression in...
+
+--- Uniform Samples (ranks: [367, 733, 1099, 1465, 1831]) ---
+
+[Rank 367] Doc ID: 3899896 | Score: 0.011394
+  Title: Elevated red blood cell distribution width contributes to poor prognosis in patients undergoing resection for nonmetastatic rectal cancer
+  Text: Several studies have reported that elevated red blood cell distribution width (RDW) was associated with the poor prognosis of different kinds of cancers. The aim of this study was to investigate the prognostic role of RDW in patients undergoing resection for nonmetastatic rectal cancer. We retrospectively reviewed a database of 625 consecutive patients who underwent curative resection for nonmetastatic rectal cancer at our institution from January 2009 to December 2014. The cutoff value of RDW w...
+
+[Rank 733] Doc ID: 21719289 | Score: 0.007162
+  Title: CD64 expression distinguishes monocyte-derived and conventional dendritic cells and reveals their distinct role during intramuscular immunization.
+  Text: Although most vaccines are administered i.m., little is known about the dendritic cells (DCs) that are present within skeletal muscles. In this article, we show that expression of CD64, the high-affinity IgG receptor FcγRI, distinguishes conventional DCs from monocyte-derived DCs (Mo-DCs). By using such a discriminatory marker, we defined the distinct DC subsets that reside in skeletal muscles and identified their migratory counterparts in draining lymph nodes (LNs). We further used this capabil...
+
+[Rank 1099] Doc ID: 31562330 | Score: 0.005862
+  Title: Integrating nutrition security with treatment of people living with HIV: lessons from Kenya.
+  Text: BACKGROUND The increased caloric requirements of HIV-positive individuals, undesirable side effects of treatment that may be worsened by malnutrition (but alleviated by nutritional support), and associated declines in adherence and possible increased drug resistance are all justifications for developing better interventions to strengthen the nutrition security of individuals receiving antiretroviral treatment. OBJECTIVE To highlight key benefits and challenges relating to interventions aimed at ...
+
+[Rank 1465] Doc ID: 42865134 | Score: 0.005265
+  Title: Essential role for the SANT domain in the functioning of multiple chromatin remodeling enzymes.
+  Text: The SANT domain is a novel motif found in a number of eukaryotic transcriptional regulatory proteins that was identified based on its homology to the DNA binding domain of c-myb. Here we show that the SANT domain is essential for the in vivo functions of yeast Swi3p, Ada2p, and Rsc8p, subunits of three distinct chromatin remodeling complexes. We also find that the Ada2p SANT domain is essential for histone acetyltransferase activity of native, Gcn5p-containing HAT complexes. Furthermore, kinetic...
+
+[Rank 1831] Doc ID: 45154987 | Score: 0.004937
+  Title: Glutamate mediates the function of melanocortin receptor 4 on Sim1 neurons in body weight regulation.
+  Text: The melanocortin receptor 4 (MC4R) is a well-established mediator of body weight homeostasis. However, the neurotransmitter(s) that mediate MC4R function remain largely unknown; as a result, little is known about the second-order neurons of the MC4R neural pathway. Single-minded 1 (Sim1)-expressing brain regions, which include the paraventricular nucleus of hypothalamus (PVH), represent key brain sites that mediate melanocortin action. We conditionally restored MC4R expression in Sim1 neurons in...
+
+====================================================================================================
+QUERY ID: 53
+----------------------------------------------------------------------------------------------------
+Query: ALDH1 expression is associated with poorer prognosis in breast cancer.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2180
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+45638119     |      1 |      1 |        1 |        1 |        1 |        1 |        1
+15113221     |      2 |      2 |       17 |       13 |        5 |        6 |        4
+21439640     |      3 |      3 |       31 |        4 |        6 |       13 |        3
+24349992     |      4 |      4 |        2 |       51 |        9 |       14 |        6
+21181273     |      6 |      5 |       13 |       38 |       39 |        3 |       10
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 45638119 | Score: 0.081967
+  Title: ALDH1 is a marker of normal and malignant human mammary stem cells and a predictor of poor clinical outcome.
+  Text: Application of stem cell biology to breast cancer research has been limited by the lack of simple methods for identification and isolation of normal and malignant stem cells. Utilizing in vitro and in vivo experimental systems, we show that normal and cancer human mammary epithelial cells with increased aldehyde dehydrogenase activity (ALDH) have stem/progenitor properties. These cells contain the subpopulation of normal breast epithelium with the broadest lineage differentiation potential and g...
+
+[Rank 2] Doc ID: 15113221 | Score: 0.072847
+  Title: Poor prognosis in carcinoma is associated with a gene expression signature of aberrant PTEN tumor suppressor pathway activity.
+  Text: Pathway-specific therapy is the future of cancer management. The oncogenic phosphatidylinositol 3-kinase (PI3K) pathway is frequently activated in solid tumors; however, currently, no reliable test for PI3K pathway activation exists for human tumors. Taking advantage of the observation that loss of PTEN, the negative regulator of PI3K, results in robust activation of this pathway, we developed and validated a microarray gene expression signature for immunohistochemistry (IHC)-detectable PTEN los...
+
+[Rank 3] Doc ID: 21439640 | Score: 0.071337
+  Title: Macrophages induce COX-2 expression in breast cancer cells: role of IL-1β autoamplification.
+  Text: Tumor-associated macrophages and high levels of cyclooxygenase-2 (COX-2) are associated with poor prognosis in breast cancer patients, but their potential interdependence has not been evaluated. The objective of this study was to determine whether macrophages regulate COX-2 expression in breast cancer cells. For this purpose, THP-1 cells were cocultured with HCC1954 breast cancer cells. Coculture led to increased COX-2 expression in the HCC1954 cells and elevated prostaglandin E(2) levels in con...
+
+[Rank 4] Doc ID: 24349992 | Score: 0.068296
+  Title: Oxidative stress in cancer associated fibroblasts drives tumor-stroma co-evolution: A new paradigm for understanding tumor metabolism, the field effect and genomic instability in cancer cells.
+  Text: Loss of stromal fibroblast caveolin-1 (Cav-1) is a powerful single independent predictor of poor prognosis in human breast cancer patients, and is associated with early tumor recurrence, lymph node metastasis and tamoxifen-resistance. We developed a novel co-culture system to understand the mechanism(s) by which a loss of stromal fibroblast Cav-1 induces a "lethal tumor micro-environment. " Here, we propose a new paradigm to explain the powerful prognostic value of stromal Cav-1. In this model, ...
+
+[Rank 5] Doc ID: 21181273 | Score: 0.064162
+  Title: 15-Hydroxyprostaglandin dehydrogenase is down-regulated in colorectal cancer.
+  Text: Prostaglandin E2 (PGE2) can stimulate tumor progression by modulating several proneoplastic pathways, including proliferation, angiogenesis, cell migration, invasion, and apoptosis. Although steady-state tissue levels of PGE2 stem from relative rates of biosynthesis and breakdown, most reports examining PGE2 have focused solely on the cyclooxygenase-dependent formation of this bioactive lipid. Enzymatic degradation of PGE2 involves the NAD+-dependent 15-hydroxyprostaglandin dehydrogenase (15-PGD...
+
+--- Uniform Samples (ranks: [364, 727, 1090, 1454, 1817]) ---
+
+[Rank 364] Doc ID: 26495128 | Score: 0.011517
+  Title: Ribosomal protein S9 is a novel B23/NPM-binding protein required for normal cell proliferation.
+  Text: B23 (NPM/nucleophosmin) is a multifunctional nucleolar protein and a member of the nucleoplasmin superfamily of acidic histone chaperones. B23 is essential for normal embryonic development and plays an important role in genomic stability, ribosome biogenesis, and anti-apoptotic signaling. Altered protein expression or genomic mutation of B23 is encountered in many different forms of cancer. Although described as multifunctional, a genuine molecular function of B23 is not fully understood. Here w...
+
+[Rank 727] Doc ID: 17421851 | Score: 0.007302
+  Title: Expression of interleukin-18 in human atherosclerotic plaques and relation to plaque instability.
+  Text: BACKGROUND Interleukin (IL)-18 is a potent proinflammatory cytokine with potential atherogenic properties. Its expression and role in atherosclerosis, however, are unknown. METHODS AND RESULTS In the present study, we examined stable and unstable human carotid atherosclerotic plaques retrieved by endarterectomy for the presence of IL-18 using reverse transcription-polymerase chain reaction (PCR), Western blot, and immunohistochemical techniques. IL-18 was highly expressed in the atherosclerotic ...
+
+[Rank 1090] Doc ID: 15563864 | Score: 0.005923
+  Title: Specific killing of multiple myeloma cells by (-)-epigallocatechin-3-gallate extracted from green tea: biologic activity and therapeutic implications.
+  Text: Epigallocatechin-3-gallate (EGCG), a polyphenol extracted from green tea, is an antioxidant with chemopreventive and chemotherapeutic actions. Based on its ability to modulate growth factor-mediated cell proliferation, we evaluated its efficacy in multiple myeloma (MM). EGCG induced both dose- and time-dependent growth arrest and subsequent apoptotic cell death in MM cell lines including IL-6-dependent cells and primary patient cells, without significant effect on the growth of peripheral blood ...
+
+[Rank 1454] Doc ID: 9911547 | Score: 0.005265
+  Title: Angiopoietin-like protein 3 supports the activity of hematopoietic stem cells in the bone marrow niche.
+  Text: The physiologic roles of angiopoietin-like proteins (Angptls) in the hematopoietic system remain unknown. Here we show that hematopoietic stem cells (HSCs) in Angptl3-null mice are decreased in number and quiescence. HSCs transplanted into Angptl3-null recipient mice exhibited impaired repopulation. Bone marrow sinusoidal endothelial cells express high levels of Angptl3 and are adjacent to HSCs. Importantly, bone marrow stromal cells or endothelium deficient in Angptl3 have a significantly decre...
+
+[Rank 1817] Doc ID: 18098290 | Score: 0.004921
+  Title: The Evolution of Dominance in Sporophytic Self-Incompatibility Systems. II. Mate Availability and Recombination
+  Text: Sporophytic self-incompatibility (SSI) is a self-pollen recognition system that enforces outcrossing in plants. Recognition in SSI systems is typically controlled by a complex locus (5-locus) with separate genes that determine pollen and stigma specificity. Experimental studies show that S-alleles can be dominant, recessive, or codominant, and that the dominance level of a given S-allele can depend upon whether pollen or stigma specificity is examined. Here and in the companion paper by Llaurens...
+
+====================================================================================================
+QUERY ID: 54
+----------------------------------------------------------------------------------------------------
+Query: AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2079
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+3973445      |      1 |      1 |        2 |        1 |        1 |        2 |        1
+1590744      |      2 |      2 |        7 |        4 |        2 |        3 |        2
+9899292      |      3 |      3 |        6 |        5 |        7 |        4 |       10
+22036571     |      4 |      4 |       11 |        2 |        6 |       10 |        4
+19313533     |      5 |      5 |        8 |        3 |       11 |        5 |        6
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 3973445 | Score: 0.081438
+  Title: Phosphorylation of Janus kinase 1 (JAK1) by AMP-activated protein kinase (AMPK) links energy sensing to anti-inflammatory signaling
+  Text: Adenosine 5′-monophosphate–activated protein kinase (AMPK) is a pivotal regulator of metabolism at cellular and organismal levels. AMPK also suppresses inflammation. We found that pharmacological activation of AMPK rapidly inhibited the Janus kinase (JAK)–signal transducer and activator of transcription (STAT) pathway in various cells. In vitro kinase assays revealed that AMPK directly phosphorylated two residues (Ser515 and Ser518) within the Src homology 2 domain of JAK1. Activation of AMPK en...
+
+[Rank 2] Doc ID: 1590744 | Score: 0.078681
+  Title: AMP-Activated Protein Kinase: An Ubiquitous Signaling Pathway With Key Roles in the Cardiovascular System
+  Text: The AMP-activated protein kinase (AMPK) is a key regulator of cellular and whole-body energy homeostasis, which acts to restore energy homoeostasis whenever cellular energy charge is depleted. Over the last 2 decades, it has become apparent that AMPK regulates several other cellular functions and has specific roles in cardiovascular tissues, acting to regulate cardiac metabolism and contractile function, as well as promoting anticontractile, anti-inflammatory, and antiatherogenic actions in bloo...
+
+[Rank 3] Doc ID: 9899292 | Score: 0.075372
+  Title: Role of AMP-activated protein kinase in mechanism of metformin action.
+  Text: Metformin is a widely used drug for treatment of type 2 diabetes with no defined cellular mechanism of action. Its glucose-lowering effect results from decreased hepatic glucose production and increased glucose utilization. Metformin's beneficial effects on circulating lipids have been linked to reduced fatty liver. AMP-activated protein kinase (AMPK) is a major cellular regulator of lipid and glucose metabolism. Here we report that metformin activates AMPK in hepatocytes; as a result, acetyl-Co...
+
+[Rank 4] Doc ID: 22036571 | Score: 0.075276
+  Title: Post-translational modifications of the beta-1 subunit of AMP-activated protein kinase affect enzyme activity and cellular localization.
+  Text: The AMP-activated protein kinase (AMPK) is a ubiquitous mammalian protein kinase important in the adaptation of cells to metabolic stress. The enzyme is a heterotrimer, consisting of a catalytic alpha subunit and regulatory beta and gamma subunits, each of which is a member of a larger isoform family. The enzyme is allosterically regulated by AMP and by phosphorylation of the alpha subunit. The beta subunit is post-translationally modified by myristoylation and multi-site phosphorylation. In the...
+
+[Rank 5] Doc ID: 19313533 | Score: 0.075200
+  Title: Structural basis of allosteric and synergistic activation of AMPK by furan-2-phosphonic derivative C2 binding.
+  Text: The metabolic stress-sensing enzyme AMP-activated protein kinase (AMPK) is responsible for regulating metabolism in response to energy supply and demand. Drugs that activate AMPK may be useful in the treatment of metabolic diseases including type 2 diabetes. We have determined the crystal structure of AMPK in complex with its activator 5-(5-hydroxyl-isoxazol-3-yl)-furan-2-phosphonic acid (C2), revealing two C2-binding sites in the γ-subunit distinct from nucleotide sites. C2 acts synergistically...
+
+--- Uniform Samples (ranks: [347, 694, 1040, 1386, 1733]) ---
+
+[Rank 347] Doc ID: 4164929 | Score: 0.012272
+  Title: The emerging role of skeletal muscle extracellular matrix remodelling in obesity and exercise.
+  Text: Skeletal muscle extracellular matrix remodelling has been proposed as a new feature associated with obesity and metabolic dysfunction. Exercise training improves muscle function in obesity, which may be mediated by regulatory effects on the muscle extracellular matrix. This review examined available literature on skeletal muscle extracellular matrix remodelling during obesity and the effects of exercise. A non-systematic literature review was performed on PubMed of publications from 1970 to 2015...
+
+[Rank 694] Doc ID: 7039855 | Score: 0.007813
+  Title: Neuronal activity regulates remyelination via glutamate signalling to oligodendrocyte progenitors
+  Text: Myelin regeneration can occur spontaneously in demyelinating diseases such as multiple sclerosis (MS). However, the underlying mechanisms and causes of its frequent failure remain incompletely understood. Here we show, using an in-vivo remyelination model, that demyelinated axons are electrically active and generate de novo synapses with recruited oligodendrocyte progenitor cells (OPCs), which, early after lesion induction, sense neuronal activity by expressing AMPA (α-amino-3-hydroxy-5-methyl-4...
+
+[Rank 1040] Doc ID: 14972169 | Score: 0.006157
+  Title: Teratogen-Induced Oxidative Stress Targets Glyceraldehyde-3-Phosphate Dehydrogenase in the Organogenesis Stage Mouse Embryo
+  Text: Exposure during the organogenesis stage of the mouse embryo to the model teratogen, hydroxyurea (HU), induces curly tail and limb malformations. Oxidative stress contributes to the developmental toxicity of HU. Reactive oxygen species (ROS) interact with polyunsaturated bilipid membranes to form α,β-unsaturated reactive aldehydes; 4-hydroxy-2-nonenal (4-HNE), one of the most cytotoxic of these aldehydes, covalently adducts with proteins, lipids, and nucleic acids. The goal of the current study i...
+
+[Rank 1386] Doc ID: 36386637 | Score: 0.005350
+  Title: Effect of interleukin-1 and tumor necrosis factor/cachectin on glucose turnover in the rat.
+  Text: We studied the effect of recombinant human interleukin-1 beta (IL-1) and recombinant human tumor necrosis factor alpha/cachectin (TNF) on glucose kinetics in healthy rats by means of a primed constant infusion of D-(6-3H)glucose and D-[U-14C]glucose. During the isotope (6-hour) and monokine (4-hour) infusion, plasma levels of glucagon and insulin were determined and correlated with changes in glucose metabolism. The rates of glucose appearance (Ra) and disappearance (Rd) were elevated only with ...
+
+[Rank 1733] Doc ID: 13069283 | Score: 0.004940
+  Title: Influence of CYP2D6 Polymorphisms on Serum Levels of Tamoxifen Metabolites in Spanish Women with Breast Cancer
+  Text: BACKGROUND Estrogen receptor-positive breast cancer tumors depend on estrogen signaling for their growth and replication and can be treated by anti-estrogen therapy with tamoxifen. Polymorphisms of the CYP2D6 and CYP2C19 genes are associated with an impaired response to tamoxifen. The study objective was to investigate the impact of genetic polymorphisms in CYP2D6 and CYP2C19 on the pharmacokinetics of tamoxifen and its metabolites in Spanish women with estrogen receptor-positive breast cancer w...
+
+====================================================================================================
+QUERY ID: 56
+----------------------------------------------------------------------------------------------------
+Query: APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation causing GABA neuron degeneration.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2246
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+4709641      |      1 |      1 |        1 |        1 |        1 |        1 |        1
+11659421     |      2 |      2 |        6 |        3 |       22 |        6 |        5
+22185730     |      3 |      3 |       49 |        2 |        2 |        7 |        2
+33986200     |      4 |      4 |       19 |        7 |       29 |       23 |       12
+4459491      |     19 |      5 |        2 |       18 |      320 |        2 |       17
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 4709641 | Score: 0.081967
+  Title: Gain of toxic Apolipoprotein E4 effects in Human iPSC-Derived Neurons Is Ameliorated by a Small-Molecule Structure Corrector
+  Text: Efforts to develop drugs for Alzheimer's disease (AD) have shown promise in animal studies, only to fail in human trials, suggesting a pressing need to study AD in human model systems. Using human neurons derived from induced pluripotent stem cells that expressed apolipoprotein E4 (ApoE4), a variant of the APOE gene product and the major genetic risk factor for AD, we demonstrated that ApoE4-expressing neurons had higher levels of tau phosphorylation, unrelated to their increased production of a...
+
+[Rank 2] Doc ID: 11659421 | Score: 0.073756
+  Title: Human iPSC-based modeling of late-onset disease via progerin-induced aging.
+  Text: Reprogramming somatic cells to induced pluripotent stem cells (iPSCs) resets their identity back to an embryonic age and, thus, presents a significant hurdle for modeling late-onset disorders. In this study, we describe a strategy for inducing aging-related features in human iPSC-derived lineages and apply it to the modeling of Parkinson's disease (PD). Our approach involves expression of progerin, a truncated form of lamin A associated with premature aging. We found that expression of progerin ...
+
+[Rank 3] Doc ID: 22185730 | Score: 0.072487
+  Title: PP2A regulates tau phosphorylation directly and also indirectly via activating GSK-3beta.
+  Text: Abnormal hyperphosphorylation of tau appears to be crucial in neurofibrillary degeneration in Alzheimer's disease (AD). Previous studies suggest that a down-regulation of protein phosphatase 2A (PP2A), the major tau phosphatase in human brain, contributes to tau hyperphosphorylation in AD. However, the effects of PP2A down-regulation on site-specific tau hyperphosphorylation is not well understood. In the present study, we showed that PP2A dephosphorylated tau at several phosphorylation sites wi...
+
+[Rank 4] Doc ID: 33986200 | Score: 0.064757
+  Title: Layered hydrogels accelerate iPSC-derived neuronal maturation and reveal migration defects caused by MeCP2 dysfunction.
+  Text: Probing a wide range of cellular phenotypes in neurodevelopmental disorders using patient-derived neural progenitor cells (NPCs) can be facilitated by 3D assays, as 2D systems cannot entirely recapitulate the arrangement of cells in the brain. Here, we developed a previously unidentified 3D migration and differentiation assay in layered hydrogels to examine how these processes are affected in neurodevelopmental disorders, such as Rett syndrome. Our soft 3D system mimics the brain environment and...
+
+[Rank 5] Doc ID: 4459491 | Score: 0.060697
+  Title: A three-dimensional human neural cell culture model of Alzheimer’s disease
+  Text: Alzheimer’s disease is the most common form of dementia, characterized by two pathological hallmarks: amyloid-β plaques and neurofibrillary tangles. The amyloid hypothesis of Alzheimer’s disease posits that the excessive accumulation of amyloid-β peptide leads to neurofibrillary tangles composed of aggregated hyperphosphorylated tau. However, to date, no single disease model has serially linked these two pathological events using human neuronal cells. Mouse models with familial Alzheimer’s disea...
+
+--- Uniform Samples (ranks: [375, 749, 1124, 1498, 1872]) ---
+
+[Rank 375] Doc ID: 8185080 | Score: 0.011631
+  Title: Induction of pluripotent stem cells by defined factors is greatly improved by small-molecule compounds
+  Text: Reprogramming of mouse and human somatic cells can be achieved by ectopic expression of transcription factors, but with low efficiencies. We report that DNA methyltransferase and histone deacetylase (HDAC) inhibitors improve reprogramming efficiency. In particular, valproic acid (VPA), an HDAC inhibitor, improves reprogramming efficiency by more than 100-fold, using Oct4-GFP as a reporter. VPA also enables efficient induction of pluripotent stem cells without introduction of the oncogene c-Myc.
+
+[Rank 749] Doc ID: 19384430 | Score: 0.007434
+  Title: Tex10 Coordinates Epigenetic Control of Super-Enhancer Activity in Pluripotency and Reprogramming.
+  Text: Super-enhancers (SEs) are large clusters of transcriptional enhancers that are co-occupied by multiple lineage-specific transcription factors driving expression of genes that define cell identity. In embryonic stem cells (ESCs), SEs are highly enriched for the core pluripotency factors Oct4, Sox2, and Nanog. In this study, we sought to dissect the molecular control mechanism of SE activity in pluripotency and reprogramming. Starting from a protein interaction network surrounding Sox2, we identif...
+
+[Rank 1124] Doc ID: 29473081 | Score: 0.006086
+  Title: The sialyltransferase ST3GAL6 influences homing and survival in multiple myeloma.
+  Text: Glycosylation is a stepwise procedure of covalent attachment of oligosaccharide chains to proteins or lipids, and alterations in this process, especially increased sialylation, have been associated with malignant transformation and metastasis. The role of altered sialylation in multiple myeloma (MM) cell trafficking has not been previously investigated. In the present study we identified high expression of β-galactoside α-2,3-sialyltransferase, ST3GAL6, in MM cell lines and patients. This gene p...
+
+[Rank 1498] Doc ID: 17209919 | Score: 0.005357
+  Title: Ciliary Extracellular Vesicles: Txt Msg Organelles
+  Text: Cilia are sensory organelles that protrude from cell surfaces to monitor the surrounding environment. In addition to its role as sensory receiver, the cilium also releases extracellular vesicles (EVs). The release of sub-micron sized EVs is a conserved form of intercellular communication used by all three kingdoms of life. These extracellular organelles play important roles in both short and long range signaling between donor and target cells and may coordinate systemic responses within an organ...
+
+[Rank 1872] Doc ID: 266641 | Score: 0.004963
+  Title: CD127 expression inversely correlates with FoxP3 and suppressive function of human CD4+ T reg cells
+  Text: Regulatory T (T reg) cells are critical regulators of immune tolerance. Most T reg cells are defined based on expression of CD4, CD25, and the transcription factor, FoxP3. However, these markers have proven problematic for uniquely defining this specialized T cell subset in humans. We found that the IL-7 receptor (CD127) is down-regulated on a subset of CD4+ T cells in peripheral blood. We demonstrate that the majority of these cells are FoxP3+, including those that express low levels or no CD25...
+
+====================================================================================================
+QUERY ID: 57
+----------------------------------------------------------------------------------------------------
+Query: APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation, delaying GABA neuron degeneration.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2246
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+4709641      |      1 |      1 |        1 |        1 |        1 |        1 |        1
+11659421     |      3 |      2 |        6 |        2 |       57 |        6 |        5
+22185730     |      2 |      3 |       35 |       11 |        2 |       23 |        2
+22116439     |      5 |      4 |       81 |       14 |        3 |       11 |       14
+33986200     |      4 |      5 |       20 |        6 |       41 |       28 |       13
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 4709641 | Score: 0.081967
+  Title: Gain of toxic Apolipoprotein E4 effects in Human iPSC-Derived Neurons Is Ameliorated by a Small-Molecule Structure Corrector
+  Text: Efforts to develop drugs for Alzheimer's disease (AD) have shown promise in animal studies, only to fail in human trials, suggesting a pressing need to study AD in human model systems. Using human neurons derived from induced pluripotent stem cells that expressed apolipoprotein E4 (ApoE4), a variant of the APOE gene product and the major genetic risk factor for AD, we demonstrated that ApoE4-expressing neurons had higher levels of tau phosphorylation, unrelated to their increased production of a...
+
+[Rank 2] Doc ID: 11659421 | Score: 0.070364
+  Title: Human iPSC-based modeling of late-onset disease via progerin-induced aging.
+  Text: Reprogramming somatic cells to induced pluripotent stem cells (iPSCs) resets their identity back to an embryonic age and, thus, presents a significant hurdle for modeling late-onset disorders. In this study, we describe a strategy for inducing aging-related features in human iPSC-derived lineages and apply it to the modeling of Parkinson's disease (PD). Our approach involves expression of progerin, a truncated form of lamin A associated with premature aging. We found that expression of progerin ...
+
+[Rank 3] Doc ID: 22185730 | Score: 0.068917
+  Title: PP2A regulates tau phosphorylation directly and also indirectly via activating GSK-3beta.
+  Text: Abnormal hyperphosphorylation of tau appears to be crucial in neurofibrillary degeneration in Alzheimer's disease (AD). Previous studies suggest that a down-regulation of protein phosphatase 2A (PP2A), the major tau phosphatase in human brain, contributes to tau hyperphosphorylation in AD. However, the effects of PP2A down-regulation on site-specific tau hyperphosphorylation is not well understood. In the present study, we showed that PP2A dephosphorylated tau at several phosphorylation sites wi...
+
+[Rank 4] Doc ID: 22116439 | Score: 0.064077
+  Title: Pioglitazone prevents tau oligomerization.
+  Text: Tau aggregation and amyloid β protein (Aβ) deposition are the main causes of Alzheimer's disease (AD). Peroxisome proliferator-activated receptor γ (PPARγ) activation modulates Aβ production. To test whether the PPARγ agonist pioglitazone (PIO) is also effective in preventing tau aggregation in AD, we used a cellular model in which wild-type tau protein (4R0N) is overexpressed (M1C cells) (Hamano et al., 2012) as well as primary neuronal cultures. PIO reduced both phosphorylated and total tau le...
+
+[Rank 5] Doc ID: 33986200 | Score: 0.062615
+  Title: Layered hydrogels accelerate iPSC-derived neuronal maturation and reveal migration defects caused by MeCP2 dysfunction.
+  Text: Probing a wide range of cellular phenotypes in neurodevelopmental disorders using patient-derived neural progenitor cells (NPCs) can be facilitated by 3D assays, as 2D systems cannot entirely recapitulate the arrangement of cells in the brain. Here, we developed a previously unidentified 3D migration and differentiation assay in layered hydrogels to examine how these processes are affected in neurodevelopmental disorders, such as Rett syndrome. Our soft 3D system mimics the brain environment and...
+
+--- Uniform Samples (ranks: [375, 749, 1124, 1498, 1872]) ---
+
+[Rank 375] Doc ID: 23863551 | Score: 0.011797
+  Title: Feedback upregulation of HER3 (ErbB3) expression and activity attenuates antitumor effect of PI3K inhibitors.
+  Text: We examined the effects of an inhibitor of PI3K, XL147, against human breast cancer cell lines with constitutive PI3K activation. Treatment with XL147 resulted in dose-dependent inhibition of cell growth and levels of pAKT and pS6, signal transducers in the PI3K/AKT/TOR pathway. In HER2-overexpressing cells, inhibition of PI3K was followed by up-regulation of expression and phosphorylation of multiple receptor tyrosine kinases, including HER3. Knockdown of FoxO1 and FoxO3a transcription factors ...
+
+[Rank 749] Doc ID: 22490293 | Score: 0.007761
+  Title: Production of cloned mice and ES cells from adult somatic cells by nuclear transfer: how to improve cloning efficiency?
+  Text: Although it has now been 10 years since the first cloned mammals were generated from somatic cells using nuclear transfer (NT), most cloned embryos usually undergo developmental arrest prior to or soon after implantation, and the success rate for producing live offspring by cloning remains below 5%. The low success rate is believed to be associated with epigenetic errors, including abnormal DNA hypermethylation, but the mechanism of "reprogramming" is unclear. We have been able to develop a stab...
+
+[Rank 1124] Doc ID: 9076196 | Score: 0.006159
+  Title: GFI1 and GFI1B control the loss of endothelial identity of hemogenic endothelium during hematopoietic commitment.
+  Text: Recent studies have established that during embryonic development, hematopoietic progenitors and stem cells are generated from hemogenic endothelium precursors through a process termed endothelial to hematopoietic transition (EHT). The transcription factor RUNX1 is essential for this process, but its main downstream effectors remain largely unknown. Here, we report the identification of Gfi1 and Gfi1b as direct targets of RUNX1 and critical regulators of EHT. GFI1 and GFI1B are able to trigger, ...
+
+[Rank 1498] Doc ID: 36830715 | Score: 0.005428
+  Title: Microtubule stabilization reduces scarring and causes axon regeneration after spinal cord injury.
+  Text: Hypertrophic scarring and poor intrinsic axon growth capacity constitute major obstacles for spinal cord repair. These processes are tightly regulated by microtubule dynamics. Here, moderate microtubule stabilization decreased scar formation after spinal cord injury in rodents through various cellular mechanisms, including dampening of transforming growth factor-β signaling. It prevented accumulation of chondroitin sulfate proteoglycans and rendered the lesion site permissive for axon regenerati...
+
+[Rank 1872] Doc ID: 25483562 | Score: 0.004996
+  Title: Crystal structure of human insulin-regulated aminopeptidase with specificity for cyclic peptides.
+  Text: Insulin-regulated aminopeptidase (IRAP or oxytocinase) is a membrane-bound zinc-metallopeptidase that cleaves neuroactive peptides in the brain and produces memory enhancing effects when inhibited. We have determined the crystal structure of human IRAP revealing a closed, four domain arrangement with a large, mostly buried cavity abutting the active site. The structure reveals that the GAMEN exopeptidase loop adopts a very different conformation from other aminopeptidases, thus explaining IRAP's...
+
+====================================================================================================
+QUERY ID: 70
+----------------------------------------------------------------------------------------------------
+Query: Activation of PPM1D suppresses p53 function.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2108
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+5956380      |      1 |      1 |        2 |        1 |        1 |        5 |        2
+4389394      |      2 |      2 |       11 |        5 |       12 |        7 |       11
+11903247     |      3 |      3 |       10 |        9 |        3 |       18 |        9
+43880096     |      4 |      4 |       14 |        7 |        8 |       11 |       13
+31624828     |      6 |      5 |        3 |       36 |       11 |        8 |        5
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 5956380 | Score: 0.080430
+  Title: Exome sequencing identifies somatic gain-of-function PPM1D mutations in brainstem gliomas
+  Text: Gliomas arising in the brainstem and thalamus are devastating tumors that are difficult to surgically resect. To determine the genetic and epigenetic landscape of these tumors, we performed exomic sequencing of 14 brainstem gliomas (BSGs) and 12 thalamic gliomas. We also performed targeted mutational analysis of an additional 24 such tumors and genome-wide methylation profiling of 45 gliomas. This study led to the discovery of tumor-specific mutations in PPM1D, encoding wild-type p53-induced pro...
+
+[Rank 2] Doc ID: 4389394 | Score: 0.072368
+  Title: Deubiquitination of p53 by HAUSP is an important pathway for p53 stabilization
+  Text: The p53 tumour suppressor is a short-lived protein that is maintained at low levels in normal cells by Mdm2-mediated ubiquitination and subsequent proteolysis. Stabilization of p53 is crucial for its tumour suppressor function. However, the precise mechanism by which ubiquitinated p53 levels are regulated in vivo is not completely understood. By mass spectrometry of affinity-purified p53-associated factors, we have identified herpesvirus-associated ubiquitin-specific protease (HAUSP) as a novel ...
+
+[Rank 3] Doc ID: 11903247 | Score: 0.071965
+  Title: Regulation of autophagy by cytoplasmic p53
+  Text: Multiple cellular stressors, including activation of the tumour suppressor p53, can stimulate autophagy. Here we show that deletion, depletion or inhibition of p53 can induce autophagy in human, mouse and nematode cells subjected to knockout, knockdown or pharmacological inhibition of p53. Enhanced autophagy improved the survival of p53-deficient cancer cells under conditions of hypoxia and nutrient depletion, allowing them to maintain high ATP levels. Inhibition of p53 led to autophagy in enucl...
+
+[Rank 4] Doc ID: 43880096 | Score: 0.070928
+  Title: Regulation of p53 in response to DNA damage
+  Text: Activation of p53 can occur in response to a number of cellular stresses, including DNA damage, hypoxia and nucleotide deprivation. Several forms of DNA damage have been shown to activate p53, including those generated by ionising radiation (IR), radio-mimetic drugs, ultraviolet light (UV) and chemicals such as methyl methane sulfonate (MMS). Under normal conditions, p53 levels are maintained at a low state by virtue of the extremely short-half life of the polypeptide. In addition to this, p53 n...
+
+[Rank 5] Doc ID: 31624828 | Score: 0.070465
+  Title: Control of signaling-mediated clearance of apoptotic cells by the tumor suppressor p53
+  Text: The inefficient clearance of dying cells can lead to abnormal immune responses, such as unresolved inflammation and autoimmune conditions. We show that tumor suppressor p53 controls signaling-mediated phagocytosis of apoptotic cells through its target, Death Domain1α (DD1α), which suggests that p53 promotes both the proapoptotic pathway and postapoptotic events. DD1α appears to function as an engulfment ligand or receptor that engages in homophilic intermolecular interaction at intercellular jun...
+
+--- Uniform Samples (ranks: [352, 703, 1054, 1406, 1757]) ---
+
+[Rank 352] Doc ID: 16627684 | Score: 0.011800
+  Title: Hmga2 Promotes Neural Stem Cell Self-Renewal in Young but Not Old Mice by Reducing p16Ink4a and p19Arf Expression
+  Text: Stem cells persist throughout life in diverse tissues by undergoing self-renewing divisions. Self-renewal capacity declines with age, partly because of increasing expression of the tumor suppressor p16(Ink4a). We discovered that the Hmga2 transcriptional regulator is highly expressed in fetal neural stem cells but that expression declines with age. This decrease is partly caused by the increasing expression of let-7b microRNA, which is known to target HMGA2. Hmga2-deficient mice show reduced ste...
+
+[Rank 703] Doc ID: 7268522 | Score: 0.007839
+  Title: Notch targets and their regulation.
+  Text: The proteolytic cleavages elicited by activation of the Notch receptor release an intracellular fragment, Notch intracellular domain, which enters the nucleus to activate the transcription of targets. Changes in transcription are therefore a major output of this pathway. However, the Notch outputs clearly differ from cell type to cell type. In this review we discuss current understanding of Notch targets, the mechanisms involved in their transcriptional regulation, and what might underlie the ac...
+
+[Rank 1054] Doc ID: 24928817 | Score: 0.006286
+  Title: Purification, characterization, and sequence analysis of a potential virulence factor from Porphyromonas gingivalis, peptidylarginine deiminase.
+  Text: The initiation and progression of adult-onset periodontitis has been associated with infection of the gingival sulcus by Porphyromonas gingivalis. This organism utilizes a multitude of virulence factors to evade host defenses as it establishes itself as one of the predominant pathogens in periodontal pockets. A feature common to many other oral pathogens is the production of ammonia due to its protective effect during acidic cleansing cycles in the mouth. Additionally, ammonia production by P. g...
+
+[Rank 1406] Doc ID: 23305547 | Score: 0.005391
+  Title: Prion-like activity of Cu/Zn superoxide dismutase: implications for amyotrophic lateral sclerosis.
+  Text: Neurodegenerative diseases belong to a larger group of protein misfolding disorders, known as proteinopathies. There is increasing experimental evidence implicating prion-like mechanisms in many common neurodegenerative disorders, including Alzheimer disease, Parkinson disease, the tauopathies, and amyotrophic lateral sclerosis (ALS), all of which feature the aberrant misfolding and aggregation of specific proteins. The prion paradigm provides a mechanism by which a mutant or wild-type protein c...
+
+[Rank 1757] Doc ID: 25988622 | Score: 0.004904
+  Title: CNS repair requires both effector and regulatory T cells with distinct temporal and spatial profiles.
+  Text: Monocyte-derived macrophages (mo-MΦs) and T cells have been shown to contribute to spinal cord repair. Recently, the remote brain choroid plexus epithelium (CP) was identified as a portal for monocyte recruitment, and its activation for leukocyte trafficking was found to be IFN-γ-dependent. Here, we addressed how the need for effector T cells can be reconciled with the role of inflammation-resolving immune cells in the repair process. Using an acute spinal cord injury model, we show that in mice...
+
+====================================================================================================
+QUERY ID: 72
+----------------------------------------------------------------------------------------------------
+Query: Activator-inhibitor pairs are provided dorsally by Admpchordin.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2522
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+6076903      |      1 |      1 |        1 |        3 |        4 |        2 |        1
+14492964     |      2 |      2 |        5 |      218 |       44 |       18 |        3
+8997410      |     17 |      3 |        3 |      N/A |       18 |        5 |       36
+40383969     |      4 |      4 |       15 |      435 |       25 |       32 |        8
+2119889      |     18 |      5 |       24 |      N/A |       21 |       31 |       19
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 6076903 | Score: 0.080414
+  Title: Regulation of ADMP and BMP2/4/7 at Opposite Embryonic Poles Generates a Self-Regulating Morphogenetic Field
+  Text: Embryos have the ability to self-regulate and regenerate normal structures after being sectioned in half. How is such a morphogenetic field established? We discovered that quadruple knockdown of ADMP and BMP2/4/7 in Xenopus embryos eliminates self-regulation, causing ubiquitous neural induction throughout the ectoderm. ADMP transcription in the Spemann organizer is activated at low BMP levels. When ventral BMP2/4/7 signals are depleted, Admp expression increases, allowing for self-regulation. AD...
+
+[Rank 2] Doc ID: 14492964 | Score: 0.057291
+  Title: The Spemann Organizer Signal noggin Binds and Inactivates Bone Morphogenetic Protein 4
+  Text: Signals released by the Spemann organizer of the amphibian gastrula can directly induce neural tissue from ectoderm and can dorsalize ventral mesoderm to form muscle. The secreted polypeptide noggin mimics these activities and is expressed at the appropriate time and place to participate in the organizer signal. Neural induction and mesoderm dorsalization are antagonized by bone morphogenetic proteins (BMPs), which induce epidermis and ventral mesoderm instead. Here we report that noggin protein...
+
+[Rank 3] Doc ID: 8997410 | Score: 0.055437
+  Title: Arp2/3 complex inhibition radically alters lamellipodial actin architecture, suspended cell shape, and the cell spreading process
+  Text: Recent studies have investigated the dendritic actin cytoskeleton of the cell edge's lamellipodial (LP) region by experimentally decreasing the activity of the actin filament nucleator and branch former, the Arp2/3 complex. Here we extend these studies via pharmacological inhibition of the Arp2/3 complex in sea urchin coelomocytes, cells that possess an unusually broad LP region and display correspondingly exaggerated centripetal flow. Using light and electron microscopy, we demonstrate that Arp...
+
+[Rank 4] Doc ID: 40383969 | Score: 0.052694
+  Title: The structure of the follistatin:activin complex reveals antagonism of both type I and type II receptor binding.
+  Text: TGF-beta ligands stimulate diverse cellular differentiation and growth responses by signaling through type I and II receptors. Ligand antagonists, such as follistatin, block signaling and are essential regulators of physiological responses. Here we report the structure of activin A, a TGF-beta ligand, bound to the high-affinity antagonist follistatin. Two follistatin molecules encircle activin, neutralizing the ligand by burying one-third of its residues and its receptor binding sites. Previous ...
+
+[Rank 5] Doc ID: 2119889 | Score: 0.048840
+  Title: Characterization of two classes of small molecule inhibitors of Arp2/3 complex
+  Text: Polymerization of actin filaments directed by the actin-related protein (Arp)2/3 complex supports many types of cellular movements. However, questions remain regarding the relative contributions of Arp2/3 complex versus other mechanisms of actin filament nucleation to processes such as path finding by neuronal growth cones; this is because of the lack of simple methods to inhibit Arp2/3 complex reversibly in living cells. Here we describe two classes of small molecules that bind to different sit...
+
+--- Uniform Samples (ranks: [421, 841, 1262, 1682, 2102]) ---
+
+[Rank 421] Doc ID: 10650521 | Score: 0.011462
+  Title: A general role for splicing enhancers in exon definition.
+  Text: Exonic splicing enhancers (ESEs) facilitate exon definition by assisting in the recruitment of splicing factors to the adjacent intron. Here we demonstrate that suboptimal 5' and 3' splice sites are activated independently by ESEs when they are located on different exons. However, when they are situated within a single exon, the same weak 5' and 3' splice sites are activated simultaneously by a single ESE. These findings demonstrate that a single ESE promotes the recognition of both exon/intron ...
+
+[Rank 841] Doc ID: 13618987 | Score: 0.007692
+  Title: Exploring the temporal structure of heterochronous sequences using TempEst (formerly Path-O-Gen)
+  Text: Gene sequences sampled at different points in time can be used to infer molecular phylogenies on a natural timescale of months or years, provided that the sequences in question undergo measurable amounts of evolutionary change between sampling times. Data sets with this property are termed heterochronous and have become increasingly common in several fields of biology, most notably the molecular epidemiology of rapidly evolving viruses. Here we introduce the cross-platform software tool, TempEst...
+
+[Rank 1262] Doc ID: 2443495 | Score: 0.006241
+  Title: Characterization of prostaglandin E2 production by Candida albicans.
+  Text: Candida albicans produces lipid metabolites that are functionally similar to host prostaglandins. These studies, using mass spectrometry, demonstrate that C. albicans produces authentic prostaglandin E(2) (PGE(2)) from arachidonic acid. Maximal PGE(2) production was achieved at 37 degrees C in stationary-phase culture supernatants and in cell-free lysates generated from stationary-phase cells. Interestingly, PGE(2) production is inhibited by both nonspecific cyclooxygenase and lipoxygenase inhib...
+
+[Rank 1682] Doc ID: 15617300 | Score: 0.005431
+  Title: NCBI GEO: archive for functional genomics data sets—update
+  Text: The Gene Expression Omnibus (GEO, http://www.ncbi.nlm.nih.gov/geo/) is an international public repository for high-throughput microarray and next-generation sequence functional genomic data sets submitted by the research community. The resource supports archiving of raw data, processed data and metadata which are indexed, cross-linked and searchable. All data are freely available for download in a variety of formats. GEO also provides several web-based tools and strategies to assist users to que...
+
+[Rank 2102] Doc ID: 46451940 | Score: 0.004991
+  Title: The lateral hypothalamus: a primary site mediating excitatory amino acid-elicited eating.
+  Text: Lateral hypothalamic (LH) injections of the excitatory neurotransmitter glutamate, or its excitatory amino acid (EAA) agonists, kainic acid (KA), D,L-alpha-amino-3-hydroxy-5-methyl-isoxazole propionic acid (AMPA), or N-methyl-D-aspartic acid (NMDA), can rapidly elicit an intense feeding response in satiated rats. To determine whether the LH is the actual locus of this effect, we compared these compounds' ability to stimulate feeding when injected into the LH, versus when injected into sites brac...
+
+====================================================================================================
+QUERY ID: 75
+----------------------------------------------------------------------------------------------------
+Query: Active H. pylori urease has a polymeric structure that compromises two subunits, UreA and UreB.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2372
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+4387784      |      1 |      1 |        1 |        2 |        1 |        1 |        1
+13965483     |      2 |      2 |        2 |        1 |        3 |        6 |        2
+25657127     |      3 |      3 |        7 |        3 |        4 |        5 |        3
+37768883     |      4 |      4 |        3 |       10 |        7 |        2 |       12
+36233757     |      5 |      5 |        4 |       11 |        2 |        3 |       16
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 4387784 | Score: 0.081703
+  Title: Structure of the proton-gated urea channel from the gastric pathogen Helicobacter pylori
+  Text: Half the world's population is chronically infected with Helicobacter pylori, causing gastritis, gastric ulcers and an increased incidence of gastric adenocarcinoma. Its proton-gated inner-membrane urea channel, HpUreI, is essential for survival in the acidic environment of the stomach. The channel is closed at neutral pH and opens at acidic pH to allow the rapid access of urea to cytoplasmic urease. Urease produces NH(3) and CO(2), neutralizing entering protons and thus buffering the periplasm ...
+
+[Rank 2] Doc ID: 13965483 | Score: 0.079676
+  Title: Prophylactic and therapeutic efficacy of the epitope vaccine CTB-UA against Helicobacter pylori infection in a BALB/c mice model
+  Text: Epitope vaccine based on the enzyme urease of Helicobacter pylori is a promising option for prophylactic and therapeutic vaccination against H. pylori infection. In our previous study, the epitope vaccine CTB-UA, which was composed of the mucosal adjuvant cholera toxin B subunit (CTB) and an epitope (UreA183–203) from the H. pylori urease A subunit (UreA) was constructed. This particular vaccine was shown to have good immunogenicity and immunoreactivity and could induce specific neutralizing ant...
+
+[Rank 3] Doc ID: 25657127 | Score: 0.077681
+  Title: Crystal structure of the first plant urease from jack bean: 83 years of journey from its first crystal to molecular structure.
+  Text: Urease, a nickel-dependent metalloenzyme, is synthesized by plants, some bacteria, and fungi. It catalyzes the hydrolysis of urea into ammonia and carbon dioxide. Although the amino acid sequences of plant and bacterial ureases are closely related, some biological activities differ significantly. Plant ureases but not bacterial ureases possess insecticidal properties independent of its ureolytic activity. To date, the structural information is available only for bacterial ureases although the ja...
+
+[Rank 4] Doc ID: 37768883 | Score: 0.075102
+  Title: Evidence for the presence of urease apoprotein complexes containing UreD, UreF, and UreG in cells that are competent for in vivo enzyme activation.
+  Text: In vivo activation of Klebsiella aerogenes urease, a nickel-containing enzyme, requires the presence of functional UreD, UreF, and UreG accessory proteins and is further facilitated by UreE. These accessory proteins are proposed to be involved in metallocenter assembly (M. H. Lee, S. B. Mulrooney, M. J. Renner, Y. Markowicz, and R. P. Hausinger, J. Bacteriol. 174:4324-4330, 1992). A series of three UreD-urease apoprotein complexes are present in cells that express ureD at high levels, and these ...
+
+[Rank 5] Doc ID: 36233757 | Score: 0.074869
+  Title: Purification and activation properties of UreD-UreF-urease apoprotein complexes.
+  Text: In vivo assembly of the Klebsiella aerogenes urease nickel metallocenter requires the presence of UreD, UreF, and UreG accessory proteins and is further facilitated by UreE. Prior studies had shown that urease apoprotein exists in an uncomplexed form as well as in a series of UreD-urease (I.-S. Park, M.B. Carr, and R.P. Hausinger, Proc. Natl. Acad. Sci. USA 91:3233-3237, 1994) and UreD-UreF-UreG-urease (I.-S. Park and R.P. Hausinger, J. Bacteriol. 177:1947-1951, 1995) apoprotein complexes. This ...
+
+--- Uniform Samples (ranks: [396, 791, 1186, 1582, 1977]) ---
+
+[Rank 396] Doc ID: 29518440 | Score: 0.011156
+  Title: Hypoxia of the renal medulla--its implications for disease.
+  Text: In land mammals, a major task of the kidney is to reabsorb water to allow survival in a dry environment. Water conservation is enhanced by the renal medulla, which concentrates the urine to a level up to four times the osmolality of plasma. To produce this unique gradient of osmolality, the medulla has a countercurrent system of vessels and tubules that dictates active reabsorption of sodium in a milieu poor in oxygen (Figure 1).1 In this review, we describe how hypoxia of the medulla may relate...
+
+[Rank 791] Doc ID: 25813706 | Score: 0.007416
+  Title: Strand-specific mismatch correction in nuclear extracts of human and Drosophila melanogaster cell lines.
+  Text: Nuclear extracts derived from HeLa and Drosophila melanogaster KC cell lines have been found to correct single base-base mispairs within open circular DNA heteroduplexes containing a strand-specific, site-specific incision located 808 base pairs from the mismatch. Correction in both extract systems is strand specific, being highly biased to the incised DNA strand. Different mispairs within a homologous set of heteroduplexes were processed with different efficiencies (G.T greater than G.G approxi...
+
+[Rank 1186] Doc ID: 2774906 | Score: 0.006090
+  Title: Protective effects of exercise and phosphoinositide 3-kinase(p110alpha) signaling in dilated and hypertrophic cardiomyopathy.
+  Text: Physical activity protects against cardiovascular disease, and physiological cardiac hypertrophy associated with regular exercise is usually beneficial, in marked contrast to pathological hypertrophy associated with disease. The p110alpha isoform of phosphoinositide 3-kinase (PI3K) plays a critical role in the induction of exercise-induced hypertrophy. Whether it or other genes activated in the athlete's heart might have an impact on cardiac function and survival in a setting of heart failure is...
+
+[Rank 1582] Doc ID: 10617916 | Score: 0.005378
+  Title: Moderate effect of artemisinin-based combination therapy on transmission of Plasmodium falciparum.
+  Text: Background. Artemisinin-based combination therapy (ACT) reduces microscopically confirmed gametocytemia and mosquito infection. However, molecular techniques have recently revealed high prevalences of submicroscopic gametocytemia. Our objective here was to determine the effect of sulfadoxine-pyrimethamine (SP) monotherapy and treatment with SP plus amodiaquine (AQ), SP plus artesunate (AS), and artemether-lumefantrine (AL; Coartem) on submicroscopic gametocytemia and infectiousness. Methods. Ken...
+
+[Rank 1977] Doc ID: 5912283 | Score: 0.004956
+  Title: Cognitive behavioral therapy vs zopiclone for treatment of chronic primary insomnia in older adults: a randomized controlled trial.
+  Text: CONTEXT Insomnia is a common condition in older adults and is associated with a number of adverse medical, social, and psychological consequences. Previous research has suggested beneficial outcomes of both psychological and pharmacological treatments, but blinded placebo-controlled trials comparing the effects of these treatments are lacking. OBJECTIVE To examine short- and long-term clinical efficacy of cognitive behavioral therapy (CBT) and pharmacological treatment in older adults experienci...
+
+====================================================================================================
+QUERY ID: 94
+----------------------------------------------------------------------------------------------------
+Query: Albendazole is used to treat lymphatic filariasis.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2574
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+1215116      |      1 |      1 |        1 |       29 |       63 |        1 |        7
+46765242     |      2 |      2 |       81 |        5 |       18 |        9 |       50
+25388309     |      6 |      3 |       68 |      347 |        1 |       23 |        4
+20610557     |      4 |      4 |       59 |       80 |        2 |      198 |        1
+17327939     |     13 |      5 |      495 |        4 |       10 |      259 |       11
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 1215116 | Score: 0.067078
+  Title: “Rapid-Impact Interventions”: How a Policy of Integrated Control for Africa's Neglected Tropical Diseases Could Benefit the Poor
+  Text: Over the past two decades there have been significant achievements in the control of a handful of important human tropical infections [1]. These achievements include the substantive reductions in the prevalence and incidence of the so-called neglected diseases such as lymphatic filariasis, onchocerciasis, guinea worm, leprosy, and trachoma (Box 1) [2]. Each of these neglected diseases is a poverty-promoting and often stigmatizing condition occurring primarily in rural areas of low-income countri...
+
+[Rank 2] Doc ID: 46765242 | Score: 0.058881
+  Title: Interaction of cytosine arabinoside and lovastatin in human leukemia cells.
+  Text: Cytosine arabinoside (ara-C) is widely used for the treatment of leukemias and displays significant toxicities. Lovastatin, an HMG-CoA reductase inhibitor, is extensively used to treat hypercholesterolemia. To determine whether lovastatin could augment ara-C's activity we have examined their effects in the human erythroleukemia K562 cell line and the ara-C resistant ARAC8D cell line. A synergistic interaction between the two drugs was found. We have demonstrated that the interaction does not occ...
+
+[Rank 3] Doc ID: 25388309 | Score: 0.054336
+  Title: Pharmacological characterization of 1-(5-chloro-6-(trifluoromethoxy)-1H-benzoimidazol-2-yl)-1H-pyrazole-4-carboxylic acid (JNJ-42041935), a potent and selective hypoxia-inducible factor prolyl hydroxylase inhibitor.
+  Text: The hypoxia-inducible factor (HIF) prolyl hydroxylase (PHD) enzymes represent novel targets for the treatment of anemia, ulcerative colitis, and ischemic and metabolic disease inter alia. We have identified a novel small-molecule inhibitor of PHD, 1-(5-chloro-6-(trifluoromethoxy)-1H-benzoimidazol-2-yl)-1H-pyrazole-4-carboxylic acid (JNJ-42041935), through structure-based drug design methods. The pharmacology of JNJ-42041935 was investigated in enzyme, cellular, and whole-animal systems and was c...
+
+[Rank 4] Doc ID: 20610557 | Score: 0.051945
+  Title: Alkylating agent melphalan augments the efficacy of adoptive immunotherapy using tumor-specific CD4+ T cells.
+  Text: In recent years, the immune-potentiating effects of some widely used chemotherapeutic agents have been increasingly appreciated. This provides a rationale for combining conventional chemotherapy with immunotherapy strategies to achieve durable therapeutic benefits. Previous studies have implicated the immunomodulatory effects of melphalan, an alkylating agent commonly used to treat multiple myeloma, but the underlying mechanisms remain obscure. In the present study, we investigated the impact of...
+
+[Rank 5] Doc ID: 17327939 | Score: 0.048932
+  Title: Exploiting lymphatic transport and complement activation in nanoparticle vaccines
+  Text: Antigen targeting and adjuvancy schemes that respectively facilitate delivery of antigen to dendritic cells and elicit their activation have been explored in vaccine development. Here we investigate whether nanoparticles can be used as a vaccine platform by targeting lymph node–residing dendritic cells via interstitial flow and activating these cells by in situ complement activation. After intradermal injection, interstitial flow transported ultra-small nanoparticles (25 nm) highly efficiently i...
+
+--- Uniform Samples (ranks: [430, 859, 1288, 1716, 2145]) ---
+
+[Rank 430] Doc ID: 56486733 | Score: 0.011446
+  Title: Peroxisome Proliferator Activated Receptor gamma (PPARγ) Agonist Rosiglitazone Ameliorate Airway Inflammation by Inhibiting Toll-Like Receptor 2 (TLR2)/Nod-Like Receptor with Pyrin Domain Containing 3 (NLRP3) Inflammatory Corpuscle Activation in Asthmatic Mice
+  Text: BACKGROUND The purpose of this study was to explore the function and mechanism of peroxisome proliferator activated receptor agonist (PPARγ) in the toll-like receptor 2 (TLR2)/nod-like receptor with pyrin domain containing 3 (NLRP3) inflammatory corpuscle pathway of asthmatic mice. MATERIAL AND METHODS Eighteen female mice (C57) were randomly divided into 4 groups: the control group, the asthma model group challenged by ovalbumin (OVA), the rosiglitazone group, and the PPARγ agonist rosiglitazon...
+
+[Rank 859] Doc ID: 5386514 | Score: 0.007622
+  Title: Activation of the NLRP3 inflammasome in dendritic cells induces IL-1β–dependent adaptive immunity against tumors
+  Text: The therapeutic efficacy of anticancer chemotherapies may depend on dendritic cells (DCs), which present antigens from dying cancer cells to prime tumor-specific interferon-γ (IFN-γ)–producing T lymphocytes. Here we show that dying tumor cells release ATP, which then acts on P2X7 purinergic receptors from DCs and triggers the NOD-like receptor family, pyrin domain containing-3 protein (NLRP3)-dependent caspase-1 activation complex ('inflammasome'), allowing for the secretion of interleukin-1β (I...
+
+[Rank 1288] Doc ID: 6550579 | Score: 0.006017
+  Title: A central role for HER3 in HER2-amplified breast cancer: implications for targeted therapy.
+  Text: Epidermal growth factor receptor (EGFR) and HER3 each form heterodimers with HER2 and have independently been implicated as key coreceptors that drive HER2-amplified breast cancer. Some studies suggest a dominant role for EGFR, a notion of renewed interest given the development of dual HER2/EGFR small-molecule inhibitors. Other studies point to HER3 as the primary coreceptor. To clarify the relative contributions of EGFR and HER3 to HER2 signaling, we studied receptor knockdown via small interfe...
+
+[Rank 1716] Doc ID: 6710699 | Score: 0.005313
+  Title: Homologous recombination resolution defect in werner syndrome.
+  Text: Werner syndrome (WRN) is an uncommon autosomal recessive disease whose phenotype includes features of premature aging, genetic instability, and an elevated risk of cancer. We used three different experimental strategies to show that WRN cellular phenotypes of limited cell division potential, DNA damage hypersensitivity, and defective homologous recombination (HR) are interrelated. WRN cell survival and the generation of viable mitotic recombinant progeny could be rescued by expressing wild-type ...
+
+[Rank 2145] Doc ID: 3154880 | Score: 0.004941
+  Title: An Argonaute transports siRNAs from the cytoplasm to the nucleus.
+  Text: Ribonucleoprotein complexes consisting of Argonaute-like proteins and small regulatory RNAs function in a wide range of biological processes. Many of these small regulatory RNAs are predicted to act, at least in part, within the nucleus. We conducted a genetic screen to identify factors essential for RNA interference (RNAi) in nuclei of Caenorhabditis elegans and identified the Argonaute protein NRDE-3. In the absence of small interfering RNAs (siRNAs), NRDE-3 resides in the cytoplasm. NRDE-3 bi...
+
+====================================================================================================
+QUERY ID: 99
+----------------------------------------------------------------------------------------------------
+Query: Alizarin forms hydrogen bonds with residues involved in PGAM1 substrate binding.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2381
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+18810195     |      1 |      1 |        1 |        1 |        1 |        1 |        1
+21754541     |      2 |      2 |       30 |        5 |        3 |        3 |        2
+30208015     |      3 |      3 |       11 |       19 |       16 |       10 |       38
+12225214     |     12 |      4 |      461 |        9 |        5 |       36 |        4
+10247314     |      5 |      5 |       57 |       14 |        2 |       12 |      116
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 18810195 | Score: 0.081967
+  Title: Tyr26 phosphorylation of PGAM1 provides a metabolic advantage to tumours by stabilizing the active conformation
+  Text: How oncogenic signalling coordinates glycolysis and anabolic biosynthesis in cancer cells remains unclear. We recently reported that the glycolytic enzyme phosphoglycerate mutase 1 (PGAM1) regulates anabolic biosynthesis by controlling intracellular levels of its substrate 3-phosphoglycerate and product 2-phosphoglycerate. Here we report a novel mechanism in which Y26 phosphorylation enhances PGAM1 activation through release of inhibitory E19 that blocks the active site, stabilising cofactor 2,3...
+
+[Rank 2] Doc ID: 21754541 | Score: 0.074371
+  Title: Key interactions by conserved polar amino acids located at the transmembrane helical boundaries in Class B GPCRs modulate activation, effector specificity and biased signalling in the glucagon-like peptide-1 receptor.
+  Text: Class B GPCRs can activate multiple signalling effectors with the potential to exhibit biased agonism in response to ligand stimulation. Previously, we highlighted key TM domain polar amino acids that were crucial for the function of the GLP-1 receptor, a key therapeutic target for diabetes and obesity. Using a combination of mutagenesis, pharmacological characterisation, mathematical and computational molecular modelling, this study identifies additional highly conserved polar residues located ...
+
+[Rank 3] Doc ID: 30208015 | Score: 0.064390
+  Title: Molecular Characterization of Oxysterol Binding to the Epstein-Barr Virus-induced Gene 2 (GPR183)* 
+  Text: Oxysterols are oxygenated cholesterol derivates that are emerging as a physiologically important group of molecules. Although they regulate a range of cellular processes, only few oxysterol-binding effector proteins have been identified, and the knowledge of their binding mode is limited. Recently, the family of G protein-coupled seven transmembrane-spanning receptors (7TM receptors) was added to this group. Specifically, the Epstein-Barr virus-induced gene 2 (EBI2 or GPR183) was shown to be act...
+
+[Rank 4] Doc ID: 12225214 | Score: 0.057838
+  Title: Ubiquitination on nonlysine residues by a viral E3 ubiquitin ligase.
+  Text: Ubiquitination controls a broad range of cellular functions. The last step of the ubiquitination pathway is regulated by enzyme type 3 (E3) ubiquitin ligases. E3 enzymes are responsible for substrate specificity and catalyze the formation of an isopeptide bond between a lysine residue of the substrate (or the N terminus of the substrate) and ubiquitin. MIR1 and MIR2 are two E3 ubiquitin ligases encoded by Kaposi's sarcoma-associated herpesvirus that mediate the ubiquitination of major histocompa...
+
+[Rank 5] Doc ID: 10247314 | Score: 0.057760
+  Title: Two sequence motifs from HIF-1alpha bind to the DNA-binding site of p53.
+  Text: There is evidence that hypoxia-inducible factor-1alpha (HIF-1alpha) interacts with the tumor suppressor p53. To characterize the putative interaction, we mapped the binding of the core domain of p53 (p53c) to an array of immobilized HIF-1alpha-derived peptides and found two peptide-sequence motifs that bound to p53c with micromolar affinity in solution. One sequence was adjacent to and the other coincided with the two proline residues of the oxygen-dependent degradation domain (P402 and P564) th...
+
+--- Uniform Samples (ranks: [398, 794, 1191, 1588, 1984]) ---
+
+[Rank 398] Doc ID: 39187170 | Score: 0.011770
+  Title: Mitochondrial respiration in subcutaneous and visceral adipose tissue from patients with morbid obesity.
+  Text: Adipose tissue exerts important endocrine and metabolic functions in health and disease. Yet the bioenergetics of this tissue is not characterized in humans and possible regional differences are not elucidated. Using high resolution respirometry, mitochondrial respiration was quantified in human abdominal subcutaneous and intra-abdominal visceral (omentum majus) adipose tissue from biopsies obtained in 20 obese patients undergoing bariatric surgery. Mitochondrial DNA (mtDNA) and genomic DNA (gDN...
+
+[Rank 794] Doc ID: 7151961 | Score: 0.007508
+  Title: Visualization of recombination intermediates produced by RAD52-mediated single-strand annealing.
+  Text: Double-strand breaks (DSBs) occur frequently during DNA replication. They are also caused by ionizing radiation, chemical damage or as part of the series of programmed events that occur during meiosis. In yeast, DSB repair requires RAD52, a protein that plays a critical role in homologous recombination. Here we describe the actions of human RAD52 protein in a model system for single-strand annealing (SSA) using tailed (i.e. exonuclease resected) duplex DNA molecules. Purified human RAD52 protein...
+
+[Rank 1191] Doc ID: 44500794 | Score: 0.006042
+  Title: The effects of genetic and pharmacological blockade of the CB1 cannabinoid receptor on anxiety.
+  Text: The aim of this study was to compare the effects of the genetic and pharmacological disruption of CB1 cannabinoid receptors on the elevated plus-maze test of anxiety. In the first experiment, the behaviour of CB1-knockout mice and wild-type mice was compared. In the second experiment, the cannabinoid antagonist SR141716A (0, 1, and 3 mg/kg) was administered to both CB1-knockout and wild type mice. Untreated CB1-knockout mice showed a reduced exploration of the open arms of the plus-maze apparatu...
+
+[Rank 1588] Doc ID: 13780287 | Score: 0.005328
+  Title: STIM1 Is a Calcium Sensor Specialized for Digital Signaling
+  Text: When cells are activated by calcium-mobilizing agonists at low, physiological concentrations, the resulting calcium signals generally take the form of repetitive regenerative discharges of stored calcium, termed calcium oscillations [1]. These intracellular calcium oscillations have long fascinated biologists as a mode of digitized intracellular signaling. Recent work has highlighted the role of calcium influx as an essential component of calcium oscillations [2]. This influx occurs through a pr...
+
+[Rank 1984] Doc ID: 38747567 | Score: 0.004942
+  Title: Human cytomegalovirus encodes an MHC class I-like molecule (UL142) that functions to inhibit NK cell lysis.
+  Text: Clinical and low passage strains of human CMV (HCMV) encode an additional MHC class I-related molecule UL142, in addition to the previously described UL18. The UL142 open reading frame is encoded within the ULb' region which is missing from a number of common high passage laboratory strains. Cells expressing UL142 following transfection, and fibroblasts infected with a recombinant adenovirus-expressing UL142, were used to screen both polyclonal NK cells and NK cell clones, in a completely autolo...
+
+====================================================================================================
+QUERY ID: 100
+----------------------------------------------------------------------------------------------------
+Query: All hematopoietic stem cells segregate their chromosomes randomly.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 1984
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+4381486      |      1 |      1 |        1 |        1 |        1 |        1 |        1
+2701077      |      2 |      2 |        9 |        9 |        2 |       10 |        9
+14550841     |      4 |      3 |        3 |       38 |        8 |        2 |        5
+13116880     |      3 |      4 |       13 |       11 |        9 |        3 |       20
+40234452     |      5 |      5 |       21 |       10 |       12 |       13 |       16
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 4381486 | Score: 0.081967
+  Title: Haematopoietic stem cells do not asymmetrically segregate chromosomes or retain BrdU
+  Text: Stem cells are proposed to segregate chromosomes asymmetrically during self-renewing divisions so that older (‘immortal’) DNA strands are retained in daughter stem cells whereas newly synthesized strands segregate to differentiating cells. Stem cells are also proposed to retain DNA labels, such as 5-bromo-2-deoxyuridine (BrdU), either because they segregate chromosomes asymmetrically or because they divide slowly. However, the purity of stem cells among BrdU-label-retaining cells has not been do...
+
+[Rank 2] Doc ID: 2701077 | Score: 0.073893
+  Title: Hematopoietic stem cell quiescence promotes error-prone DNA repair and mutagenesis.
+  Text: Most adult stem cells, including hematopoietic stem cells (HSCs), are maintained in a quiescent or resting state in vivo. Quiescence is widely considered to be an essential protective mechanism for stem cells that minimizes endogenous stress caused by cellular respiration and DNA replication. We demonstrate that HSC quiescence can also have detrimental effects. We found that HSCs have unique cell-intrinsic mechanisms ensuring their survival in response to ionizing irradiation (IR), which include...
+
+[Rank 3] Doc ID: 14550841 | Score: 0.072297
+  Title: Asymmetric Cell Divisions Sustain Long-Term  Hematopoiesis from Single-sorted Human Fetal Liver Cells 
+  Text: Hematopoietic stem cells (HSCs) in adult marrow are believed to be derived from fetal liver precursors. To study cell kinetics involved in long-term hematopoiesis, we studied single-sorted candidate HSCs from fetal liver that were cultured in the presence of a mixture of stimulatory cytokines. After 8–10 d, the number of cells in primary cultures varied from 10,000 cells. Single cells in slow growing colonies were recloned upon reaching a 100–200 cell stage. Strikingly, the number of cells in su...
+
+[Rank 4] Doc ID: 13116880 | Score: 0.070649
+  Title: Hematopoietic stem cell: self-renewal versus differentiation.
+  Text: The mammalian blood system, containing more than 10 distinct mature cell types, stands on one specific cell type, hematopoietic stem cell (HSC). Within the system, only HSCs possess the ability of both multipotency and self-renewal. Multipotency is the ability to differentiate into all functional blood cells. Self-renewal is the ability to give rise to HSC itself without differentiation. Since mature blood cells (MBCs) are predominantly short-lived, HSCs continuously provide more differentiated ...
+
+[Rank 5] Doc ID: 40234452 | Score: 0.067377
+  Title: HES-1 preserves purified hematopoietic stem cells ex vivo and accumulates side population cells in vivo.
+  Text: Mouse long-term hematopoietic reconstituting cells exist in the c-Kit+Sca-1+Lin- (KSL) cell population; among them, CD34(low/-) cells represent the most highly purified population of hematopoietic stem cells in the adult bone marrow. Here, we demonstrate that retrovirus-mediated transduction of CD34(low/-)c-Kit+Sca-1+Lin- (34-KSL) cells with the HES-1 gene, which encodes a basic helix-loop-helix transcription factor functioning downstream of the Notch receptor, and is a key molecule for the grow...
+
+--- Uniform Samples (ranks: [332, 662, 992, 1323, 1654]) ---
+
+[Rank 332] Doc ID: 21456232 | Score: 0.013035
+  Title: A graphene-based platform for induced pluripotent stem cells culture and differentiation.
+  Text: Induced pluripotent stem cells (iPSCs) hold great promise as a cell source for regenerative medicine yet its culture, maintenance of pluripotency and induction of differentiation remain challenging. Conversely, graphene (G) and graphene oxide (GO) have captured tremendous interests in the fields of materials science, physics, chemistry and nanotechnology. Here we report on that G and GO can support the mouse iPSCs culture and allow for spontaneous differentiation. Intriguingly, G and GO surfaces...
+
+[Rank 662] Doc ID: 1449692 | Score: 0.007373
+  Title: Gestational protein restriction affects trophoblast differentiation.
+  Text: Whether and how gestational protein restriction (PR) affects placental development and function remain unknown. To test the hypothesis that PR can affect trophoblast differentiation in mid-and late pregnancy, rats were fed a 20% or an isocaloric 6% protein diet from Day 1 to 14 or 18 of pregnancy and effects of PR on trophoblast differentiation were determined by changes in expressions of marker gene(s) for trophoblast lineages. At Day 18 of pregnancy, PR increased expressions of Esrrb, Id1 andI...
+
+[Rank 992] Doc ID: 20280410 | Score: 0.005690
+  Title: A common variant in BRCA2 is associated with both breast cancer risk and prenatal viability
+  Text: Inherited mutations in the gene BRCA2 predispose carriers to early onset breast cancer, but such mutations account for fewer than 2% of all cases in East Anglia. It is likely that low penetrance alleles explain the greater part of inherited susceptibility to breast cancer; polymorphic variants in strongly predisposing genes, such as BRCA2, are candidates for this role. BRCA2 is thought to be involved in DNA double strand break-repair. Few mice in which Brca2 is truncated survive to birth; of tho...
+
+[Rank 1323] Doc ID: 40735046 | Score: 0.005175
+  Title: Periodic screening for breast cancer: the HIP Randomized Controlled Trial. Health Insurance Plan.
+  Text: This paper summarizes the findings of the first breast cancer screening trial, which was initiated in December 1963 to explore the efficacy of screening. Women aged 40-64 years were selected from enrollees in the Health Insurance Plan (HIP) of Greater New York and were randomly assigned to study and control groups. Study group women were invited for screening, an initial examination, and three annual reexaminations. Screening consisted of film mammography (cephalocaudal and lateral views of each...
+
+[Rank 1654] Doc ID: 1196631 | Score: 0.004894
+  Title: ImmTAC-redirected tumour cell killing induces and potentiates antigen cross-presentation by dendritic cells
+  Text: Antigen cross-presentation by dendritic cells (DCs) is thought to play a critical role in driving a polyclonal and durable T cell response against cancer. It follows, therefore, that the capacity of emerging immunotherapeutic agents to orchestrate tumour eradication may depend on their ability to induce antigen cross-presentation. ImmTACs [immune-mobilising monoclonal TCRs (T cell receptors) against cancer] are a new class of soluble bi-specific anti-cancer agents that combine pico-molar affinit...
+
+====================================================================================================
+QUERY ID: 113
+----------------------------------------------------------------------------------------------------
+Query: Angiotensin converting enzyme inhibitors are associated with increased risk for functional renal insufficiency.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2348
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+6157837      |      1 |      1 |        1 |        2 |        1 |        1 |        1
+25816994     |      2 |      2 |        2 |        4 |        2 |        2 |        2
+1759213      |      3 |      3 |        5 |        1 |        3 |        4 |        3
+14584755     |      4 |      4 |        8 |        5 |        4 |        3 |        4
+44030361     |      5 |      5 |        3 |       11 |        8 |        6 |        8
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 6157837 | Score: 0.081703
+  Title: Renal considerations in angiotensin converting enzyme inhibitor therapy: a statement for healthcare professionals from the Council on the Kidney in Cardiovascular Disease and the Council for High Blood Pressure Research of the American Heart Association.
+  Text: Angiotensin converting enzyme (ACE) inhibitors are now one of the most frequently used classes of antihypertensive drugs. Beyond their utility in the management of hypertension, their use has been extended to the long-term management of patients with congestive heart failure (CHF), as well as diabetic and nondiabetic nephropathies. Although ACE inhibitor therapy usually improves renal blood flow (RBF) and sodium excretion rates in CHF and reduces the rate of progressive renal injury in chronic r...
+
+[Rank 2] Doc ID: 25816994 | Score: 0.080141
+  Title: Renal outcomes with telmisartan, ramipril, or both, in people at high vascular risk (the ONTARGET study): a multicentre, randomised, double-blind, controlled trial.
+  Text: BACKGROUND Angiotensin receptor blockers (ARB) and angiotensin converting enzyme (ACE) inhibitors are known to reduce proteinuria. Their combination might be more effective than either treatment alone, but long-term data for comparative changes in renal function are not available. We investigated the renal effects of ramipril (an ACE inhibitor), telmisartan (an ARB), and their combination in patients aged 55 years or older with established atherosclerotic vascular disease or with diabetes with e...
+
+[Rank 3] Doc ID: 1759213 | Score: 0.079149
+  Title: The effect of combination treatment with aliskiren and blockers of the renin-angiotensin system on hyperkalaemia and acute kidney injury: systematic review and meta-analysis
+  Text: OBJECTIVE To examine the safety of using aliskiren combined with agents used to block the renin-angiotensin system. DESIGN Systematic review and meta-analysis of randomised controlled trials. DATA SOURCES Medline, Embase, the Cochrane Library, and two trial registries, published up to 7 May 2011. STUDY SELECTION Published and unpublished randomised controlled trials that compared combined treatment using aliskiren and angiotensin converting enzyme inhibitors or angiotensin receptor blockers with...
+
+[Rank 4] Doc ID: 14584755 | Score: 0.077214
+  Title: Differences in the Clinical Effects of Angiotensin-Converting Enzyme Inhibitors and Angiotensin Receptor Blockers: A Critical Review of the Evidence
+  Text: The renin-angiotensin-aldosterone system plays a major role in the pathophysiology of hypertension and closely related cardio- and cerebrovascular events. Although both angiotensin-converting enzyme (ACE) inhibitors and angiotensin receptor antagonists (angiotensin receptor blockers; ARBs) are equally important in the treatment of hypertension, according to the results of recent years, there might be substantial differences in their cardiovascular protective effects, and these differences might ...
+
+[Rank 5] Doc ID: 44030361 | Score: 0.074521
+  Title: The angiotensin II type 1 receptor blocker olmesartan preferentially improves nocturnal hypertension and proteinuria in chronic kidney disease
+  Text: Accumulated evidence suggests that an altered ambulatory blood pressure (BP) profile, particularly elevated nighttime BP, reflects target organ injury and is a better predictor of further cardiorenal risk than the clinic BP or daytime BP in hypertensive patients complicated by chronic kidney disease (CKD). In this study, we examined the beneficial effects of olmesartan, an angiotensin II type 1 receptor blocker (ARB), on ambulatory BP profiles and renal function in hypertensive CKD patients. For...
+
+--- Uniform Samples (ranks: [392, 783, 1174, 1566, 1957]) ---
+
+[Rank 392] Doc ID: 13934676 | Score: 0.010940
+  Title: "The contribution of chronic diseases to the prevalence of dependence among older people in Latin America, China and India: a 10/66 Dementia Research Group population-based survey"
+  Text: BACKGROUND The number of older people is set to increase dramatically worldwide. Demographic changes are likely to result in the rise of age-related chronic diseases which largely contribute to years lived with a disability and future dependence. However dependence is much less studied although intrinsically linked to disability. We investigated the prevalence and correlates of dependence among older people from middle income countries. METHODS A one-phase cross-sectional survey was carried out ...
+
+[Rank 783] Doc ID: 24524403 | Score: 0.007492
+  Title: Aging, frailty and age-related diseases
+  Text: The concept of frailty as a medically distinct syndrome has evolved based on the clinical experience of geriatricians and is clinically well recognizable. Frailty is a nonspecific state of vulnerability, which reflects multisystem physiological change. These changes underlying frailty do not always achieve disease status, so some people, usually very elderly, are frail without a specific life threatening illness. Current thinking is that not only physical but also psychological, cognitive and so...
+
+[Rank 1174] Doc ID: 12009265 | Score: 0.006053
+  Title: Vitamins E and C in the prevention of prostate and total cancer in men: the Physicians' Health Study II randomized controlled trial.
+  Text: CONTEXT Many individuals take vitamins in the hopes of preventing chronic diseases such as cancer, and vitamins E and C are among the most common individual supplements. A large-scale randomized trial suggested that vitamin E may reduce risk of prostate cancer; however, few trials have been powered to address this relationship. No previous trial in men at usual risk has examined vitamin C alone in the prevention of cancer. OBJECTIVE To evaluate whether long-term vitamin E or C supplementation de...
+
+[Rank 1566] Doc ID: 26064662 | Score: 0.005341
+  Title: Association of Sickle Cell Trait With Hemoglobin A1c in African Americans
+  Text: Importance Hemoglobin A1c (HbA1c) reflects past glucose concentrations, but this relationship may differ between those with sickle cell trait (SCT) and those without it. Objective To evaluate the association between SCT and HbA1c for given levels of fasting or 2-hour glucose levels among African Americans. Design, Setting, and Participants Retrospective cohort study using data collected from 7938 participants in 2 community-based cohorts, the Coronary Artery Risk Development in Young Adults (CAR...
+
+[Rank 1957] Doc ID: 23985464 | Score: 0.004937
+  Title: Modulation of cellular and viral promoters by mutant human p53 proteins found in tumor cells.
+  Text: Wild-type p53 has recently been shown to repress transcription from several cellular and viral promoters. Since p53 mutations are the most frequently reported genetic defects in human cancers, it becomes important to study the effects of mutations of p53 on promoter functions. We, therefore, have studied the effects of wild-type and mutant human p53 on the human proliferating-cell nuclear antigen (PCNA) promoter and on several viral promoters, including the herpes simplex virus type 1 UL9 promot...
+
+====================================================================================================
+QUERY ID: 115
+----------------------------------------------------------------------------------------------------
+Query: Anthrax spores can be disposed of easily after they are dispersed.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2688
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+33872649     |      1 |      1 |        1 |        2 |        1 |        1 |        1
+15879544     |     15 |      2 |        6 |      N/A |        2 |        3 |       11
+12641252     |     16 |      3 |       18 |      N/A |       10 |        6 |        3
+32450297     |      2 |      4 |       24 |       62 |       17 |      103 |       42
+695938       |     11 |      5 |        5 |      780 |       51 |       26 |       28
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 33872649 | Score: 0.081703
+  Title: Secondary aerosolization of viable Bacillus anthracis spores in a contaminated US Senate Office.
+  Text: CONTEXT Bioterrorist attacks involving letters and mail-handling systems in Washington, DC, resulted in Bacillus anthracis (anthrax) spore contamination in the Hart Senate Office Building and other facilities in the US Capitol's vicinity. OBJECTIVE To provide information about the nature and extent of indoor secondary aerosolization of B anthracis spores. DESIGN Stationary and personal air samples, surface dust, and swab samples were collected under semiquiescent (minimal activities) and then si...
+
+[Rank 2] Doc ID: 15879544 | Score: 0.062181
+  Title: Prions Adhere to Soil Minerals and Remain Infectious
+  Text: An unidentified environmental reservoir of infectivity contributes to the natural transmission of prion diseases (transmissible spongiform encephalopathies [TSEs]) in sheep, deer, and elk. Prion infectivity may enter soil environments via shedding from diseased animals and decomposition of infected carcasses. Burial of TSE-infected cattle, sheep, and deer as a means of disposal has resulted in unintentional introduction of prions into subsurface environments. We examined the potential for soil t...
+
+[Rank 3] Doc ID: 12641252 | Score: 0.059073
+  Title: Calreticulin exposure dictates the immunogenicity of cancer cell death
+  Text: Anthracyclin-treated tumor cells are particularly effective in eliciting an anticancer immune response, whereas other DNA-damaging agents such as etoposide and mitomycin C do not induce immunogenic cell death. Here we show that anthracyclins induce the rapid, preapoptotic translocation of calreticulin (CRT) to the cell surface. Blockade or knockdown of CRT suppressed the phagocytosis of anthracyclin-treated tumor cells by dendritic cells and abolished their immunogenicity in mice. The anthracycl...
+
+[Rank 4] Doc ID: 32450297 | Score: 0.049027
+  Title: Evidence for energy-dependent accumulation of paraquat into rat lung
+  Text: THE herbicide paraquat (N,N′-dimethyl 4,4′-bipyridilium) can produce widespread oedema and fibrosis in the human lung after accidental ingestion1–3. In those cases where death occurs after several weeks, there are no apparent pulmonary changes during the first few days following ingestion. Animal experiments in a variety of species have shown the lung to be the major target organ4–6. After administration of paraquat to animals, the lung has a high initial concentration and retains paraquat7–9. T...
+
+[Rank 5] Doc ID: 695938 | Score: 0.048576
+  Title: Grass plants bind, retain, uptake, and transport infectious prions.
+  Text: Prions are the protein-based infectious agents responsible for prion diseases. Environmental prion contamination has been implicated in disease transmission. Here, we analyzed the binding and retention of infectious prion protein (PrP(Sc)) to plants. Small quantities of PrP(Sc) contained in diluted brain homogenate or in excretory materials (urine and feces) can bind to wheat grass roots and leaves. Wild-type hamsters were efficiently infected by ingestion of prion-contaminated plants. The prion...
+
+--- Uniform Samples (ranks: [449, 897, 1344, 1792, 2240]) ---
+
+[Rank 449] Doc ID: 24624992 | Score: 0.011197
+  Title: The expression of immediate early gene X-1 (IEX-1) is differentially induced by retinoic acids in NB4 and KG1 cells: possible implication in the distinct phenotype of retinoic acid-responsive and -resistant leukemic cells
+  Text: In a cell-type- and stimulus-dependent fashion, the early response gene immediate early gene X-1 (IEX-1) is involved in growth control and modulation of apoptosis. The present study demonstrates that, in the two acute promyelocytic leukemia (APL) cell lines NB4 and KG1, exhibiting distinct responsiveness to retinoic acids (RAs), IEX-1 expression is rapidly (30–60 min) induced by all-trans- or cis-RA and independently of other signal transduction mediators, such as TNFα, NF-κB or MAP kinases. In ...
+
+[Rank 897] Doc ID: 7568596 | Score: 0.007474
+  Title: Osteoclasts control reactivation of dormant myeloma cells by remodelling the endosteal niche
+  Text: Multiple myeloma is largely incurable, despite development of therapies that target myeloma cell-intrinsic pathways. Disease relapse is thought to originate from dormant myeloma cells, localized in specialized niches, which resist therapy and repopulate the tumour. However, little is known about the niche, and how it exerts cell-extrinsic control over myeloma cell dormancy and reactivation. In this study, we track individual myeloma cells by intravital imaging as they colonize the endosteal nich...
+
+[Rank 1344] Doc ID: 18263406 | Score: 0.006096
+  Title: Detection of alternative lengthening of telomeres by telomere quantitative PCR
+  Text: Alternative lengthening of telomeres (ALT) is one of the two known telomere length maintenance mechanisms that are essential for the unlimited proliferation potential of cancer cells. Existing methods for detecting ALT in tumors require substantial amounts of tumor material and are labor intensive, making it difficult to study prevalence and prognostic significance of ALT in large tumor cohorts. Here, we present a novel strategy utilizing telomere quantitative PCR to diagnose ALT. The protocol i...
+
+[Rank 1792] Doc ID: 5409905 | Score: 0.005403
+  Title: Sequential histone-modifying activities determine the robustness of transdifferentiation
+  Text: Natural interconversions between distinct somatic cell types have been reported in species as diverse as jellyfish and mice. The efficiency and reproducibility of some reprogramming events represent unexploited avenues in which to probe mechanisms that ensure robust cell conversion. We report that a conserved H3K27me3/me2 demethylase, JMJD-3.1, and the H3K4 methyltransferase Set1 complex cooperate to ensure invariant transdifferentiation (Td) of postmitotic Caenorhabditis elegans hindgut cells i...
+
+[Rank 2240] Doc ID: 13714201 | Score: 0.004981
+  Title: Gut microbial diversity is associated with lower arterial stiffness in women
+  Text: Aims The gut microbiome influences metabolic syndrome (MetS) and inflammation and is therapeutically modifiable. Arterial stiffness is poorly correlated with most traditional risk factors. Our aim was to examine whether gut microbial composition is associated with arterial stiffness. Methods and results We assessed the correlation between carotid-femoral pulse wave velocity (PWV), a measure of arterial stiffness, and gut microbiome composition in 617 middle-aged women from the TwinsUK cohort wit...
+
+====================================================================================================
+QUERY ID: 118
+----------------------------------------------------------------------------------------------------
+Query: Antibiotic induced alterations in the gut microbiome reduce resistance against Clostridium difficile
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2339
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+6372244      |      1 |      1 |        1 |        1 |        1 |        1 |        1
+4465735      |      2 |      2 |        2 |        2 |        2 |        2 |        2
+32454714     |      3 |      3 |        3 |        4 |        4 |        3 |        5
+52805891     |      4 |      4 |        4 |        9 |        7 |        4 |        4
+33918970     |      5 |      5 |        9 |       14 |        3 |       11 |        3
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 6372244 | Score: 0.081967
+  Title: Antibiotic-induced shifts in the mouse gut microbiome and metabolome increase susceptibility to Clostridium difficile infection
+  Text: Antibiotics can have significant and long-lasting effects on the gastrointestinal tract microbiota, reducing colonization resistance against pathogens including Clostridium difficile. Here we show that antibiotic treatment induces substantial changes in the gut microbial community and in the metabolome of mice susceptible to C. difficile infection. Levels of secondary bile acids, glucose, free fatty acids and dipeptides decrease, whereas those of primary bile acids and sugar alcohols increase, r...
+
+[Rank 2] Doc ID: 4465735 | Score: 0.080645
+  Title: Precision microbiome reconstitution restores bile acid mediated resistance to Clostridium difficile
+  Text: The gastrointestinal tracts of mammals are colonized by hundreds of microbial species that contribute to health, including colonization resistance against intestinal pathogens. Many antibiotics destroy intestinal microbial communities and increase susceptibility to intestinal pathogens. Among these, Clostridium difficile, a major cause of antibiotic-induced diarrhoea, greatly increases morbidity and mortality in hospitalized patients. Which intestinal bacteria provide resistance to C. difficile ...
+
+[Rank 3] Doc ID: 32454714 | Score: 0.078381
+  Title: Role of gut commensal microflora in the development of experimental autoimmune encephalomyelitis.
+  Text: Mucosal tolerance has been considered a potentially important pathway for the treatment of autoimmune disease, including human multiple sclerosis and experimental conditions such as experimental autoimmune encephalomyelitis (EAE). There is limited information on the capacity of commensal gut bacteria to induce and maintain peripheral immune tolerance. Inbred SJL and C57BL/6 mice were treated orally with a broad spectrum of antibiotics to reduce gut microflora. Reduction of gut commensal bacteria...
+
+[Rank 4] Doc ID: 52805891 | Score: 0.076293
+  Title: Gut Microbiota Is a Key Modulator of Insulin Resistance in TLR 2 Knockout Mice
+  Text: Environmental factors and host genetics interact to control the gut microbiota, which may have a role in the development of obesity and insulin resistance. TLR2-deficient mice, under germ-free conditions, are protected from diet-induced insulin resistance. It is possible that the presence of gut microbiota could reverse the phenotype of an animal, inducing insulin resistance in an animal genetically determined to have increased insulin sensitivity, such as the TLR2 KO mice. In the present study,...
+
+[Rank 5] Doc ID: 33918970 | Score: 0.073837
+  Title: Interactive effects of oligofructose and obesity predisposition on gut hormones and microbiota in diet-induced obese rats.
+  Text: OBJECTIVE Oligofructose (OFS) is a prebiotic that reduces energy intake and fat mass via changes in gut satiety hormones and microbiota. The effects of OFS may vary depending on predisposition to obesity. The aim of this study was to examine the effect of OFS in diet-induced obese (DIO) and diet-resistant (DR) rats. METHODS Adult, male DIO, and DR rats were randomized to: high-fat/high-sucrose (HFS) diet or HFS diet + 10% OFS for 6 weeks. Body composition, food intake, gut microbiota, plasma gut...
+
+--- Uniform Samples (ranks: [391, 780, 1170, 1560, 1949]) ---
+
+[Rank 391] Doc ID: 4702639 | Score: 0.011246
+  Title: An integrin β3–KRAS–RalB complex drives tumour stemness and resistance to EGFR inhibition
+  Text: Tumour cells, with stem-like properties, are highly aggressive and often show drug resistance. Here, we reveal that integrin αvβ3 serves as a marker of breast, lung and pancreatic carcinomas with stem-like properties that are highly resistant to receptor tyrosine kinase inhibitors such as erlotinib. This was observed in vitro and in mice bearing patient-derived tumour xenografts or in clinical specimens from lung cancer patients who had progressed on erlotinib. Mechanistically, αvβ3, in the unli...
+
+[Rank 780] Doc ID: 37118634 | Score: 0.007454
+  Title: Topical application of chlorhexidine to neonatal umbilical cords for prevention of omphalitis and neonatal mortality in a rural district of Pakistan: a community-based, cluster-randomised trial.
+  Text: BACKGROUND Umbilical cord infection (omphalitis) is a risk factor for neonatal sepsis and mortality in low-resource settings where home deliveries are common. We aimed to assess the effect of umbilical-cord cleansing with 4% chlorhexidine (CHX) solution, with or without handwashing with antiseptic soap, on the incidence of omphalitis and neonatal mortality. METHODS We did a two-by-two factorial, cluster-randomised trial in Dadu, a rural area of Sindh province, Pakistan. Clusters were defined as ...
+
+[Rank 1170] Doc ID: 10300000 | Score: 0.006079
+  Title: Knowledge and use of secondary contraception among patients requesting termination of pregnancy.
+  Text: The results of a survey of 769 patients attending the St. James's University Fertility Control Clinic, England, for abortion services showed that patients seeing general practitioners were less knowledgeable than those attending specialist clinics. There was a demonstrated need for counseling on pill and condom use and protection against sexually transmitted diseases. Knowledge of postcoital methods was also found to be lacking. The survey was conducted between April 1, 1991, and January 31, 199...
+
+[Rank 1560] Doc ID: 30884033 | Score: 0.005318
+  Title: Regulation of embryonic stem cell pluripotency by heat shock protein 90.
+  Text: Deciphering the molecular basis of stem cell pluripotency is fundamental to the understanding of stem cell biology, early embryonic development, and to the clinical application of regenerative medicine. We report here that the molecular chaperone heat shock protein 90 (Hsp90) is essential for mouse embryonic stem cell (ESC) pluripotency through regulating multiple pluripotency factors, including Oct4, Nanog, and signal transducer and activator of transcription 3. Inhibition of Hsp90 by either 17...
+
+[Rank 1949] Doc ID: 4688277 | Score: 0.004959
+  Title: The quality of modern cross-sectional ecologic studies: a bibliometric review.
+  Text: The ecologic study design is routinely used by epidemiologists in spite of its limitations. It is presently unknown how well the challenges of the design are dealt with in epidemiologic research. The purpose of this bibliometric review was to critically evaluate the characteristics, statistical methods, and reporting of results of modern cross-sectional ecologic papers. A search through 6 major epidemiology journals identified all cross-sectional ecologic studies published since January 1, 2000....
+
+====================================================================================================
+QUERY ID: 124
+----------------------------------------------------------------------------------------------------
+Query: Antiretroviral therapy reduces rates of tuberculosis across a broad range of CD4 strata.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2356
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+4883040      |      1 |      1 |        1 |        1 |        2 |        1 |        1
+7111021      |      2 |      2 |        2 |        2 |        1 |        2 |        2
+31363207     |      3 |      3 |        5 |        3 |        4 |        6 |        6
+13899137     |      4 |      4 |        8 |        4 |        5 |        9 |        3
+14319754     |      5 |      5 |        7 |        6 |        6 |        4 |        8
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 4883040 | Score: 0.081703
+  Title: Antiretroviral Therapy for Prevention of Tuberculosis in Adults with HIV: A Systematic Review and Meta-Analysis
+  Text: BACKGROUND Human immunodeficiency virus (HIV) infection is the strongest risk factor for developing tuberculosis and has fuelled its resurgence, especially in sub-Saharan Africa. In 2010, there were an estimated 1.1 million incident cases of tuberculosis among the 34 million people living with HIV worldwide. Antiretroviral therapy has substantial potential to prevent HIV-associated tuberculosis. We conducted a systematic review of studies that analysed the impact of antiretroviral therapy on the...
+
+[Rank 2] Doc ID: 7111021 | Score: 0.080910
+  Title: Integration of antiretroviral therapy with tuberculosis treatment.
+  Text: BACKGROUND We previously reported that integrating antiretroviral therapy (ART) with tuberculosis treatment reduces mortality. However, the timing for the initiation of ART during tuberculosis treatment remains unresolved. METHODS We conducted a three-group, open-label, randomized, controlled trial in South Africa involving 642 ambulatory patients, all with tuberculosis (confirmed by a positive sputum smear for acid-fast bacilli), human immunodeficiency virus infection, and a CD4+ T-cell count o...
+
+[Rank 3] Doc ID: 31363207 | Score: 0.077186
+  Title: Treatment of active tuberculosis in HIV-coinfected patients: a systematic review and meta-analysis.
+  Text: BACKGROUND Patients with human immunodeficiency virus (HIV) infection and tuberculosis have an increased risk of death, treatment failure, and relapse. METHODS A systematic review and meta-analysis of randomized, controlled trials and cohort studies was conducted to evaluate the impact of duration and dosing schedule of rifamycin and use of antiretroviral therapy in the treatment of active tuberculosis in HIV-positive patients. In included studies, the initial tuberculosis diagnosis, failure, an...
+
+[Rank 4] Doc ID: 13899137 | Score: 0.076081
+  Title: HIV Treatment as Prevention: Systematic Comparison of Mathematical Models of the Potential Impact of Antiretroviral Therapy on HIV Incidence in South Africa
+  Text: BACKGROUND Many mathematical models have investigated the impact of expanding access to antiretroviral therapy (ART) on new HIV infections. Comparing results and conclusions across models is challenging because models have addressed slightly different questions and have reported different outcome metrics. This study compares the predictions of several mathematical models simulating the same ART intervention programmes to determine the extent to which models agree about the epidemiological impact...
+
+[Rank 5] Doc ID: 14319754 | Score: 0.075559
+  Title: The Antiretroviral Therapy in Lower Income Countries (ART-LINC) Collaboration and ART Cohort Collaboration (ART-CC) groups Summary
+  Text: BACKGROUND Highly active antiretroviral therapy (HAART) is being scaled up in developing countries. We compared baseline characteristics and outcomes during the first year of HAART between HIV-1-infected patients in low-income and high-income settings. METHODS 18 HAART programmes in Africa, Asia, and South America (low-income settings) and 12 HIV cohort studies from Europe and North America (high-income settings) provided data for 4810 and 22,217, respectively, treatment-naïve adult patients sta...
+
+--- Uniform Samples (ranks: [394, 786, 1178, 1571, 1964]) ---
+
+[Rank 394] Doc ID: 17967608 | Score: 0.010610
+  Title: PAD4 is essential for antibacterial innate immunity mediated by neutrophil extracellular traps
+  Text: Neutrophils trap and kill bacteria by forming highly decondensed chromatin structures, termed neutrophil extracellular traps (NETs). We previously reported that histone hypercitrullination catalyzed by peptidylarginine deiminase 4 (PAD4) correlates with chromatin decondensation during NET formation. However, the role of PAD4 in NET-mediated bacterial trapping and killing has not been tested. Here, we use PAD4 knockout mice to show that PAD4 is essential for NET-mediated antibacterial function. U...
+
+[Rank 786] Doc ID: 4467129 | Score: 0.007316
+  Title: Multiple mechanisms disrupt the let-7 microRNA family in neuroblastoma
+  Text: Poor prognosis in neuroblastoma is associated with genetic amplification of MYCN. MYCN is itself a target of let-7, a tumour suppressor family of microRNAs implicated in numerous cancers. LIN28B, an inhibitor of let-7 biogenesis, is overexpressed in neuroblastoma and has been reported to regulate MYCN. Here we show, however, that LIN28B is dispensable in MYCN-amplified neuroblastoma cell lines, despite de-repression of let-7. We further demonstrate that MYCN messenger RNA levels in amplified dis...
+
+[Rank 1178] Doc ID: 857189 | Score: 0.006078
+  Title: Autosomal dominant immune dysregulation syndrome in humans with CTLA4 mutations
+  Text: The protein cytotoxic T lymphocyte antigen-4 (CTLA-4) is an essential negative regulator of immune responses, and its loss causes fatal autoimmunity in mice. We studied a large family in which five individuals presented with a complex, autosomal dominant immune dysregulation syndrome characterized by hypogammaglobulinemia, recurrent infections and multiple autoimmune clinical features. We identified a heterozygous nonsense mutation in exon 1 of CTLA4. Screening of 71 unrelated patients with comp...
+
+[Rank 1571] Doc ID: 6767133 | Score: 0.005375
+  Title: Patient preferences and expectations for care: determinants in patients with lumbar intervertebral disc herniation.
+  Text: STUDY DESIGN Prospective observational cohort. OBJECTIVE To describe the baseline characteristics of patients with a diagnosis of intervertebral disc herniation who had different treatment preferences and the relationship of specific expectations with those preferences. SUMMARY OF BACKGROUND DATA Data were gathered from the observational cohort of the Spine Patient Outcomes Research Trial (SPORT). Patients in the observational cohort met eligibility requirements identical to those of the randomi...
+
+[Rank 1964] Doc ID: 24384587 | Score: 0.004981
+  Title: Interleukin 18 function in atherosclerosis is mediated by the interleukin 18 receptor and the Na-Cl co-transporter
+  Text: Interleukin-18 (IL18) participates in atherogenesis through several putative mechanisms. Interruption of IL18 action reduces atherosclerosis in mice. Here, we show that absence of the IL18 receptor (IL18r) does not affect atherosclerosis in apolipoprotein E–deficient (Apoe−/−) mice, nor does it affect IL18 cell surface binding to or signaling in endothelial cells. As identified initially by co-immunoprecipitation with IL18, we found that IL18 interacts with the Na-Cl co-transporter (NCC; also kn...
+
+====================================================================================================
+QUERY ID: 127
+----------------------------------------------------------------------------------------------------
+Query: Arginine 90 in p150n is important for interaction with EB1.
+====================================================================================================
+
+Using RRF aggregation | Total docs ranked: 2451
+
+--- Rank Comparison (Top-5 docs) ---
+Doc ID       |  BORDA |    RRF |      bge |     bm25 |  colbert |       e5 |   splade
+-------------------------------------------------------------------------------------
+35231675     |      1 |      1 |       10 |        1 |        3 |       11 |        3
+21598000     |     34 |      2 |        1 |      N/A |        1 |        1 |        1
+11048759     |     35 |      3 |        2 |      N/A |       11 |        2 |       10
+3765739      |      2 |      4 |        6 |       71 |       17 |        4 |       73
+10423989     |      3 |      5 |       69 |       21 |        2 |      164 |        2
+
+--- Top-5 Documents (RRF) ---
+
+[Rank 1] Doc ID: 35231675 | Score: 0.076510
+  Title: CLIP-170 interacts with dynactin complex and the APC-binding protein EB1 by different mechanisms.
+  Text: CLIP-170 is a "cytoplasmic linker protein" implicated in endosome-microtubule interactions and in control of microtubule dynamics. CLIP-170 localizes dynamically to growing microtubule plus ends, colocalizing with the dynein activator dynactin and the APC-binding protein EB1. This shared "plus-end tracking" behavior suggests that CLIP-170 might interact with dynactin and/or EB1. We have used site-specific mutagenesis of CLIP-170 and a transfection/colocalization assay to address this question in...
+
+[Rank 2] Doc ID: 21598000 | Score: 0.066516
+  Title: Structural basis for the activation of microtubule assembly by the EB1 and p150Glued complex.
+  Text: Plus-end tracking proteins, such as EB1 and the dynein/dynactin complex, regulate microtubule dynamics. These proteins are thought to stabilize microtubules by forming a plus-end complex at microtubule growing ends with ill-defined mechanisms. Here we report the crystal structure of two plus-end complex components, the carboxy-terminal dimerization domain of EB1 and the microtubule binding (CAP-Gly) domain of the dynactin subunit p150Glued. Each molecule of the EB1 dimer contains two helices for...
+
+[Rank 3] Doc ID: 11048759 | Score: 0.061571
+  Title: Identification of Epstein-Barr virus nuclear antigen 1 protein domains that direct interactions at a distance between DNA-bound proteins.
+  Text: The EBNA1 protein of Epstein-Barr virus (EBV) binds to and activates DNA replication from the EBV latent origin of replication, oriP, via a direct interaction with the two noncontiguous subelements of oriP. The EBNA1 molecules bound to the oriP subelements interact efficiently with each other by a DNA looping mechanism. We have previously mapped a region of EBNA1 (termed the looping region) that is required to mediate the interaction of the EBNA1 molecules bound to the oriP subelements. We now d...
+
+[Rank 4] Doc ID: 3765739 | Score: 0.058916
+  Title: Epstein-Barr Virus nuclear antigen 1 (EBNA1) confers resistance to apoptosis in EBV-positive B-lymphoma cells through up-regulation of survivin.
+  Text: Resistance to apoptosis is an important component of the overall mechanism which drives the tumorigenic process. EBV is a ubiquitous human gamma-herpesvirus which preferentially establishes latent infection in viral infected B-lymphocytes. EBNA1 is typically expressed in most forms of EBV-positive malignancies and is important for replication of the latent episome in concert with replication of the host cells. Here, we investigate the effects of EBNA1 on survivin up-regulation in EBV-infected hu...
+
+[Rank 5] Doc ID: 10423989 | Score: 0.056820
+  Title: A coactivator of pre-mRNA splicing.
+  Text: The nuclear matrix antigen recognized by the monoclonal antibody (mAb) B1C8 is a novel serine (S) and arginine (R)-rich protein associated with splicing complexes and is named here SRm160 (SR-related matrix protein of 160 kD). SRm160 contains multiple SR repeats, but unlike proteins of the SR family of splicing factors, lacks an RNA recognition motif. SRm160 and a related protein SRm300 (the 300-kD nuclear matrix antigen recognized by mAb B4A11) form a complex that is required for the splicing o...
+
+--- Uniform Samples (ranks: [409, 818, 1226, 1634, 2043]) ---
+
+[Rank 409] Doc ID: 24730100 | Score: 0.011443
+  Title: Cyclic AMP-dependent phosphorylation of thromboxane A(2) receptor-associated Galpha(13).
+  Text: Although it is well established that cAMP inhibits platelet activation induced by all agonists, the thromboxane A(2) signal transduction pathway was found to be particularly sensitive to such inhibition. Therefore, we examined whether cAMP-dependent kinase mediates phosphorylation of the thromboxane A(2) receptor-G-protein complex. It was found that cAMP induces protein kinase A-dependent [gamma-(32)P]ATP labeling of solubilized membrane proteins in the region of Galpha subunits, i.e. 38-45 kDa....
+
+[Rank 818] Doc ID: 11420613 | Score: 0.007574
+  Title: Molecular mechanisms of ribosomal protein gene coregulation.
+  Text: The 137 ribosomal protein genes (RPGs) of Saccharomyces provide a model for gene coregulation. We examined the positional and functional organization of their regulators (Rap1 [repressor activator protein 1], Fhl1, Ifh1, Sfp1, and Hmo1), the transcription machinery (TFIIB, TFIID, and RNA polymerase II), and chromatin at near-base-pair resolution using ChIP-exo, as RPGs are coordinately reprogrammed. Where Hmo1 is enriched, Fhl1, Ifh1, Sfp1, and Hmo1 cross-linked broadly to promoter DNA in an RPG...
+
+[Rank 1226] Doc ID: 17939443 | Score: 0.006106
+  Title: Displacement of a DNA binding protein by Dda helicase
+  Text: Bacteriophage T4 Dda helicase has recently been shown to be active as a monomer for unwinding of short duplex oligonucleotides and for displacing streptavidin from 3′-biotinylated oligonucleotides. However, its activity for streptavidin displacement and DNA unwinding has been shown to increase as the number of Dda molecules bound to the substrate molecule increases. A substrate was designed to address the ability of Dda to displace DNA binding proteins. A DNA binding site for the Escherichia col...
+
+[Rank 1634] Doc ID: 35395662 | Score: 0.005365
+  Title: Similar activation of signal transduction pathways by the herpesvirus-encoded chemokine receptors US28 and ORF74.
+  Text: The virally encoded chemokine receptors US28 from human cytomegalovirus and ORF74 from human herpesvirus 8 are both constitutively active. We show that both receptors constitutively activate the transcription factors nuclear factor of activated T cells (NFAT) and cAMP response element binding protein (CREB) and that both pathways are modulated by their respective endogenous receptor ligands. By addition of specific pathway modulators against the G protein subunit Galphai, phospholipase C, protei...
+
+[Rank 2043] Doc ID: 1791637 | Score: 0.004960
+  Title: Genomewide Analysis of PRC1 and PRC2 Occupancy Identifies Two Classes of Bivalent Domains
+  Text: In embryonic stem (ES) cells, bivalent chromatin domains with overlapping repressive (H3 lysine 27 tri-methylation) and activating (H3 lysine 4 tri-methylation) histone modifications mark the promoters of more than 2,000 genes. To gain insight into the structure and function of bivalent domains, we mapped key histone modifications and subunits of Polycomb-repressive complexes 1 and 2 (PRC1 and PRC2) genomewide in human and mouse ES cells by chromatin immunoprecipitation, followed by ultra high-t...
+
+================================================================================
+DIAGNOSTICS COMPLETE
+================================================================================

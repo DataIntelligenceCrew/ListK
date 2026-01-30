@@ -1,0 +1,25 @@
+{
+  "name": "LTFilter+LMPQSelect Results (L=5)",
+  "description": "Results from LTFilter tournament filtering with L=5, followed by LMPQSelect.",
+  "method": "LTFilter (tournament filter) + LMPQSelect (multi-pivot quickselect)",
+  "file_schema": {
+    "bier_result_unsorted_{p}_{x}_{num_queries}.csv": {
+      "description": "Unsorted top-K results after LTFilter + LMPQSelect",
+      "columns": {
+        "q": "Query index (0-based)",
+        "qid": "Query ID from dataset",
+        "did": "Stringified list of top-K document IDs",
+        "time": "Execution time in seconds"
+      }
+    }
+  },
+  "parameters": {
+    "L": "5",
+    "p": 16,
+    "x": 2,
+    "k": 10,
+    "num_queries": 25
+  },
+  "dataset": "SciFact (BEIR)",
+  "note": "L parameter controls tournament filter aggressiveness. Lower L = more aggressive filtering = faster but potentially lower recall."
+}

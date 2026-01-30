@@ -1,0 +1,28 @@
+{
+  "phase": 4,
+  "phase_name": "rerank_aggregation",
+  "dataset": "scifact",
+  "rerankers": [
+    "bge_reranker",
+    "minilm_l12",
+    "minilm_l6",
+    "mmarco_minilm"
+  ],
+  "num_queries": 1109,
+  "methods": {
+    "rrf": {
+      "status": "completed",
+      "num_rankings": 554500,
+      "elapsed_seconds": 82.296538,
+      "output_file": "aggregated_rrf.parquet"
+    },
+    "borda": {
+      "status": "completed",
+      "num_rankings": 554500,
+      "elapsed_seconds": 84.112178,
+      "output_file": "aggregated_borda.parquet"
+    }
+  },
+  "rrf_k": 60,
+  "timestamp": "2025-12-28T23:38:19.159559+00:00"
+}

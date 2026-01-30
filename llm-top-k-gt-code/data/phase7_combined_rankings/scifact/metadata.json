@@ -1,0 +1,99 @@
+{
+  "phase": 7,
+  "phase_name": "combined_corpus_rankings",
+  "dataset": "scifact",
+  "agg_method": "rrf",
+  "corpus_size": 5183,
+  "queries": {
+    "94": {
+      "status": "completed",
+      "num_docs": 5183,
+      "tier_counts": {
+        "unranked": 2609,
+        "ir": 2074,
+        "llm": 500
+      },
+      "elapsed_seconds": 0.866279
+    },
+    "99": {
+      "status": "completed",
+      "num_docs": 5183,
+      "tier_counts": {
+        "unranked": 2802,
+        "ir": 1881,
+        "llm": 500
+      },
+      "elapsed_seconds": 0.503795
+    },
+    "100": {
+      "status": "completed",
+      "num_docs": 5183,
+      "tier_counts": {
+        "unranked": 3199,
+        "ir": 1484,
+        "llm": 500
+      },
+      "elapsed_seconds": 0.483457
+    },
+    "113": {
+      "status": "completed",
+      "num_docs": 5183,
+      "tier_counts": {
+        "unranked": 2835,
+        "ir": 1848,
+        "llm": 500
+      },
+      "elapsed_seconds": 0.483363
+    },
+    "115": {
+      "status": "completed",
+      "num_docs": 5183,
+      "tier_counts": {
+        "unranked": 2495,
+        "ir": 2188,
+        "llm": 500
+      },
+      "elapsed_seconds": 0.485562
+    },
+    "118": {
+      "status": "completed",
+      "num_docs": 5183,
+      "tier_counts": {
+        "unranked": 2844,
+        "ir": 1839,
+        "llm": 500
+      },
+      "elapsed_seconds": 0.483918
+    },
+    "124": {
+      "status": "completed",
+      "num_docs": 5183,
+      "tier_counts": {
+        "unranked": 2827,
+        "ir": 1856,
+        "llm": 500
+      },
+      "elapsed_seconds": 0.470009
+    },
+    "127": {
+      "status": "completed",
+      "num_docs": 5183,
+      "tier_counts": {
+        "unranked": 2732,
+        "ir": 1951,
+        "llm": 500
+      },
+      "elapsed_seconds": 0.478531
+    }
+  },
+  "timestamp": "2026-01-08T16:34:12.370604+00:00",
+  "summary": {
+    "completed_queries": 8,
+    "total_queries": 8,
+    "avg_llm_docs": 500.0,
+    "avg_reranker_docs": 0.0,
+    "avg_ir_docs": 1890.125,
+    "avg_unranked_docs": 2792.875
+  },
+  "end_timestamp": "2026-01-08T16:34:16.640770+00:00"
+}

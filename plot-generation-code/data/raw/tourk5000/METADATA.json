@@ -1,0 +1,33 @@
+{
+  "name": "Tournament Top-K Results",
+  "description": "Results from Tournament-based top-K selection algorithm.",
+  "method": "Tournament Top-K - uses tournament-style pairwise comparisons to select top-K documents",
+  "file_schemas": {
+    "bier_result_unsorted_tour_10_25.csv": {
+      "description": "Raw tournament top-K results",
+      "columns": {
+        "q": "Query index (0-based)",
+        "qid": "Query ID from dataset",
+        "did": "Stringified list of top-K document IDs in ranked order",
+        "time": "Execution time in seconds"
+      }
+    },
+    "bier_formatted_tour_10_25.json": {
+      "description": "Formatted results as JSON mapping qid -> {doc_id: rank}",
+      "format": "JSON object where keys are query IDs, values are objects mapping doc_id to rank (10=best, 1=worst)"
+    },
+    "bier_metrics_tour_10_25.csv": {
+      "description": "Pre-computed HGT metrics for K=10, 25 queries",
+      "columns": {
+        "Recall@10": "Recall at K=10 (HGT ground truth)",
+        "NDCG@10": "NDCG at K=10 (HGT ground truth)",
+        "time": "Mean execution time in seconds"
+      }
+    }
+  },
+  "parameters": {
+    "k": 10,
+    "num_queries": 25
+  },
+  "dataset": "SciFact (BEIR)"
+}

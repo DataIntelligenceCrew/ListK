@@ -1,0 +1,66 @@
+{
+  "name": "LLM Ground Truth Metrics",
+  "description": "Pre-computed Recall@K and NDCG@K metrics for LOTUS and Tournament baselines, evaluated against LLM-as-a-judge ground truth rankings.",
+  "generated_by": "src/scripts/compute_baseline_metrics.py",
+  "ground_truth_source": "llm-topk-gt/data/phase7_combined_rankings/scifact/",
+  "files": {
+    "lotus_zephyr_metrics_llm_10_24.csv": {
+      "description": "Per-query metrics for LOTUS Zephyr-7B",
+      "columns": {
+        "qid": "Query ID",
+        "Recall@10": "Recall at K=10",
+        "NDCG@10": "Normalized DCG at K=10",
+        "time": "Execution time in seconds"
+      },
+      "num_queries": 24
+    },
+    "lotus_zephyr_metrics_llm_agg_10_24.csv": {
+      "description": "Aggregated (mean) metrics for LOTUS Zephyr-7B",
+      "columns": {
+        "Recall@10": "Mean Recall@10 across all queries",
+        "NDCG@10": "Mean NDCG@10 across all queries",
+        "time": "Mean execution time in seconds"
+      }
+    },
+    "lotus_qwen_metrics_llm_10_20.csv": {
+      "description": "Per-query metrics for LOTUS QWEN3-8B",
+      "columns": {
+        "qid": "Query ID",
+        "Recall@10": "Recall at K=10",
+        "NDCG@10": "Normalized DCG at K=10",
+        "time": "Execution time in seconds"
+      },
+      "num_queries": 20
+    },
+    "lotus_qwen_metrics_llm_agg_10_20.csv": {
+      "description": "Aggregated (mean) metrics for LOTUS QWEN3-8B",
+      "columns": {
+        "Recall@10": "Mean Recall@10 across all queries",
+        "NDCG@10": "Mean NDCG@10 across all queries",
+        "time": "Mean execution time in seconds"
+      }
+    },
+    "tournament_metrics_llm_10_25.csv": {
+      "description": "Per-query metrics for Tournament Top-K",
+      "columns": {
+        "qid": "Query ID",
+        "Recall@10": "Recall at K=10",
+        "NDCG@10": "Normalized DCG at K=10",
+        "time": "Execution time in seconds"
+      },
+      "num_queries": 25
+    },
+    "tournament_metrics_llm_agg_10_25.csv": {
+      "description": "Aggregated (mean) metrics for Tournament Top-K",
+      "columns": {
+        "Recall@10": "Mean Recall@10 across all queries",
+        "NDCG@10": "Mean NDCG@10 across all queries",
+        "time": "Mean execution time in seconds"
+      }
+    }
+  },
+  "metrics_definitions": {
+    "Recall@K": "Fraction of top-K ground truth documents found in top-K retrieved results",
+    "NDCG@K": "Normalized Discounted Cumulative Gain - measures ranking quality with position-based discounting"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "Window Size Sweep Experiments",
+  "description": "Experiments varying the window size (W) parameter for semantic sorting.",
+  "method": "LMPQSelect with varying window sizes",
+  "file_schema": {
+    "bier_result_unsorted_E_{W}_{num_queries}_A.csv": {
+      "description": "Results for window size W with early stopping",
+      "columns": {
+        "q": "Query index (0-based)",
+        "qid": "Query ID from dataset",
+        "did": "Stringified list of top-K document IDs",
+        "time": "Execution time in seconds"
+      }
+    }
+  },
+  "parameters": {
+    "W_values": [4, 8, 16, 32, 48, 64, 128],
+    "k": 10,
+    "num_queries": 25
+  },
+  "parameters_legend": {
+    "W": "Window size for semantic sorting - larger windows consider more documents for reranking",
+    "E": "Early stopping enabled"
+  },
+  "dataset": "SciFact (BEIR)"
+}

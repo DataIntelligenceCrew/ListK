@@ -1,0 +1,29 @@
+{
+  "name": "P×X Grid Experiments (No Early Stopping)",
+  "description": "Multi-pivot quickselect experiments across P×X parameter grid without early stopping.",
+  "method": "LMPQSelect without early stopping optimization",
+  "early_stopping": false,
+  "file_schema": {
+    "bier_result_unsorted_{p}_{x}_{num_queries}.csv": {
+      "description": "Unsorted top-K results for given p, x parameters",
+      "columns": {
+        "q": "Query index (0-based)",
+        "qid": "Query ID from dataset",
+        "did": "Stringified list of top-K document IDs (unsorted)",
+        "time": "Execution time in seconds"
+      }
+    }
+  },
+  "parameters": {
+    "p_values": [1, 2, 4, 8, 16],
+    "x_values": [1, 2, 4, 8, 16],
+    "k": 10,
+    "num_queries": 25
+  },
+  "parameters_legend": {
+    "p": "Number of pivots in multi-pivot quickselect",
+    "x": "Expansion factor - how many extra documents to consider per pivot"
+  },
+  "dataset": "SciFact (BEIR)",
+  "note": "Only lower triangular of P×X grid is valid (p >= x). Compare with 5000e/ for early stopping comparison."
+}

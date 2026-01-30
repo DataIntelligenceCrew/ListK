@@ -1,0 +1,69 @@
+{
+  "name": "HGT (Hierarchical Ground Truth) Experiment Data",
+  "description": "Results from LMPQSelect/Sort experiments with various configurations, evaluated against HGT ground truth.",
+  "method": "LMPQSelect (List-wise Multi-Pivot Quickselect) with semantic sorting",
+  "subdirectories": {
+    "pairwise_data": {
+      "description": "Pairwise quickselect/sort baseline (equivalent to LOTUS Top-K approach)",
+      "parameters": {"p": 1, "x": 1, "L": 2, "W": 2}
+    },
+    "16_2_data": {
+      "description": "LMPQSelect/Sort with p=16, x=2, L=20, W=20",
+      "parameters": {"p": 16, "x": 2, "L": 20, "W": 20}
+    },
+    "l1data": {
+      "description": "LTFilter+LMPQSelect/Sort with S=1 (tournament filter stage)",
+      "parameters": {"p": 16, "x": 2, "L": 1, "W": 20}
+    },
+    "l2data": {
+      "description": "LTFilter+LMPQSelect/Sort with S=2",
+      "parameters": {"p": 16, "x": 2, "L": 2, "W": 20}
+    },
+    "l5data": {
+      "description": "LTFilter+LMPQSelect/Sort with S=5",
+      "parameters": {"p": 16, "x": 2, "L": 5, "W": 20}
+    },
+    "l10data": {
+      "description": "LTFilter+LMPQSelect/Sort with S=10",
+      "parameters": {"p": 16, "x": 2, "L": 10, "W": 20}
+    },
+    "l15data": {
+      "description": "LTFilter+LMPQSelect/Sort with S=15",
+      "parameters": {"p": 16, "x": 2, "L": 15, "W": 20}
+    },
+    "w128data": {
+      "description": "LMPQSelect/Sort with large window W=128",
+      "parameters": {"p": 1, "x": 1, "L": 1, "W": 128}
+    }
+  },
+  "file_schemas": {
+    "bier_sorted_10_{p}_{x}_{L}_{W}.csv": {
+      "description": "Sorted top-K results",
+      "columns": {
+        "q": "Query index (0-based)",
+        "qid": "Query ID from dataset",
+        "did": "Stringified list of top-K document IDs in sorted order",
+        "time": "Execution time in seconds"
+      }
+    },
+    "bier_metrics_sorted_{p}_{x}_{L}_{W}_{k}_{num_queries}.csv": {
+      "description": "Pre-computed HGT metrics",
+      "columns": {
+        "Recall@K": "Recall at specified K",
+        "NDCG@K": "NDCG at specified K",
+        "MAP@K": "Mean Average Precision at K",
+        "P@K": "Precision at K",
+        "time": "Mean execution time in seconds"
+      }
+    }
+  },
+  "parameters_legend": {
+    "p": "Number of pivots in multi-pivot quickselect",
+    "x": "Expansion factor for pivot selection",
+    "L": "List length parameter (S in LTFilter notation)",
+    "W": "Window size for semantic sorting",
+    "k": "Top-K value",
+    "num_queries": "Number of queries evaluated"
+  },
+  "dataset": "SciFact (BEIR)"
+}

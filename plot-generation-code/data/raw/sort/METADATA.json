@@ -1,0 +1,29 @@
+{
+  "name": "Semantic Sort Experiments",
+  "description": "Experiments for semantic sorting with different window sizes.",
+  "method": "Semantic sorting using LLM-based pairwise comparisons",
+  "subdirectories": {
+    "hgt_metrics": {
+      "description": "Pre-computed HGT metrics for sort experiments"
+    }
+  },
+  "file_schema": {
+    "bier_sort_result_{W}_{num_queries}.csv": {
+      "description": "Sort results for window size W",
+      "columns": {
+        "q": "Query index (0-based)",
+        "qid": "Query ID from dataset",
+        "did": "Stringified list of document IDs in sorted order",
+        "time": "Execution time in seconds"
+      }
+    }
+  },
+  "parameters": {
+    "W_values": [20, 50, 100, 250, 500, 750, 1000],
+    "num_queries": 25
+  },
+  "parameters_legend": {
+    "W": "Window size - number of top documents to sort semantically"
+  },
+  "dataset": "SciFact (BEIR)"
+}

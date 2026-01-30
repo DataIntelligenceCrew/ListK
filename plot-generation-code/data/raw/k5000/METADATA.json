@@ -1,0 +1,26 @@
+{
+  "name": "K-Value Experiments",
+  "description": "LMPQSelect experiments varying the K parameter (top-K value).",
+  "method": "LMPQSelect with different K values",
+  "file_schema": {
+    "bier_result_unsorted_{p}_{x}_{k}_{num_queries}.csv": {
+      "description": "Results for given K value",
+      "columns": {
+        "q": "Query index (0-based)",
+        "qid": "Query ID from dataset",
+        "did": "Stringified list of top-K document IDs",
+        "time": "Execution time in seconds"
+      }
+    }
+  },
+  "parameters": {
+    "k_values": [10, 20, 50, 100],
+    "p": 16,
+    "x": 2,
+    "num_queries": 25
+  },
+  "parameters_legend": {
+    "k": "Top-K value - number of documents to retrieve"
+  },
+  "dataset": "SciFact (BEIR)"
+}
