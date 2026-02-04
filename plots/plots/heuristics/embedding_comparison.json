@@ -1,0 +1,16 @@
+{
+  "title": "Latency for Embedding vs Non-Embedding Pivot Selection",
+  "xlabel": "Pivot Selection Method",
+  "ylabel": "Latency (s)",
+  "description": "Compares execution latency between pivot selection with and without embedding-based heuristics.",
+  "data_sources": [
+    "5000e/bier_result_unsorted_16_2_25.csv",
+    "no-em-p/bier_result_unsorted_16_2_25.csv"
+  ],
+  "algorithm": "Multi-pivot Quickselect",
+  "parameters": {
+    "p": 16,
+    "x": 2,
+    "num_queries": 25
+  }
+}

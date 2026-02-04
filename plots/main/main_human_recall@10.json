@@ -1,0 +1,28 @@
+{
+  "title": "HGT Method Comparison: Recall@10 vs Latency",
+  "xlabel": "Latency (s)",
+  "ylabel": "Recall@10",
+  "description": "Compares different algorithm configurations on Recall@10 using pre-computed HGT metrics.",
+  "data_sources": [
+    "data/raw/tourk5000/bier_metrics_tour_10_25.csv",
+    "data/derived/hgt_data/16_2_data/bier_metrics_sorted_16_2_20_2_10_25.csv",
+    "data/derived/hgt_data/l1data/bier_metrics_sorted_16_2_1_2_10_25.csv",
+    "data/derived/hgt_data/l2data/bier_metrics_sorted_16_2_2_2_10_25.csv",
+    "data/derived/hgt_data/l5data/bier_metrics_sorted_16_2_5_2_10_25.csv",
+    "data/derived/hgt_data/l10data/bier_metrics_sorted_16_2_10_2_10_25.csv",
+    "data/derived/hgt_data/l15data/bier_metrics_sorted_16_2_15_2_10_25.csv",
+    "data/derived/hgt_data/pairwise_data/bier_metrics_sorted_1_1_2_2_10_25.csv",
+    "data/raw/dllmdata/zephyr/bier_metrics_sorted_16_2_20_2_10_25.csv",
+    "data/raw/dllmdata/qwen/bier_metrics_sorted_16_2_20_2_10_25.csv",
+    "data/raw/lotusk/qwen_data/bier_metrics_lotus_10_25.csv",
+    "data/raw/lotusk/combined_z7b/bier_metrics_lotus_10_25.csv",
+    "data/raw/bier_pointwise/qwen/bier_metrics_lotus_10_25.csv",
+    "data/raw/bier_pointwise/zephyr/bier_metrics_lotus_10_25.csv"
+  ],
+  "algorithm": "Multi-pivot Quickselect variants + baselines",
+  "parameters": {
+    "k": 10,
+    "ground_truth": "HGT pre-computed metrics",
+    "num_queries": 25
+  }
+}

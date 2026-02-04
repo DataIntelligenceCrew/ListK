@@ -1,0 +1,23 @@
+{
+  "title": "Impact of Pairwise Rerank Heuristic",
+  "description": "Compares LMPQSelect/Sort with and without pairwise quicksort reranking of top-10 results",
+  "data": {
+    "without_pairwise": {
+      "config": "L=20, W=20",
+      "hgt_ndcg": 0.46501,
+      "llm_ndcg": 0.4468,
+      "time": 455.48
+    },
+    "with_pairwise": {
+      "config": "L=20, W=2",
+      "hgt_ndcg": 0.84136,
+      "llm_ndcg": 0.5167,
+      "time": 461.13
+    },
+    "improvement": {
+      "hgt_ndcg_delta": 0.37635,
+      "llm_ndcg_delta": 0.06990000000000007,
+      "time_delta": 5.649999999999977
+    }
+  }
+}

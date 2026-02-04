@@ -1,0 +1,26 @@
+Metadata-Version: 2.4
+Name: ListK
+Version: 0.0.1
+Summary: A database specialized for Semantic Operators with LIstwise, Custom LM Execution.
+Requires-Python: <3.11,>=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: pydantic>=2.0
+Requires-Dist: pandas==2.3.3
+Requires-Dist: rank-llm[all]==0.21.0
+Requires-Dist: vllm==0.9.1
+Requires-Dist: transformers<4.54.0
+Requires-Dist: sentence-transformers<4.0.0,>=3.0.1
+Requires-Dist: beir>=2.0.0
+Requires-Dist: datasets>=3.1
+Requires-Dist: pyarrow>=14.0
+Requires-Dist: lotus-ai
+Requires-Dist: duckdb
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: tqdm>=4.65
+Requires-Dist: numpy>=1.24
+Requires-Dist: matplotlib>=3.10.8
+Requires-Dist: seaborn>=0.13.2
+
+Note: This is experimental code and not currently a drop-in library. Also the code base is concurrently not cleaned up as of yet.
+
+All code from the three repositories added. Will clean later.
