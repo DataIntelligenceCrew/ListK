@@ -19,7 +19,7 @@ from dataclasses import dataclass
 from enum import Enum, auto
 from typing import Any
 
-from solicedb.logical_ir.types import DType
+from listk.logical_ir.types import DType
 
 
 class BinaryOp(Enum):

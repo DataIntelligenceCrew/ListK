@@ -22,10 +22,10 @@ Example Usage
 """
 
 # Types
-from solicedb.logical_ir.types import DType, Schema
+from listk.logical_ir.types import DType, Schema
 
 # Expressions
-from solicedb.logical_ir.expressions import (
+from listk.logical_ir.expressions import (
     # Enums
     AggFunc,
     BinaryOp,
@@ -66,10 +66,10 @@ from solicedb.logical_ir.expressions import (
 )
 
 # Semantic specifications
-from solicedb.logical_ir.specs import ALL_COLUMNS_MARKER, SemanticSpec
+from listk.logical_ir.specs import ALL_COLUMNS_MARKER, SemanticSpec
 
 # Hints
-from solicedb.logical_ir.hints import (
+from listk.logical_ir.hints import (
     GlobalHints,
     OperatorHints,
     SemanticFilterHints,
@@ -82,7 +82,7 @@ from solicedb.logical_ir.hints import (
 )
 
 # Nodes
-from solicedb.logical_ir.nodes import (
+from listk.logical_ir.nodes import (
     # Type aliases and enums
     JoinType,
     NodeId,
@@ -109,7 +109,7 @@ from solicedb.logical_ir.nodes import (
 )
 
 # Query plan
-from solicedb.logical_ir.plan import QueryPlan
+from listk.logical_ir.plan import QueryPlan
 
 __all__ = [
     # Types

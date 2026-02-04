@@ -1,4 +1,4 @@
-from solicedb.llm.plm import MultiGenericRankLM
+from listk.llm.plm import MultiGenericRankLM
 import random
 import os
 import time

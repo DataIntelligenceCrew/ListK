@@ -15,8 +15,8 @@ import json
 from dataclasses import dataclass, field
 from typing import Any
 
-from solicedb.logical_ir.expressions import Aggregation, Expr
-from solicedb.logical_ir.hints import (
+from listk.logical_ir.expressions import Aggregation, Expr
+from listk.logical_ir.hints import (
     GlobalHints,
     SemanticFilterHints,
     SemanticFillHints,
@@ -26,7 +26,7 @@ from solicedb.logical_ir.hints import (
     SemanticSummarizeHints,
     SemanticTopKHints,
 )
-from solicedb.logical_ir.nodes import (
+from listk.logical_ir.nodes import (
     Distinct,
     GroupBy,
     Join,
@@ -46,8 +46,8 @@ from solicedb.logical_ir.nodes import (
     SortDirection,
     Source,
 )
-from solicedb.logical_ir.specs import SemanticSpec
-from solicedb.logical_ir.types import DType, Schema
+from listk.logical_ir.specs import SemanticSpec
+from listk.logical_ir.types import DType, Schema
 
 
 @dataclass

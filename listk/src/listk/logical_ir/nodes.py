@@ -16,9 +16,9 @@ from abc import ABC
 from dataclasses import dataclass
 from enum import Enum, auto
 
-from solicedb.logical_ir import and_, gt, col, lit, ge, sub, count, avg, eq
-from solicedb.logical_ir.expressions import Aggregation, Expr
-from solicedb.logical_ir.hints import (
+from listk.logical_ir import and_, gt, col, lit, ge, sub, count, avg, eq
+from listk.logical_ir.expressions import Aggregation, Expr
+from listk.logical_ir.hints import (
     SemanticFilterHints,
     SemanticFillHints,
     SemanticGroupByHints,
@@ -27,8 +27,8 @@ from solicedb.logical_ir.hints import (
     SemanticSummarizeHints,
     SemanticTopKHints,
 )
-from solicedb.logical_ir.specs import SemanticSpec
-from solicedb.logical_ir.types import DType, Schema
+from listk.logical_ir.specs import SemanticSpec
+from listk.logical_ir.types import DType, Schema
 
 
 

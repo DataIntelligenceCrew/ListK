@@ -23,11 +23,11 @@ Module Structure
 """
 
 # Annotations and properties
-from solicedb.physical_ir.annotations import (
+from listk.physical_ir.annotations import (
     CostEstimate,
     Provenance,
 )
-from solicedb.physical_ir.properties import (
+from listk.physical_ir.properties import (
     Ordering,
     Partitioning,
     PhysicalProperties,
@@ -35,7 +35,7 @@ from solicedb.physical_ir.properties import (
 )
 
 # Base node and classical operators
-from solicedb.physical_ir.nodes import (
+from listk.physical_ir.nodes import (
     # Type alias
     PhysicalNodeId,
     # Base class
@@ -59,7 +59,7 @@ from solicedb.physical_ir.nodes import (
 )
 
 # Physical plan container
-from solicedb.physical_ir.plan import PhysicalPlan
+from listk.physical_ir.plan import PhysicalPlan
 
 __all__ = [
     # Annotations

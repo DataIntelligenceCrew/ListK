@@ -1,4 +1,4 @@
-from solicedb.llm.plm import MultiRankZephyrLM
+from listk.llm.plm import MultiRankZephyrLM
 import random
 import time
 import os

@@ -21,11 +21,11 @@ from abc import ABC
 from dataclasses import dataclass, field
 from enum import Enum, auto
 
-from solicedb.logical_ir.expressions import Aggregation, Expr
-from solicedb.logical_ir.nodes import JoinType
-from solicedb.logical_ir.types import Schema
-from solicedb.physical_ir.annotations import CostEstimate, Provenance
-from solicedb.physical_ir.properties import Ordering, PhysicalProperties
+from listk.logical_ir.expressions import Aggregation, Expr
+from listk.logical_ir.nodes import JoinType
+from listk.logical_ir.types import Schema
+from listk.physical_ir.annotations import CostEstimate, Provenance
+from listk.physical_ir.properties import Ordering, PhysicalProperties
 
 
 # Type alias for physical node identifiers

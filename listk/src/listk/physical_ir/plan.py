@@ -14,9 +14,9 @@ import json
 from dataclasses import dataclass, field
 from typing import Any, Callable, Iterator
 
-from solicedb.physical_ir.annotations import CostEstimate, Provenance
-from solicedb.physical_ir.nodes import PhysicalNode, PhysicalNodeId
-from solicedb.physical_ir.properties import PhysicalProperties
+from listk.physical_ir.annotations import CostEstimate, Provenance
+from listk.physical_ir.nodes import PhysicalNode, PhysicalNodeId
+from listk.physical_ir.properties import PhysicalProperties
 
 
 @dataclass
@@ -387,7 +387,7 @@ class PhysicalPlan:
 
     def _get_display_attrs(self, node: PhysicalNode) -> str:
         """Get key attributes for display based on node type."""
-        from solicedb.physical_ir.nodes import (
+        from listk.physical_ir.nodes import (
             TableScan, Filter, Project, HashJoin, SortMergeJoin,
             NestedLoopJoin, HashAggregate, Sort, Limit,
         )

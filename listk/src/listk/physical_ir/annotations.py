@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
-from solicedb.logical_ir.nodes import NodeId
+from listk.logical_ir.nodes import NodeId
 
 
 @dataclass(frozen=True)
