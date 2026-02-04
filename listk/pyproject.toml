@@ -5,15 +5,22 @@ description = "A database specialized for Semantic Operators with LIstwise, Cust
 readme = "README.md"
 requires-python = ">=3.10,<3.11"
 dependencies = [
+    "pydantic>=2.0",
     "pandas==2.3.3",
     "rank-llm[all]==0.21.0",
     "vllm==0.9.1",
     "transformers<4.54.0",
     "sentence-transformers>=3.0.1,<4.0.0",
-    "beir == 2.2.0",
-    "pyarrow",
+    "beir>=2.0.0",
+    "datasets>=3.1",
+    "pyarrow>=14.0",
     "lotus-ai",
     "duckdb",
+    "pyyaml>=6.0",
+    "tqdm>=4.65",
+    "numpy>=1.24",
+    "matplotlib>=3.10.8",
+    "seaborn>=0.13.2",
 ]
 
 [tool.setuptools]
