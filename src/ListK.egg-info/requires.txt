@@ -14,3 +14,4 @@ tqdm>=4.65
 numpy>=1.24
 matplotlib>=3.10.8
 seaborn>=0.13.2
+huggingface

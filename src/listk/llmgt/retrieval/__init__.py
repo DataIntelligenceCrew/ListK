@@ -32,13 +32,13 @@ Examples
 >>> rankings = retriever.run(dataset)
 """
 
-from src.retrieval.base import Retriever
-from src.retrieval.bge import BGERetriever
-from src.retrieval.bm25 import BM25Retriever
-from src.retrieval.colbert import ColBERTRetriever
-from src.retrieval.e5 import E5Retriever
-from src.retrieval.splade import SpladeRetriever
-from src.retrieval.utils import get_device, get_gpu_memory_gb
+from listk.llmgt.retrieval.base import Retriever
+from listk.llmgt.retrieval.bge import BGERetriever
+from listk.llmgt.retrieval.bm25 import BM25Retriever
+from listk.llmgt.retrieval.colbert import ColBERTRetriever
+from listk.llmgt.retrieval.e5 import E5Retriever
+from listk.llmgt.retrieval.splade import SpladeRetriever
+from listk.llmgt.retrieval.utils import get_device, get_gpu_memory_gb
 
 __all__ = [
     # Base class

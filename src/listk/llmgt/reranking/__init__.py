@@ -34,8 +34,8 @@ Examples
 >>> results = reranker.run(dataset, rankings, top_k=500)
 """
 
-from src.reranking.base import Reranker
-from src.reranking.cross_encoder import (
+from listk.llmgt.reranking.base import Reranker
+from listk.llmgt.reranking.cross_encoder import (
     BGEReranker,
     CrossEncoderReranker,
     MiniLML6Reranker,

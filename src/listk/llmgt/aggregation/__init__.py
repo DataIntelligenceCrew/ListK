@@ -8,12 +8,12 @@ This module provides various rank aggregation methods:
 - RRF+Local: RRF with local search for concordance optimization
 """
 
-from src.aggregation.base import AggregatedRanking, Aggregator
-from src.aggregation.borda import BordaAggregator
-from src.aggregation.copeland import CopelandAggregator
-from src.aggregation.rrf import RRFAggregator
-from src.aggregation.rrf_local import RRFLocalSearchAggregator
-from src.aggregation.schulze import SchulzeAggregator
+from listk.llmgt.aggregation.base import AggregatedRanking, Aggregator
+from listk.llmgt.aggregation.borda import BordaAggregator
+from listk.llmgt.aggregation.copeland import CopelandAggregator
+from listk.llmgt.aggregation.rrf import RRFAggregator
+from listk.llmgt.aggregation.rrf_local import RRFLocalSearchAggregator
+from listk.llmgt.aggregation.schulze import SchulzeAggregator
 
 __all__ = [
     "Aggregator",
