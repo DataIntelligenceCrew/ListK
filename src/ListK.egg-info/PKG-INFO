@@ -20,7 +20,7 @@ Requires-Dist: tqdm>=4.65
 Requires-Dist: numpy>=1.24
 Requires-Dist: matplotlib>=3.10.8
 Requires-Dist: seaborn>=0.13.2
-Requires-Dist: huggingface
+Requires-Dist: huggingface_hub
 
 Note: This is experimental code and not currently a drop-in library. Also the code base is concurrently not cleaned up as of yet.
 
