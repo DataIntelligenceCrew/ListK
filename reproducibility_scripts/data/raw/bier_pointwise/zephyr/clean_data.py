@@ -101,4 +101,4 @@ import sys
 #python clean_data.py <result_path> <scifact_path> <rankzephyr_path> <embedding_path> <device_num> <p> <x> <w> <test_num>
 #python generate_data.py /localdisk/shin,jason-HonorsThesis/datasets/scifact_bier /localdisk/shin,jason-HonorsThesis/rankzephyr /localdisk/shin,jason-HonorsThesis/st_model 4 16 2 embedding 1;
 #python clean_data.py bier_result_unsorted_16_2_1.csv /localdisk/shin,jason-HonorsThesis/datasets/scifact_bier /localdisk/shin,jason-HonorsThesis/rankzephyr /localdisk/shin,jason-HonorsThesis/st_model 4 16 2 2 1
-sort_evaluator(sys.argv[1], '../../../../models_and_benchmarks/scifact', 25)
+sort_evaluator('bier_lotus_map_result.csv', '../../../../models_and_benchmarks/scifact', 25)

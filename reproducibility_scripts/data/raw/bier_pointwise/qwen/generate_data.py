@@ -117,4 +117,4 @@ def run_test_unsorted(
         q = q + 1
 
 import sys
-run_test_unsorted(sys.argv[1], '../../../../models_and_benchmarks/scifact', 25)
+run_test_unsorted('../../../../models_and_benchmarks/scifact', sys.argv[1], 25)

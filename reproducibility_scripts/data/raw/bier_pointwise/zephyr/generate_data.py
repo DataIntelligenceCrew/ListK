@@ -113,8 +113,8 @@ def run_test_unsorted(
         time_sum = time_sum + (end_time-start_time)
         running.append([q, query_id[q], end_time-start_time, ids])
         temp = pd.DataFrame(running, columns=['q', 'qid', 'time', 'ids'])
-        temp.to_csv(f'bier_lotus_map_result_q.csv', index=False)
+        temp.to_csv(f'bier_lotus_map_result.csv', index=False)
         q = q + 1
 
 import sys
-run_test_unsorted(sys.argv[1], '../../../../models_and_benchmarks/scifact', 25)
+run_test_unsorted('../../../../models_and_benchmarks/scifact', sys.argv[1], 25)

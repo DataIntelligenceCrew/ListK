@@ -58,7 +58,7 @@ def run_test_unsorted(
     }
     df = pd.DataFrame(data)
 
-    q = 19
+    q = 0
     stop = test_num
     running = []
     time_sum = 0.0
@@ -84,4 +84,4 @@ def run_test_unsorted(
         q = q + 1
 
 import sys
-run_test_unsorted(sys.argv[1], sys.argv[2], int(sys.argv[3]))
+run_test_unsorted('../../../../models_and_benchmarks/scifact', sys.argv[2], 25)
