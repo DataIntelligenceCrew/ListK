@@ -9,7 +9,7 @@ from typing import Any
 
 class MultiGenericRankLM:
     '''
-        Allows for Multiple RankZephyr instances to run on multiple gpus.
+        Allows for Multiple Generic RankLLM instances to run on multiple gpus.
         Requires and Assumes you have Cuda.
     '''
     process = []
@@ -26,7 +26,7 @@ class MultiGenericRankLM:
         batch_size: int = 32,
     ) -> None:
         '''
-            Loads instances of rankzephyr
+            Loads instances of the LLM
         '''
         if n_devices > MultiGenericRankLM.num_cuda_devices:
             self.n_devices = MultiGenericRankLM.num_cuda_devices
@@ -48,7 +48,7 @@ class MultiGenericRankLM:
         self
     )-> None:
         '''
-            Starts the number of rankzephyr processes you want (limited to number of gpus)
+            Starts the number of LLM processes you want (limited to number of gpus)
         '''
         for i in range(self.n_devices):
             p = multiprocessing.Process(target=self.open_process, args= (i,))
@@ -59,7 +59,7 @@ class MultiGenericRankLM:
         self
     )-> None:
         '''
-            Stops all rankzephyr processes
+            Stops all LLM processes
         '''
         i = 0
         for p in MultiGenericRankLM.process:
@@ -72,7 +72,7 @@ class MultiGenericRankLM:
         num: int
     )->None:
         '''
-            Creates a rankzephyr process that will pread from a queue and then produce an output
+            Creates a LLM process that will pread from a queue and then produce an output
         '''
         torch.cuda.set_device(num)
         this_gen = GenericRankLM(model_path=self.model_path,prompt_template_path=self.prompt_template_path,

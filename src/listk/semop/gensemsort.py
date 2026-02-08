@@ -32,6 +32,16 @@ class GenMultiPivot_sort():
         document_list: list[str],
         sorted_pivots: list[str],
     )->str:
+        '''
+        Produces the pivot ordering hint portion of the user query if specified by the user.
+
+        :param document_list: the given list of documents to the LLM call
+        :type document_list: list[str]
+        :param sorted_pivots: The list of sorted pivots
+        :type sorted_pivots: list[str]
+        :return: a string for the ordering hint
+        :rtype: str
+        '''
         indexes = []
         for pivots in sorted_pivots:
             i = 0
@@ -50,6 +60,18 @@ class GenMultiPivot_sort():
         hints: list[str] = [],
         hint_information: list[Any] = [],
     )->str:
+        '''
+        Creates a query string (w/ or w/o query hints)
+        
+        :param query: The user query
+        :type query: str
+        :param hints: The list of desired hints within the query
+        :type hints: list[str]
+        :param hint_information: The list of information needed to process the desired hints
+        :type hint_information: list[Any]
+        :return: The user query string for a given LLM call
+        :rtype: str
+        '''
         if hints == []:
             return query
         else:
@@ -69,6 +91,20 @@ class GenMultiPivot_sort():
         pivot_hint: bool = False,
         pivot_ordering: list[str] = [],
     )->list[tuple[str,list[str]]]:
+        '''
+        Produces a batch of queries for LLM batch calling
+        
+        :param query: The user query
+        :type query: str
+        :param batch: the batch of docuement lists
+        :type batch: list[list[str]]
+        :param pivot_hint: If a pivot hint is to be given
+        :type pivot_hint: bool
+        :param pivot_ordering: The ordering of the pivots
+        :type pivot_ordering: list[str]
+        :return: A properly formatted batch of LLM calls
+        :rtype: list[tuple[str, list[str]]]
+        '''
         result = []
         for b in batch:
             hint = []
@@ -87,6 +123,20 @@ class GenMultiPivot_sort():
         pivot_hint: bool = False,
         pivot_ordering: list[str] = [],
     )->list[str]:
+        '''
+        Makes multiple batch calls utilizing all GPUs
+        
+        :param query: The user query
+        :type query: str
+        :param documents: The given documents
+        :type documents: list[list[str]]
+        :param pivot_hint: If a pivot hint is to be given
+        :type pivot_hint: bool
+        :param pivot_ordering: the ordering of the pivots
+        :type pivot_ordering: list[str]
+        :return: The llm outputs
+        :rtype: list[str]
+        '''
         completed, completion_time, output = self.instances.call(queries=self.package_query_document_batch(query= query, batch=documents, pivot_hint=pivot_hint, pivot_ordering=pivot_ordering))
         combined_results = []
         for items in output:
@@ -99,6 +149,19 @@ class GenMultiPivot_sort():
         documents:list[list[str]],
         instance: int = 0
     )->list[str]:
+        '''
+        Currently Depricated
+        
+        :param self: Description
+        :param query: Description
+        :type query: str
+        :param documents: Description
+        :type documents: list[list[str]]
+        :param instance: Description
+        :type instance: int
+        :return: Description
+        :rtype: list[str]
+        '''
         if instance < 0:
             instance = 0
         elif instance >= self.instances.n_devices:
@@ -118,7 +181,20 @@ class GenMultiPivot_sort():
         embedding_path: str = "",
     )->list[str]:
         '''
-            Implement different methods later
+        Script for chosing the pivot for the given iteration
+        
+        :param pivots: the number of pivots
+        :type pivots: int
+        :param query: the user query
+        :type query: str
+        :param documents: the list of documents
+        :type documents: list[str]
+        :param method: the method to use
+        :type method: str
+        :param embedding_path: the path to the embedding model if used
+        :type embedding_path: str
+        :return: a list of pivot documents
+        :rtype: list[str]
         '''
         pivot_list = []
         consider = documents
@@ -160,6 +236,16 @@ class GenMultiPivot_sort():
         group_size: int,
         pivot_list: list[str]
     )->list[list[str]]:
+        '''
+        Groups the pivots into groups of P'
+        
+        :param group_size: P'
+        :type group_size: int
+        :param pivot_list: The list of pivots
+        :type pivot_list: list[str]
+        :return: A list of groups of pivots
+        :rtype: list[list[str]]
+        '''
         counter = 0
         output_list = []
         current_group = []
@@ -179,6 +265,15 @@ class GenMultiPivot_sort():
         self,
         num_pivots_blocks: int
     )->list[int]:
+        '''
+        Depricated
+                
+        :param self: Description
+        :param num_pivots_blocks: Description
+        :type num_pivots_blocks: int
+        :return: Description
+        :rtype: list[int]
+        '''
         instance_assignment = []
         for p in range(num_pivots_blocks):
             instance_assignment.append(p%self.instances.n_devices)
@@ -190,6 +285,18 @@ class GenMultiPivot_sort():
         maybe_set: list[str],
         grouping: int = 1,
     )->list[list[str]]:
+        '''
+        Organize documents into groups of window_size and batches of batch_size
+        
+        :param pivot_documents: The pivots
+        :type pivot_documents: list[str]
+        :param maybe_set: The set of documents
+        :type maybe_set: list[str]
+        :param grouping: How many batches to group together
+        :type grouping: int
+        :return: Formatted and properly binned list of documents
+        :rtype: list[list[str]]
+        '''
         cuttoff = self.window_size - len(pivot_documents)
         batch_size = self.batch_size * grouping
         counter = 0
@@ -228,6 +335,16 @@ class GenMultiPivot_sort():
         pivot: str,
         result: list[str]
     )->tuple[set[str], set[str]]:
+        '''
+        Produces a larger than and smaller than set for a given LLM call result
+        
+        :param pivot: the given pivot
+        :type pivot: str
+        :param result: the LLM result
+        :type result: list[str]
+        :return: The smaller and larger set
+        :rtype: tuple[set[str], set[str]]
+        '''
         larger = set()
         smaller = set()
         pivot_found = False
@@ -248,6 +365,22 @@ class GenMultiPivot_sort():
         instance: int,
         pivot_hint: bool = False,
     )->tuple[set[str],set[str]]:
+        '''
+        Handles LLM calls for an iteration
+        
+        :param query: The user query
+        :type query: str
+        :param pivot_list: The list of pivots
+        :type pivot_list: list[str]
+        :param batched_documents: The organized and batched documents
+        :type batched_documents: list[list[str]]
+        :param instance: Depricated
+        :type instance: int
+        :param pivot_hint: If a pivot hint is to be given
+        :type pivot_hint: bool
+        :return: a list of larger and smaller sets for all pivots
+        :rtype: tuple[set[str], set[str]]
+        '''
         larger = [set()]*len(pivot_list)
         smaller = [set()]*len(pivot_list)
         for batch in batched_documents:
@@ -275,6 +408,23 @@ class GenMultiPivot_sort():
         output: list[Any],
         index: int,
     )->None:
+        '''
+        Depricated
+        
+        :param self: Description
+        :param query: Description
+        :type query: str
+        :param pivot_list: Description
+        :type pivot_list: list[str]
+        :param instance: Description
+        :type instance: int
+        :param documents: Description
+        :type documents: list[str]
+        :param output: Description
+        :type output: list[Any]
+        :param index: Description
+        :type index: int
+        '''
         result = self.process_pivot(query=query, pivot_list=pivot_list, batched_documents=documents, instance=instance)
         output[index] = result
 
@@ -288,6 +438,26 @@ class GenMultiPivot_sort():
         embedding_path: str = "",
         pivot_hint: bool = False,
     )->list[str]:
+        '''
+        Sorts doucments using LMPQSort and Generic LLM
+        
+        :param query: User query
+        :type query: str
+        :param documents: The documents
+        :type documents: list[str]
+        :param pivot_selection_method: embedding to use embedding based
+        :type pivot_selection_method: str
+        :param pivots: the number of pivots
+        :type pivots: int
+        :param group_size: the size of P'
+        :type group_size: int
+        :param embedding_path: the path to the embedding model if used
+        :type embedding_path: str
+        :param pivot_hint: if pivot hints are to be given
+        :type pivot_hint: bool
+        :return: A sorted list of documents
+        :rtype: list[str]
+        '''
         if len(documents) == 1:
             return documents
         elif len(documents) == 0:

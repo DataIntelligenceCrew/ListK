@@ -32,6 +32,16 @@ class GenMultiPivot_tour():
         document_list: list[str],
         sorted_pivots: list[str],
     )->str:
+        '''
+        Produces the pivot ordering hint portion of the user query if specified by the user.
+
+        :param document_list: the given list of documents to the LLM call
+        :type document_list: list[str]
+        :param sorted_pivots: The list of sorted pivots
+        :type sorted_pivots: list[str]
+        :return: a string for the ordering hint
+        :rtype: str
+        '''
         indexes = []
         for pivots in sorted_pivots:
             i = 0
@@ -50,6 +60,18 @@ class GenMultiPivot_tour():
         hints: list[str] = [],
         hint_information: list[Any] = [],
     )->str:
+        '''
+        Creates a query string (w/ or w/o query hints)
+        
+        :param query: The user query
+        :type query: str
+        :param hints: The list of desired hints within the query
+        :type hints: list[str]
+        :param hint_information: The list of information needed to process the desired hints
+        :type hint_information: list[Any]
+        :return: The user query string for a given LLM call
+        :rtype: str
+        '''
         if hints == []:
             return query
         else:
@@ -69,6 +91,20 @@ class GenMultiPivot_tour():
         pivot_hint: bool = False,
         pivot_ordering: list[str] = [],
     )->list[tuple[str,list[str]]]:
+        '''
+        Produces a batch of queries for LLM batch calling
+        
+        :param query: The user query
+        :type query: str
+        :param batch: the batch of docuement lists
+        :type batch: list[list[str]]
+        :param pivot_hint: If a pivot hint is to be given
+        :type pivot_hint: bool
+        :param pivot_ordering: The ordering of the pivots
+        :type pivot_ordering: list[str]
+        :return: A properly formatted batch of LLM calls
+        :rtype: list[tuple[str, list[str]]]
+        '''
         result = []
         for b in batch:
             hint = []
@@ -87,6 +123,20 @@ class GenMultiPivot_tour():
         pivot_hint: bool = False,
         pivot_ordering: list[str] = [],
     )->list[str]:
+        '''
+        Makes multiple batch calls utilizing all GPUs
+        
+        :param query: The user query
+        :type query: str
+        :param documents: The given documents
+        :type documents: list[list[str]]
+        :param pivot_hint: If a pivot hint is to be given
+        :type pivot_hint: bool
+        :param pivot_ordering: the ordering of the pivots
+        :type pivot_ordering: list[str]
+        :return: The llm outputs
+        :rtype: list[str]
+        '''
         completed, completion_time, output = self.instances.call(queries=self.package_query_document_batch(query= query, batch=documents, pivot_hint=pivot_hint, pivot_ordering=pivot_ordering))
         combined_results = []
         for items in output:
@@ -99,6 +149,19 @@ class GenMultiPivot_tour():
         documents:list[list[str]],
         instance: int = 0
     )->list[str]:
+        '''
+        Currently Depricated
+        
+        :param self: Description
+        :param query: Description
+        :type query: str
+        :param documents: Description
+        :type documents: list[list[str]]
+        :param instance: Description
+        :type instance: int
+        :return: Description
+        :rtype: list[str]
+        '''
         if instance < 0:
             instance = 0
         elif instance >= self.instances.n_devices:
@@ -113,6 +176,18 @@ class GenMultiPivot_tour():
         self,
         maybe_set: list[str],
     )->list[list[str]]:
+        '''
+        Organize documents into groups of window_size and batches of batch_size
+        
+        :param pivot_documents: The pivots
+        :type pivot_documents: list[str]
+        :param maybe_set: The set of documents
+        :type maybe_set: list[str]
+        :param grouping: How many batches to group together
+        :type grouping: int
+        :return: Formatted and properly binned list of documents
+        :rtype: list[list[str]]
+        '''
         cuttoff = self.window_size
         batch_size = self.batch_size * self.instances.n_devices
         counter = 0
@@ -153,6 +228,20 @@ class GenMultiPivot_tour():
         instance: int,
         pivot_hint: bool = False,
     )->list[list[str]]:
+        '''
+        Handles LLM calls for an iteration
+        
+        :param query: The user query
+        :type query: str
+        :param pivot_list: The list of pivots
+        :type pivot_list: list[str]
+        :param batched_documents: The organized and batched documents
+        :type batched_documents: list[list[str]]
+        :param instance: Depricated
+        :type instance: int
+        :return: The list of outputs
+        :rtype: tuple[set[str], set[str]]
+        '''
         output_list = []
         for batch in batched_documents:
             batch_outputs = []
@@ -169,6 +258,18 @@ class GenMultiPivot_tour():
         documents: list[str],
         result: list[list[str]],
     )-> list[list[str, list[str]]]:
+        '''
+        Creates the list of parents for each pivot
+        
+        :param formatted_documents: The graph maintainer
+        :type formatted_documents: list[list[str, list[str]]]
+        :param documents: The list of documents
+        :type documents: list[str]
+        :param result: the results of the LLM calls
+        :type result: list[list[str]]
+        :return: The list of formatted documents updated based on the results
+        :rtype: list[list[str]]
+        '''
         for r in result:
             rolling = []
             for ordering in r:
@@ -183,6 +284,18 @@ class GenMultiPivot_tour():
         documents: list[str],
         k: int,
     )->list[str]:
+        '''
+        runs TSort
+        
+        :param query: User query
+        :type query: str
+        :param documents: list of documents
+        :type documents: list[str]
+        :param k: K
+        :type k: int
+        :return: returns the top K documents sorted
+        :rtype: list[str]
+        '''
         formatted_documents = []
         for d in documents:
             formatted_documents.append([d,[]])

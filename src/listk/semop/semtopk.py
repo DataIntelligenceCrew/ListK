@@ -4,7 +4,9 @@ import time
 import os
 import multiprocessing
 from typing import Any
-
+'''
+    See gensemtopk.py for specifics of methods. This is the same, but takes the RankZephyr PLM class rather than the GenericRankLM version.
+'''
 class MultiPivot():
     call_count = 0
     start_time_total = 0.0

@@ -1,1 +1,0 @@
-# SoliceDB Test Suite

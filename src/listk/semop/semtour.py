@@ -5,7 +5,9 @@ import time
 import multiprocessing
 from typing import Any
 import math
-
+'''
+    See gensemtour.py for specifics of methods. This is the same, but takes the RankZephyr PLM class rather than the GenericRankLM version.
+'''
 class MultiPivot_tour():
     call_count = 0
     def __init__(

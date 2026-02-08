@@ -23,7 +23,7 @@ from rank_llm.rerank.listwise import RankListwiseOSLLM
 
 class GenericRankLM:
     """
-        Initializes and allows calls to RankZephyr utilizing rankllm (note this requires having openjdk 21 with maven)
+        Initializes and allows calls to a generic LM utilizing rankllm
     """
     genrank: RankListwiseOSLLM
     init_time: float
@@ -86,7 +86,7 @@ class GenericRankLM:
         queries: list[tuple[str,list[str]]],
     )-> tuple[bool,float,list[tuple[str,list[str]]]]:
         """
-            Allows multiple calls to Rankzephyr with an input of a list of requests that are
+            Allows multiple calls to the LLM with an input of a list of requests that are
             (user query, list of documents) where the list of documents is a list of strings.
             It outputs a check of if the number of inputs matches the outputs, the time of execution,
             and the cleaned results as a list.
@@ -165,7 +165,7 @@ class GenericLM:
 
 class RankZephyrLM:
     """
-        Initializes and allows calls to RankZephyr utilizing rankllm (note this requires having openjdk 21 with maven)
+        Initializes and allows calls to RankZephyr utilizing rankllm
     """
     zephyr: ZephyrReranker
     init_time: float

@@ -1,6 +1,4 @@
-Note: This is experimental code and not currently a drop-in library. Also the code base is concurrently not cleaned up as of yet.
 
-All code from the three repositories added. Will clean later.
 
 # Reproducibility Instructions
 ## 1. Setup
@@ -187,7 +185,7 @@ Trying different List Sizes for Top Few Sort:
 
 > cd ./wsortdata && python clean_data.py **\<number of GPUs>** 10 && cd ..
 
-The test case for LMPQSelect with differnet $P$ and $P'$ values with no early stopping **(Note: This can take substantial ammount of time a copy of all the test data generated for the publication is also included at [location])**:
+The test case for LMPQSelect with differnet $P$ and $P'$ values with no early stopping **(Note: This can take substantial ammount of time a copy of all the test data generated for the publication is also included at publication_data/data)**:
 
 >cd ./5000 && python generate_data.py **\<number of GPUs>** 2 1 && cd ..
 
@@ -345,3 +343,11 @@ Top few recomputation:
 > cd ./sembench/recomputed/tour && python sembench_test.py **\<number of GPUs>** **\<path to reviews.csv>** **\<path to movies.csv>** && cd ../../..
 
 ## 4. Wrapup and Plotting
+
+**(Note: If one wants to reproduce the LLM Ground Truth Results please see the .md file in the llm_gt_generation_scripts folder)**
+
+From the prior folder format the derrived folder for the plotting script to run (This coppies the result files into the derrived folder for access to some portions of the plotting script):
+> cd .. && cd ./derrived && mkdir hgt_data hgt_pair_llm_metrics llm_gt_metrics && cd ./hgt_data && mkdir 16_2_data l1data l2data l5data l10data l15data pairwise_data w128data && cd ../.. && cp ./raw/wsortdata/bier_formatted_sorted_16_2_20_20_25.json ./derrived/hgt_data/16_2_data && cp ./raw/wsortdata/bier_formatted_sorted_16_2_20_2_25.json ./derrived/hgt_data/16_2_data && cp ./raw/wsortdata/bier_metrics_sorted_16_2_20_20_10_25.csv ./derrived/hgt_data/16_2_data && cp ./raw/wsortdata/bier_metrics_sorted_16_2_20_2_10_25.csv ./derrived/hgt_data/16_2_data && cp ./raw/wsortdata/bier_sorted_10_16_2_20_2.csv ./derrived/hgt_data/16_2_data && cp ./raw/wsortdata/bier_sorted_10_16_2_20_20.csv ./derrived/hgt_data/16_2_data && cp ./raw/hgt_pair/l1 . ./derrived/hgt_data/l1data && cp ./raw/hgt_pair/l2 . ./derrived/hgt_data/l2data && cp ./raw/hgt_pair/l5 . ./derrived/hgt_data/l5data && cp ./raw/hgt_pair/l10 . ./derrived/hgt_data/l10data && cp ./raw/hgt_pair/l15 . ./derrived/hgt_data/l15data && cp ./raw/hgt_pair/w128 . ./derrived/hgt_data/w128data && cp ./raw/hgt_data/pairwise_data . ./derrived/hgt_data/pairwise_data && cd ..
+
+Run the plotting script:
+> python -m listk.plotting.main
